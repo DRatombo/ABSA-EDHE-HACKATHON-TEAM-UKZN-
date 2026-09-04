@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.20">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\VERA.Business\VERA.Business.csproj" />
     <ProjectReference Include="..\VERA.Data\VERA.Data.csproj" />
     <ProjectReference Include="..\VERA.Models\VERA.Models.csproj" />
