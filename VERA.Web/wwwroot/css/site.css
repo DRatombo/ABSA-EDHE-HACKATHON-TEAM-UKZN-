@@ -1189,7 +1189,7 @@ textarea {
 	}
 }
 /* =========================================================
-   HOME — EXTENDED COLOUR PALETTE
+   HOME   EXTENDED COLOUR PALETTE
 ========================================================= */
 
 :root {
@@ -2712,5 +2712,960 @@ textarea {
 	.vera-bottom-signin,
 	.vera-bottom-cta {
 		width: 100%;
+	}
+}
+
+/* =========================================================
+   STATUS PILL (shared - opportunity card / example cards)
+   ========================================================= */
+
+.vera-status-review {
+	display: inline-flex;
+	align-items: center;
+	padding: 6px 12px;
+	color: var(--vera-amber);
+	background: var(--vera-amber-light);
+	border-radius: 999px;
+	font-size: 10px;
+	font-weight: 800;
+	letter-spacing: .04em;
+}
+
+
+/* =========================================================
+   HOW IT WORKS PAGE
+   ========================================================= */
+
+.how-hero {
+	position: relative;
+	overflow: hidden;
+	padding: 130px 0 100px;
+	background: var(--vera-background);
+}
+
+.how-hero-orb {
+	position: absolute;
+	border-radius: 50%;
+	border: 1px solid var(--vera-border);
+}
+
+.how-orb-one {
+	width: 420px;
+	height: 420px;
+	right: -170px;
+	top: -190px;
+}
+
+.how-orb-two {
+	width: 260px;
+	height: 260px;
+	left: -120px;
+	bottom: -140px;
+	background: rgba(200,16,46,.03);
+}
+
+.how-hero-grid {
+	position: relative;
+	z-index: 2;
+	display: grid;
+	grid-template-columns: 1.15fr 1fr;
+	align-items: center;
+	gap: 60px;
+}
+
+.how-hero-solo {
+	grid-template-columns: 1fr;
+	max-width: 760px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+	.how-hero-solo .how-hero-copy h1,
+	.how-hero-solo .how-hero-copy > p {
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	.how-hero-solo .home-section-kicker {
+		justify-content: center;
+	}
+
+	.how-hero-solo .how-hero-actions {
+		justify-content: center;
+	}
+
+.how-hero-actions {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	margin-top: 28px;
+}
+
+
+/* Simple stat strip - reused across content pages */
+
+.how-stat-row {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 16px;
+	margin-top: 46px;
+}
+
+.how-stat-card {
+	padding: 22px 20px;
+	text-align: center;
+	background: var(--vera-surface);
+	border: 1px solid var(--vera-border);
+	border-radius: 14px;
+}
+
+	.how-stat-card strong {
+		display: block;
+		color: var(--vera-red);
+		font-size: 26px;
+		letter-spacing: -.02em;
+	}
+
+	.how-stat-card span {
+		display: block;
+		margin-top: 6px;
+		color: var(--vera-muted);
+		font-size: 11px;
+	}
+
+@media (max-width: 620px) {
+
+	.how-stat-row {
+		grid-template-columns: 1fr;
+	}
+}
+
+.how-hero-copy h1 {
+	max-width: 560px;
+	margin: 14px 0 18px;
+	color: var(--vera-black);
+	font-size: clamp(38px, 4.2vw, 54px);
+	line-height: 1.08;
+	letter-spacing: -.045em;
+}
+
+	.how-hero-copy h1 span {
+		display: block;
+		color: var(--vera-red);
+	}
+
+.how-hero-copy > p {
+	max-width: 460px;
+	margin: 0;
+	color: var(--vera-muted);
+	font-size: 14px;
+	line-height: 1.75;
+}
+
+.how-hero-summary {
+	display: flex;
+	justify-content: flex-end;
+}
+
+.how-summary-card {
+	display: flex;
+	align-items: center;
+	gap: 18px;
+	padding: 26px 28px;
+	background: var(--vera-surface);
+	border: 1px solid var(--vera-border);
+	border-radius: var(--vera-radius-large);
+	box-shadow: var(--vera-shadow);
+}
+
+	.how-summary-card > div {
+		display: flex;
+		flex-direction: column;
+		gap: 6px;
+	}
+
+	.how-summary-card span {
+		color: #A3A7B0;
+		font-size: 9px;
+		font-weight: 800;
+		letter-spacing: .08em;
+	}
+
+	.how-summary-card strong {
+		color: var(--vera-black);
+		font-size: 13px;
+		font-weight: 700;
+		white-space: nowrap;
+	}
+
+	.how-summary-card > i {
+		color: var(--vera-red);
+		font-size: 15px;
+	}
+
+
+/* SIX STEP JOURNEY */
+
+.how-process {
+	padding: 110px 0;
+	background: var(--vera-surface);
+}
+
+.how-step-list {
+	display: flex;
+	flex-direction: column;
+	gap: 18px;
+}
+
+.how-step {
+	position: relative;
+	display: grid;
+	grid-template-columns: 60px 60px 1fr 220px;
+	align-items: center;
+	gap: 26px;
+	padding: 28px 30px;
+	background: var(--vera-surface);
+	border: 1px solid var(--vera-border);
+	border-radius: 16px;
+	transition: .2s ease;
+}
+
+	.how-step:hover {
+		transform: translateY(-3px);
+		box-shadow: 0 18px 45px rgba(31,35,45,.08);
+	}
+
+.how-step-number {
+	color: #C7CBD3;
+	font-size: 26px;
+	font-weight: 800;
+}
+
+.how-step-icon {
+	width: 44px;
+	height: 44px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 12px;
+	font-size: 18px;
+}
+
+.how-step-copy h3 {
+	margin: 6px 0 8px;
+	color: var(--vera-black);
+	font-size: 19px;
+}
+
+.how-step-label {
+	color: #A3A7B0;
+	font-size: 10px;
+	font-weight: 800;
+	letter-spacing: .08em;
+}
+
+.how-step-copy p {
+	max-width: 480px;
+	margin: 0;
+	color: var(--vera-muted);
+	font-size: 12.5px;
+	line-height: 1.7;
+}
+
+.how-step-output {
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
+	padding-left: 26px;
+	border-left: 1px solid var(--vera-border);
+}
+
+	.how-step-output span {
+		color: #A3A7B0;
+		font-size: 9px;
+		font-weight: 800;
+		letter-spacing: .08em;
+	}
+
+	.how-step-output strong {
+		color: var(--vera-black);
+		font-size: 13px;
+	}
+
+	.how-step-output small {
+		color: var(--vera-muted);
+		font-size: 10.5px;
+	}
+
+/* Colour per stage - reuses the extended VERA palette */
+
+.how-step-red .how-step-icon {
+	color: var(--vera-red);
+	background: var(--vera-blush);
+}
+
+.how-step-navy .how-step-icon {
+	color: var(--vera-navy);
+	background: var(--vera-navy-soft);
+}
+
+.how-step-gold .how-step-icon {
+	color: #A56E16;
+	background: var(--vera-gold-soft);
+}
+
+.how-step-purple .how-step-icon {
+	color: var(--vera-purple);
+	background: var(--vera-purple-soft);
+}
+
+.how-step-green .how-step-icon {
+	color: var(--vera-sage);
+	background: var(--vera-sage-soft);
+}
+
+.how-step-dark {
+	color: white;
+	background: var(--vera-navy);
+	border-color: var(--vera-navy);
+}
+
+	.how-step-dark .how-step-number {
+		color: rgba(255,255,255,.3);
+	}
+
+	.how-step-dark .how-step-icon {
+		color: white;
+		background: rgba(255,255,255,.1);
+	}
+
+	.how-step-dark .how-step-copy h3 {
+		color: white;
+	}
+
+	.how-step-dark .how-step-label {
+		color: rgba(255,255,255,.45);
+	}
+
+	.how-step-dark .how-step-copy p {
+		color: rgba(255,255,255,.65);
+	}
+
+	.how-step-dark .how-step-output {
+		border-left-color: rgba(255,255,255,.16);
+	}
+
+		.how-step-dark .how-step-output span {
+			color: rgba(255,255,255,.4);
+		}
+
+		.how-step-dark .how-step-output strong {
+			color: white;
+		}
+
+		.how-step-dark .how-step-output small {
+			color: rgba(255,255,255,.55);
+		}
+
+
+/* WHAT VERA CHECKS */
+
+.how-checks {
+	padding: 110px 0;
+	background: var(--vera-background);
+}
+
+.how-check-grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 18px;
+}
+
+.how-check-card {
+	padding: 26px;
+	background: var(--vera-surface);
+	border: 1px solid var(--vera-border);
+	border-radius: 16px;
+	transition: .2s ease;
+}
+
+	.how-check-card:hover {
+		transform: translateY(-3px);
+		box-shadow: 0 18px 45px rgba(31,35,45,.08);
+	}
+
+	.how-check-card > i {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 42px;
+		height: 42px;
+		margin-bottom: 18px;
+		color: var(--vera-green);
+		background: var(--vera-green-light);
+		border-radius: 11px;
+		font-size: 18px;
+	}
+
+	.how-check-card h3 {
+		margin: 0 0 8px;
+		color: var(--vera-black);
+		font-size: 15px;
+	}
+
+	.how-check-card p {
+		margin: 0 0 16px;
+		color: var(--vera-muted);
+		font-size: 12px;
+		line-height: 1.7;
+	}
+
+	.how-check-card > span,
+	.how-check-pass {
+		display: inline-flex;
+		align-items: center;
+		padding: 5px 11px;
+		color: var(--vera-green);
+		background: var(--vera-green-light);
+		border-radius: 999px;
+		font-size: 10px;
+		font-weight: 800;
+		letter-spacing: .04em;
+	}
+
+.how-check-review {
+	border-color: rgba(178,106,0,.25);
+}
+
+	.how-check-review > i {
+		color: var(--vera-amber);
+		background: var(--vera-amber-light);
+	}
+
+	.how-check-review > span {
+		color: var(--vera-amber);
+		background: var(--vera-amber-light);
+	}
+
+
+/* EXAMPLE OPPORTUNITY */
+
+.how-example {
+	padding: 110px 0;
+	background: var(--vera-surface);
+}
+
+.how-example-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	align-items: center;
+	gap: 70px;
+}
+
+.how-example-kicker {
+	margin-bottom: 14px;
+}
+
+.how-example-copy h2 {
+	max-width: 480px;
+	margin: 0 0 16px;
+	color: var(--vera-black);
+	font-size: clamp(32px, 3.4vw, 42px);
+	line-height: 1.12;
+	letter-spacing: -.04em;
+}
+
+	.how-example-copy h2 span {
+		display: block;
+		color: var(--vera-red);
+	}
+
+.how-example-copy > p {
+	max-width: 460px;
+	margin: 0 0 24px;
+	color: var(--vera-muted);
+	font-size: 13px;
+	line-height: 1.75;
+}
+
+.how-example-warning {
+	display: flex;
+	align-items: flex-start;
+	gap: 14px;
+	max-width: 420px;
+	padding: 18px 20px;
+	background: var(--vera-amber-light);
+	border: 1px solid rgba(178,106,0,.2);
+	border-radius: 14px;
+}
+
+	.how-example-warning > i {
+		color: var(--vera-amber);
+		font-size: 17px;
+		margin-top: 2px;
+	}
+
+	.how-example-warning strong {
+		display: block;
+		margin-bottom: 6px;
+		color: var(--vera-amber);
+		font-size: 13px;
+	}
+
+	.how-example-warning span {
+		display: block;
+		color: #8A5A00;
+		font-size: 11.5px;
+		line-height: 1.6;
+	}
+
+.how-example-card {
+	padding: 28px;
+	background: var(--vera-surface);
+	border: 1px solid var(--vera-border);
+	border-radius: var(--vera-radius-large);
+	box-shadow: var(--vera-shadow);
+}
+
+.how-example-top {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 20px;
+	padding-bottom: 18px;
+	border-bottom: 1px solid var(--vera-border);
+}
+
+	.how-example-top span {
+		display: block;
+		color: #A3A7B0;
+		font-size: 9px;
+		font-weight: 800;
+		letter-spacing: .08em;
+	}
+
+	.how-example-top strong {
+		display: block;
+		margin-top: 4px;
+		color: var(--vera-black);
+		font-size: 16px;
+	}
+
+.how-example-row {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 13px 0;
+	border-bottom: 1px solid var(--vera-border);
+	color: var(--vera-muted);
+	font-size: 12.5px;
+}
+
+	.how-example-row strong {
+		color: var(--vera-black);
+		font-size: 14px;
+	}
+
+.how-example-total {
+	border-bottom: none;
+	color: var(--vera-black);
+	font-weight: 700;
+}
+
+	.how-example-total strong {
+		color: var(--vera-red);
+		font-size: 17px;
+	}
+
+.how-example-result {
+	display: flex;
+	align-items: center;
+	gap: 14px;
+	margin-top: 18px;
+	padding: 16px 18px;
+	background: var(--vera-green-light);
+	border-radius: 12px;
+}
+
+	.how-example-result > i {
+		color: var(--vera-green);
+		font-size: 20px;
+	}
+
+	.how-example-result span {
+		display: block;
+		color: #0F6B4B;
+		font-size: 9px;
+		font-weight: 800;
+		letter-spacing: .08em;
+	}
+
+	.how-example-result strong {
+		display: block;
+		margin-top: 2px;
+		color: var(--vera-green);
+		font-size: 13px;
+	}
+
+
+/* Responsive */
+
+@media (max-width: 1000px) {
+
+	.how-hero-grid,
+	.how-example-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.how-hero-summary {
+		justify-content: flex-start;
+	}
+
+	.how-step {
+		grid-template-columns: 44px 44px 1fr;
+	}
+
+	.how-step-output {
+		grid-column: 1 / -1;
+		padding-left: 0;
+		border-left: none;
+		border-top: 1px solid var(--vera-border);
+		padding-top: 16px;
+		margin-top: 6px;
+	}
+
+	.how-check-grid {
+		grid-template-columns: 1fr 1fr;
+	}
+}
+
+@media (max-width: 620px) {
+
+	.how-step {
+		grid-template-columns: 1fr;
+		gap: 14px;
+	}
+
+	.how-step-number {
+		display: none;
+	}
+
+	.how-check-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.how-summary-card {
+		flex-wrap: wrap;
+		gap: 14px 18px;
+	}
+}
+
+
+/* =========================================================
+   INTERACTIVITY
+   ========================================================= */
+
+/* Scroll reveal */
+
+.vera-reveal {
+	opacity: 0;
+	transform: translateY(18px);
+	transition: opacity .55s ease, transform .55s ease;
+}
+
+.vera-reveal-visible {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+
+/* Step accordions (.how-step-list) */
+
+.how-step {
+	cursor: pointer;
+	user-select: none;
+}
+
+	.how-step:focus-visible {
+		outline: 2px solid var(--vera-red);
+		outline-offset: 3px;
+	}
+
+.how-step-chevron {
+	position: absolute;
+	top: 28px;
+	right: 30px;
+	color: #C7CBD3;
+	font-size: 14px;
+	transition: transform .25s ease;
+}
+
+.how-step-dark .how-step-chevron {
+	color: rgba(255,255,255,.4);
+}
+
+.how-step.is-open .how-step-chevron {
+	transform: rotate(180deg);
+	color: var(--vera-red);
+}
+
+.how-step-dark.is-open .how-step-chevron {
+	color: white;
+}
+
+.how-step-copy p {
+	max-height: 0;
+	margin: 0;
+	opacity: 0;
+	overflow: hidden;
+	transition: max-height .35s ease, opacity .3s ease, margin .35s ease;
+}
+
+.how-step.is-open .how-step-copy p {
+	max-height: 200px;
+	margin: 0 0 0;
+	opacity: 1;
+}
+
+.how-step.is-open {
+	border-color: rgba(200,16,46,.35);
+	box-shadow: 0 18px 45px rgba(31,35,45,.08);
+}
+
+.how-step-dark.is-open {
+	border-color: rgba(255,255,255,.35);
+}
+
+
+/* Check card "explore" progress */
+
+.how-check-progress {
+	position: relative;
+	height: 4px;
+	margin-bottom: 26px;
+	background: var(--vera-border);
+	border-radius: 999px;
+	overflow: visible;
+}
+
+.how-check-progress-fill {
+	display: block;
+	height: 100%;
+	width: 0%;
+	background: var(--vera-red);
+	border-radius: 999px;
+	transition: width .3s ease;
+}
+
+.how-check-progress small {
+	position: absolute;
+	top: 10px;
+	right: 0;
+	color: var(--vera-muted);
+	font-size: 10.5px;
+	font-weight: 700;
+}
+
+.how-check-card {
+	cursor: pointer;
+	user-select: none;
+}
+
+	.how-check-card:focus-visible {
+		outline: 2px solid var(--vera-red);
+		outline-offset: 3px;
+	}
+
+	.how-check-card.is-explored {
+		border-color: rgba(200,16,46,.35);
+		box-shadow: 0 18px 45px rgba(31,35,45,.08);
+	}
+
+		.how-check-card.is-explored > i {
+			color: white;
+			background: var(--vera-red);
+		}
+
+
+/* =========================================================
+   FUNDING GAP CALCULATOR
+   ========================================================= */
+
+.gapcalc {
+	padding: 105px 0;
+	background: var(--vera-background);
+}
+
+.gapcalc-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 50px;
+	align-items: start;
+}
+
+.gapcalc-card {
+	padding: 32px;
+	background: var(--vera-surface);
+	border: 1px solid var(--vera-border);
+	border-radius: var(--vera-radius-large);
+	box-shadow: var(--vera-shadow);
+}
+
+.gapcalc-field {
+	margin-bottom: 26px;
+}
+
+	.gapcalc-field:last-child {
+		margin-bottom: 0;
+	}
+
+.gapcalc-field-top {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 10px;
+}
+
+	.gapcalc-field-top label {
+		color: var(--vera-black);
+		font-size: 12.5px;
+		font-weight: 700;
+	}
+
+	.gapcalc-field-top span {
+		color: var(--vera-red);
+		font-size: 14px;
+		font-weight: 800;
+	}
+
+.gapcalc-field input[type="range"] {
+	width: 100%;
+	height: 5px;
+	appearance: none;
+	background: var(--vera-border);
+	border-radius: 999px;
+	outline: none;
+}
+
+	.gapcalc-field input[type="range"]::-webkit-slider-thumb {
+		appearance: none;
+		width: 18px;
+		height: 18px;
+		background: var(--vera-red);
+		border: 3px solid white;
+		border-radius: 50%;
+		box-shadow: 0 2px 8px rgba(200,16,46,.4);
+		cursor: pointer;
+	}
+
+	.gapcalc-field input[type="range"]::-moz-range-thumb {
+		width: 18px;
+		height: 18px;
+		background: var(--vera-red);
+		border: 3px solid white;
+		border-radius: 50%;
+		box-shadow: 0 2px 8px rgba(200,16,46,.4);
+		cursor: pointer;
+	}
+
+.gapcalc-result-card {
+	padding: 30px;
+	color: white;
+	background: linear-gradient(135deg, #9F0C29, var(--vera-red) 60%, #DF2647);
+	border-radius: var(--vera-radius-large);
+	box-shadow: var(--vera-shadow);
+}
+
+.gapcalc-result-top {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 22px;
+}
+
+	.gapcalc-result-top span {
+		color: rgba(255,255,255,.7);
+		font-size: 10px;
+		font-weight: 800;
+		letter-spacing: .08em;
+	}
+
+.gapcalc-result-row {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 13px 0;
+	border-bottom: 1px solid rgba(255,255,255,.18);
+	font-size: 12.5px;
+	color: rgba(255,255,255,.85);
+}
+
+	.gapcalc-result-row strong {
+		font-size: 14px;
+		color: white;
+	}
+
+.gapcalc-result-final {
+	border-bottom: none;
+	padding-top: 20px;
+}
+
+	.gapcalc-result-final span {
+		display: block;
+		color: rgba(255,255,255,.75);
+		font-size: 10px;
+		font-weight: 800;
+		letter-spacing: .06em;
+		margin-bottom: 6px;
+	}
+
+	.gapcalc-result-final strong {
+		font-size: 32px;
+		letter-spacing: -.02em;
+	}
+
+.gapcalc-bar {
+	height: 8px;
+	margin-top: 18px;
+	background: rgba(255,255,255,.18);
+	border-radius: 999px;
+	overflow: hidden;
+}
+
+.gapcalc-bar-fill {
+	display: block;
+	height: 100%;
+	width: 0%;
+	background: white;
+	border-radius: 999px;
+	transition: width .25s ease;
+}
+
+.gapcalc-copy h2 {
+	max-width: 420px;
+	margin: 0 0 14px;
+	color: var(--vera-black);
+	font-size: clamp(30px, 3.2vw, 40px);
+	line-height: 1.12;
+	letter-spacing: -.04em;
+}
+
+	.gapcalc-copy h2 span {
+		display: block;
+		color: var(--vera-red);
+	}
+
+.gapcalc-copy > p {
+	max-width: 420px;
+	margin: 0;
+	color: var(--vera-muted);
+	font-size: 13px;
+	line-height: 1.75;
+}
+
+@media (max-width: 900px) {
+
+	.gapcalc-grid {
+		grid-template-columns: 1fr;
 	}
 }
