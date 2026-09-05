@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VERA.Data.Context;
 
@@ -11,9 +12,11 @@ using VERA.Data.Context;
 namespace VERA.Data.Migrations
 {
     [DbContext(typeof(VeraDbContext))]
-    partial class VeraDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260905025458_AddConcurrencyAndConstraints")]
+    partial class AddConcurrencyAndConstraints
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

@@ -1,4 +1,6 @@
-﻿namespace VERA.Models.Entities
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace VERA.Models.Entities
 {
     public class FulfilmentRecord
     {
@@ -23,5 +25,9 @@
         public bool DisputeOccurred { get; set; }
 
         public string Outcome { get; set; } = string.Empty;
+
+        [Timestamp]
+        public byte[] RowVersion { get; set; } = Array.Empty<byte>();
     }
-}
+     
+    }

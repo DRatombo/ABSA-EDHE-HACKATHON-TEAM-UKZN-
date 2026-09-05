@@ -58,5 +58,8 @@ namespace VERA.Models.Entities
             = new();
 
         public FulfilmentRecord? FulfilmentRecord { get; set; }
+
+        [Timestamp]
+        public byte[] RowVersion { get; set; } = Array.Empty<byte>();
     }
 }
