@@ -10,5 +10,19 @@ namespace VERA.Web.Controllers
         {
             return View();
         }
+
+
+        // Opens the SME opportunities page
+        public IActionResult Opportunities()
+        {
+            return View();
+        }
+
+
+        // Opens the new opportunity page
+        public IActionResult NewOpportunity()
+        {
+            return View();
+        }
     }
 }

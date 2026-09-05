@@ -1,0 +1,506 @@
+@{
+    ViewData["Title"] = "My Opportunities";
+    Layout = "_SMELayout";
+}
+
+<section class="sme-page-header">
+
+    <div>
+        <span class="sme-page-kicker">
+            OPPORTUNITY PORTFOLIO
+        </span>
+
+        <h1>
+            My opportunities
+        </h1>
+
+        <p>
+            Track every opportunity you've submitted to VERA,
+            from verification through settlement.
+        </p>
+    </div>
+
+    <a href="#"
+       class="sme-new-opportunity">
+
+        <i class="bi bi-plus-lg"></i>
+        New opportunity
+
+    </a>
+
+</section>
+
+
+<section class="opportunity-summary-grid">
+
+    <article class="opportunity-summary-card">
+
+        <span>ALL OPPORTUNITIES</span>
+
+        <strong>6</strong>
+
+        <small>
+            Across your VERA history
+        </small>
+
+    </article>
+
+
+    <article class="opportunity-summary-card">
+
+        <span>ACTIVE</span>
+
+        <strong>2</strong>
+
+        <small>
+            Currently in progress
+        </small>
+
+    </article>
+
+
+    <article class="opportunity-summary-card">
+
+        <span>UNDER REVIEW</span>
+
+        <strong>1</strong>
+
+        <small>
+            Requires further assessment
+        </small>
+
+    </article>
+
+
+    <article class="opportunity-summary-card">
+
+        <span>SETTLED</span>
+
+        <strong>3</strong>
+
+        <small>
+            Successfully completed
+        </small>
+
+    </article>
+
+</section>
+
+
+<section class="opportunities-toolbar">
+
+    <div class="opportunities-search">
+
+        <i class="bi bi-search"></i>
+
+        <input type="text"
+               placeholder="Search by PO number, buyer or opportunity..." />
+
+    </div>
+
+
+    <div class="opportunities-filters">
+
+        <select>
+            <option>All statuses</option>
+            <option>Verification</option>
+            <option>Review</option>
+            <option>Funding</option>
+            <option>Execution</option>
+            <option>Settled</option>
+            <option>Blocked</option>
+        </select>
+
+        <select>
+            <option>Newest first</option>
+            <option>Oldest first</option>
+            <option>Highest value</option>
+            <option>Lowest value</option>
+        </select>
+
+    </div>
+
+</section>
+
+
+<section class="opportunity-list">
+
+    <!-- =====================================================
+         OPPORTUNITY 1
+    ====================================================== -->
+
+    <article class="opportunity-card">
+
+        <div class="opportunity-card-top">
+
+            <div>
+
+                <span class="opportunity-po-label">
+                    PURCHASE ORDER
+                </span>
+
+                <h2>
+                    PO #EC-45821
+                </h2>
+
+                <div class="opportunity-buyer">
+                    <i class="bi bi-buildings"></i>
+                    Durban Metro Municipality
+                </div>
+
+            </div>
+
+
+            <span class="opportunity-status review">
+                <i class="bi bi-exclamation-circle-fill"></i>
+                Review
+            </span>
+
+        </div>
+
+
+        <div class="opportunity-card-values">
+
+            <div>
+                <span>PO value</span>
+                <strong>R300,000</strong>
+            </div>
+
+            <div>
+                <span>Fulfilment cost</span>
+                <strong>R220,000</strong>
+            </div>
+
+            <div>
+                <span>Funding gap</span>
+                <strong class="red-text">
+                    R184,500
+                </strong>
+            </div>
+
+            <div>
+                <span>Submitted</span>
+                <strong>04 Sep 2026</strong>
+            </div>
+
+        </div>
+
+
+        <div class="opportunity-stage-block">
+
+            <div class="opportunity-stage-heading">
+
+                <span>
+                    CURRENT STAGE
+                </span>
+
+                <strong>
+                    Fulfilment assessment
+                </strong>
+
+            </div>
+
+
+            <div class="opportunity-stage-track">
+
+                <span class="done"></span>
+                <span class="done"></span>
+                <span class="active"></span>
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </div>
+
+
+            <div class="opportunity-stage-labels">
+
+                <span>Upload</span>
+                <span>Verify</span>
+                <span>Assess</span>
+                <span>Funding</span>
+                <span>Execute</span>
+                <span>Settle</span>
+
+            </div>
+
+        </div>
+
+
+        <div class="opportunity-card-footer">
+
+            <div class="opportunity-note">
+
+                <i class="bi bi-exclamation-triangle"></i>
+
+                Capacity review required
+
+            </div>
+
+
+            <a href="#"
+               class="opportunity-open">
+
+                View opportunity
+
+                <i class="bi bi-arrow-right"></i>
+
+            </a>
+
+        </div>
+
+    </article>
+
+
+    <!-- =====================================================
+         OPPORTUNITY 2
+    ====================================================== -->
+
+    <article class="opportunity-card">
+
+        <div class="opportunity-card-top">
+
+            <div>
+
+                <span class="opportunity-po-label">
+                    PURCHASE ORDER
+                </span>
+
+                <h2>
+                    PO #PR-11024
+                </h2>
+
+                <div class="opportunity-buyer">
+                    <i class="bi bi-buildings"></i>
+                    Provincial Health Department
+                </div>
+
+            </div>
+
+
+            <span class="opportunity-status funding">
+                <i class="bi bi-wallet2"></i>
+                Funding
+            </span>
+
+        </div>
+
+
+        <div class="opportunity-card-values">
+
+            <div>
+                <span>PO value</span>
+                <strong>R145,000</strong>
+            </div>
+
+            <div>
+                <span>Fulfilment cost</span>
+                <strong>R101,000</strong>
+            </div>
+
+            <div>
+                <span>Funding gap</span>
+                <strong class="red-text">
+                    R78,000
+                </strong>
+            </div>
+
+            <div>
+                <span>Submitted</span>
+                <strong>28 Aug 2026</strong>
+            </div>
+
+        </div>
+
+
+        <div class="opportunity-stage-block">
+
+            <div class="opportunity-stage-heading">
+
+                <span>
+                    CURRENT STAGE
+                </span>
+
+                <strong>
+                    Funding decision
+                </strong>
+
+            </div>
+
+
+            <div class="opportunity-stage-track">
+
+                <span class="done"></span>
+                <span class="done"></span>
+                <span class="done"></span>
+                <span class="active"></span>
+                <span></span>
+                <span></span>
+
+            </div>
+
+
+            <div class="opportunity-stage-labels">
+
+                <span>Upload</span>
+                <span>Verify</span>
+                <span>Assess</span>
+                <span>Funding</span>
+                <span>Execute</span>
+                <span>Settle</span>
+
+            </div>
+
+        </div>
+
+
+        <div class="opportunity-card-footer">
+
+            <div class="opportunity-note success">
+
+                <i class="bi bi-check-circle"></i>
+
+                Verification complete
+
+            </div>
+
+
+            <a href="#"
+               class="opportunity-open">
+
+                View opportunity
+
+                <i class="bi bi-arrow-right"></i>
+
+            </a>
+
+        </div>
+
+    </article>
+
+
+    <!-- =====================================================
+         OPPORTUNITY 3
+    ====================================================== -->
+
+    <article class="opportunity-card">
+
+        <div class="opportunity-card-top">
+
+            <div>
+
+                <span class="opportunity-po-label">
+                    PURCHASE ORDER
+                </span>
+
+                <h2>
+                    PO #ZN-77210
+                </h2>
+
+                <div class="opportunity-buyer">
+                    <i class="bi bi-buildings"></i>
+                    Zululand District Municipality
+                </div>
+
+            </div>
+
+
+            <span class="opportunity-status settled">
+                <i class="bi bi-check-circle-fill"></i>
+                Settled
+            </span>
+
+        </div>
+
+
+        <div class="opportunity-card-values">
+
+            <div>
+                <span>PO value</span>
+                <strong>R75,000</strong>
+            </div>
+
+            <div>
+                <span>Fulfilment cost</span>
+                <strong>R51,000</strong>
+            </div>
+
+            <div>
+                <span>Funding used</span>
+                <strong>R36,500</strong>
+            </div>
+
+            <div>
+                <span>Settled</span>
+                <strong>12 Aug 2026</strong>
+            </div>
+
+        </div>
+
+
+        <div class="opportunity-stage-block">
+
+            <div class="opportunity-stage-heading">
+
+                <span>
+                    OPPORTUNITY COMPLETE
+                </span>
+
+                <strong>
+                    Successfully settled
+                </strong>
+
+            </div>
+
+
+            <div class="opportunity-stage-track">
+
+                <span class="done"></span>
+                <span class="done"></span>
+                <span class="done"></span>
+                <span class="done"></span>
+                <span class="done"></span>
+                <span class="done"></span>
+
+            </div>
+
+
+            <div class="opportunity-stage-labels">
+
+                <span>Upload</span>
+                <span>Verify</span>
+                <span>Assess</span>
+                <span>Funding</span>
+                <span>Execute</span>
+                <span>Settle</span>
+
+            </div>
+
+        </div>
+
+
+        <div class="opportunity-card-footer">
+
+            <div class="opportunity-note success">
+
+                <i class="bi bi-award"></i>
+
+                Added to Fulfilment Passport
+
+            </div>
+
+
+            <a href="#"
+               class="opportunity-open">
+
+                View opportunity
+
+                <i class="bi bi-arrow-right"></i>
+
+            </a>
+
+        </div>
+
+    </article>
+
+</section>

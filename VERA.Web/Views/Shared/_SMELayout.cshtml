@@ -66,24 +66,26 @@
             </a>
 
 
-            <a href="#"
-               class="sme-nav-link">
+            <a asp-controller="SME"
+   asp-action="Opportunities"
+   class="sme-nav-link @(currentAction == "Opportunities" ? "active" : "")">
 
-                <i class="bi bi-briefcase"></i>
+    <i class="bi bi-briefcase"></i>
 
-                <span>My opportunities</span>
+    <span>My opportunities</span>
 
-            </a>
+</a>
 
 
-            <a href="#"
-               class="sme-nav-link">
+            <a asp-controller="SME"
+   asp-action="NewOpportunity"
+   class="sme-nav-link @(currentAction == "NewOpportunity" ? "active" : "")">
 
-                <i class="bi bi-plus-circle"></i>
+    <i class="bi bi-plus-circle"></i>
 
-                <span>New opportunity</span>
+    <span>New opportunity</span>
 
-            </a>
+</a>
 
 
             <span class="sme-nav-label sme-nav-label-second">
