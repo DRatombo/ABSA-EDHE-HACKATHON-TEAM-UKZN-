@@ -3,39 +3,23 @@ using VERA.Models.Enums;
 using VERA.Models.Enums.VERA.Models.Enums;
 
 namespace VERA.Business.Services
-{
-    /// <summary>
-    /// Assesses whether an SME appears capable of fulfilling
-    /// a particular commercial opportunity.
-    ///
-    /// The MVP uses transparent rule-based assessment rather than
-    /// pretending to have a trained machine-learning risk model.
-    /// </summary>
+{ 
+    //Assesses whether an SME appears capable of fulfilling a particular commercial opportunity
+    // The MVP uses transparent rule-based assessment rather than pretending to have a trained machine-learning risk model
     public class FulfilmentAssessmentService
     {
-        /// <summary>
-        /// Generates explainable risk flags using the SME's current
-        /// opportunity and its previous fulfilment history.
-        /// </summary>
-        /// <param name="currentOpportunity">
-        /// The new opportunity currently being assessed.
-        /// </param>
-        /// <param name="previousOpportunities">
-        /// Previous opportunities belonging to the same SME.
-        /// </param>
-        /// <returns>
-        /// A list of explainable risk flags discovered during assessment.
-        /// </returns>
+        // Generates explainable risk flags using the SME's current opportunity and its previous fulfilment history.
+        // The new opportunity currently being assessed
+        // Previous opportunities belonging to the same SME.
+        // A list of explainable risk flags discovered during assessment is returned 
         public List<RiskFlag> Assess(
             Opportunity currentOpportunity,
             IEnumerable<Opportunity> previousOpportunities)
         {
-            // Create the list that will contain every risk identified
-            // during the assessment.
+            // Create the list that will contain every risk identified during the assessment.
             List<RiskFlag> riskFlags = new();
 
-            // Only completed opportunities should be considered when
-            // assessing the SME's proven historical execution capacity.
+            // Only completed opportunities should be considered when assessing the SME's proven historical execution capacity.
             List<Opportunity> completedOpportunities =
                 previousOpportunities
                     .Where(o =>
@@ -47,8 +31,7 @@ namespace VERA.Business.Services
             // RULE 1: LIMITED PLATFORM HISTORY
             // ---------------------------------------------------------
 
-            // If VERA has no completed opportunities for this SME,
-            // we cannot claim that it has a proven fulfilment history.
+            // If VERA has no completed opportunities for this SME, we cannot claim that it has a proven fulfilment history.
             if (completedOpportunities.Count == 0)
             {
                 riskFlags.Add(new RiskFlag
@@ -69,8 +52,7 @@ namespace VERA.Business.Services
 
             if (completedOpportunities.Count > 0)
             {
-                // Find the largest opportunity that this SME has
-                // successfully completed through the available history.
+                // Find the largest opportunity that this SME has successfully completed through the available history.
                 decimal largestPreviousPO =
                     completedOpportunities.Max(o => o.POValue);
 
@@ -80,9 +62,7 @@ namespace VERA.Business.Services
                     decimal scaleMultiple =
                         currentOpportunity.POValue / largestPreviousPO;
 
-                    // If the new PO is more than twice the SME's largest
-                    // previously completed opportunity, flag the jump
-                    // in execution scale for review.
+                    // If the new PO is more than twice the SME's largest previously completed opportunity, flag the jump in execution scale for review.
                     if (scaleMultiple > 2)
                     {
                         riskFlags.Add(new RiskFlag
@@ -103,14 +83,12 @@ namespace VERA.Business.Services
             // RULE 3: DELIVERY WINDOW
             // ---------------------------------------------------------
 
-            // Determine how much time the SME has between the PO issue
-            // date and required delivery date.
+            // Determine how much time the SME has between the PO issue date and required delivery date.
             double deliveryDays =
                 (currentOpportunity.DeliveryDate -
                  currentOpportunity.IssueDate).TotalDays;
 
-            // A delivery date before or equal to the issue date represents
-            // invalid or suspicious opportunity information.
+            // A delivery date before or equal to the issue date represents invalid or suspicious opportunity information.
             if (deliveryDays <= 0)
             {
                 riskFlags.Add(new RiskFlag
@@ -142,10 +120,7 @@ namespace VERA.Business.Services
             // RULE 4: SME CONTRIBUTION
             // ---------------------------------------------------------
 
-            // An SME contribution is not automatically required for every
-            // finance product. However, zero contribution is useful context
-            // for a funder because the entire fulfilment cost requires
-            // external capital.
+            // An SME contribution is not automatically required for every finance product. However, zero contribution is useful context for a funder because the entire fulfilment cost requires external capital.
             if (currentOpportunity.SMEContribution <= 0 &&
                 currentOpportunity.FulfilmentCost > 0)
             {

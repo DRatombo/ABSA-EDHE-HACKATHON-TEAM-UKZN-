@@ -2,28 +2,14 @@
 
 namespace VERA.Business.Services
 {
-    /// <summary>
-    /// Detects whether an opportunity may already have been submitted
-    /// to VERA using its generated fingerprint.
-    ///
-    /// This helps reduce the risk of the same purchase order being
-    /// submitted multiple times for funding within the VERA platform.
-    /// </summary>
+    // Detects whether an opportunity may already have been submitted to VERA using its generated fingerprint.
+    // This helps reduce the risk of the same purchase order being submitted multiple times for funding within the VERA platform
     public class DuplicateDetectionService
     {
-        /// <summary>
-        /// Checks whether the fingerprint of the current opportunity
-        /// already exists among previously submitted opportunities.
-        /// </summary>
-        /// <param name="opportunity">
-        /// The new opportunity currently being assessed.
-        /// </param>
-        /// <param name="existingOpportunities">
-        /// Opportunities that already exist in the VERA system.
-        /// </param>
-        /// <returns>
-        /// True if a matching fingerprint is found; otherwise false.
-        /// </returns>
+        // Checks whether the fingerprint of the current opportunity already exists among previously submitted opportunities
+        // The new opportunity currently being assessed.
+        // Opportunities that already exist in the VERA system.
+        // System returns True if a matching fingerprint is found; otherwise false
         public bool IsDuplicate(
             Opportunity opportunity,
             IEnumerable<Opportunity> existingOpportunities)

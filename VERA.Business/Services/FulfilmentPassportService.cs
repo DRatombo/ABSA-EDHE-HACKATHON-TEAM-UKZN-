@@ -7,29 +7,14 @@ using BusinessEntity = VERA.Models.Entities.Business;
 
 namespace VERA.Business.Services
 {
-    /// <summary>
-    /// Builds an SME's Fulfilment Passport using completed opportunities
-    /// and their actual fulfilment outcomes.
-    ///
-    /// The passport gives funders a transparent view of the SME's
-    /// demonstrated execution history over time.
-    /// </summary>
+    // Builds an SME's Fulfilment Passport using completed opportunities and their actual fulfilment outcomes.
+    // The passport gives funders a transparent view of the SME's demonstrated execution history over time.
     public class FulfilmentPassportService
-    {
-        /// <summary>
-        /// Calculates key performance indicators for an SME using
-        /// completed opportunities stored in VERA.
-        /// </summary>
-        /// <param name="business">
-        /// The SME for which the passport is being generated.
-        /// </param>
-        /// <param name="opportunities">
-        /// All opportunities available for the SME.
-        /// </param>
-        /// <returns>
-        /// A FulfilmentPassportSummary containing historical
-        /// performance metrics.
-        /// </returns>
+    { 
+        // Calculates key performance indicators for an SME using completed opportunities stored in VERA.
+        // The SME for which the passport is being generated.
+        // All opportunities available for the SME.
+        // A FulfilmentPassportSummary containing historical performance metrics is returned 
         public FulfilmentPassportSummary Build(
             BusinessEntity business,
             IEnumerable<Opportunity> opportunities)
