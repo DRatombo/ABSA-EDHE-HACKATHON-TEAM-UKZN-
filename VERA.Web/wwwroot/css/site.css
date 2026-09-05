@@ -3727,3 +3727,1158 @@ textarea {
 		padding: 21px;
 	}
 }
+/* =========================================================
+   VERA REGISTRATION PAGE
+========================================================= */
+
+.register-page {
+	min-height: 100vh;
+	padding: 70px 0 100px;
+	background: radial-gradient( circle at 90% 10%, rgba(200, 16, 46, .08), transparent 30% ), linear-gradient( 135deg, #FAFAFB 0%, #FFF7F8 100% );
+}
+
+
+/* =========================================================
+   PAGE LAYOUT
+========================================================= */
+
+.register-layout {
+	width: 100%;
+	max-width: 1180px;
+	margin: 0 auto;
+	padding: 0 35px;
+	display: grid;
+	grid-template-columns: 340px minmax(0, 1fr);
+	align-items: start;
+	gap: 60px;
+}
+
+
+/* =========================================================
+   LEFT PANEL
+========================================================= */
+
+.register-intro {
+	position: sticky;
+	top: 45px;
+	padding: 30px 0;
+}
+
+
+.register-kicker {
+	display: inline-flex;
+	margin-bottom: 18px;
+	color: var(--vera-red);
+	font-size: 10px;
+	font-weight: 800;
+	letter-spacing: .14em;
+}
+
+
+.register-intro h1 {
+	margin: 0;
+	color: #20242C;
+	font-size: 48px;
+	line-height: 1.03;
+	letter-spacing: -.045em;
+}
+
+
+	.register-intro h1 span {
+		display: block;
+		color: var(--vera-red);
+	}
+
+
+.register-intro > p {
+	max-width: 320px;
+	margin: 23px 0 35px;
+	color: #737B88;
+	font-size: 13px;
+	line-height: 1.75;
+}
+
+
+/* =========================================================
+   PROGRESS STEPS
+========================================================= */
+
+.register-progress-list {
+	margin-top: 32px;
+}
+
+
+.register-progress-item {
+	display: flex;
+	align-items: center;
+	gap: 13px;
+}
+
+
+	.register-progress-item > span {
+		width: 38px;
+		height: 38px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-shrink: 0;
+		color: #858C97;
+		background: #FFFFFF;
+		border: 1px solid #D9DDE3;
+		border-radius: 50%;
+		font-size: 9px;
+		font-weight: 800;
+		box-shadow: 0 5px 14px rgba(32, 36, 44, .05);
+	}
+
+
+	.register-progress-item.active > span {
+		color: #FFFFFF;
+		background: var(--vera-red);
+		border-color: var(--vera-red);
+		box-shadow: 0 7px 18px rgba(200,16,46,.18);
+	}
+
+
+	.register-progress-item > div {
+		display: flex;
+		flex-direction: column;
+		gap: 2px;
+	}
+
+
+	.register-progress-item strong {
+		color: #343942;
+		font-size: 11px;
+	}
+
+
+	.register-progress-item small {
+		color: #999FA9;
+		font-size: 8px;
+	}
+
+
+.register-progress-line {
+	width: 1px;
+	height: 28px;
+	margin: 5px 0 5px 19px;
+	background: #DDE1E6;
+}
+
+
+/* =========================================================
+   TRUST NOTE
+========================================================= */
+
+.register-security-note {
+	display: flex;
+	align-items: flex-start;
+	gap: 12px;
+	margin-top: 34px;
+	padding: 18px;
+	background: linear-gradient( 135deg, #EAF4F0, #F2F8F5 );
+	border: 1px solid #D4E8E0;
+	border-radius: 14px;
+}
+
+
+	.register-security-note > i {
+		width: 34px;
+		height: 34px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-shrink: 0;
+		color: var(--vera-sage);
+		background: white;
+		border-radius: 9px;
+		font-size: 15px;
+	}
+
+
+	.register-security-note > div {
+		display: flex;
+		flex-direction: column;
+		gap: 4px;
+	}
+
+
+	.register-security-note strong {
+		color: #315E51;
+		font-size: 10px;
+	}
+
+
+	.register-security-note span {
+		color: #68857B;
+		font-size: 8px;
+		line-height: 1.55;
+	}
+
+
+/* =========================================================
+   FORM CONTAINER
+========================================================= */
+
+.register-form-card {
+	overflow: hidden;
+	background: #FFFFFF;
+	border: 1px solid #E4E7EB;
+	border-radius: 22px;
+	box-shadow: 0 28px 70px rgba(35, 39, 47, .08);
+}
+
+
+/* =========================================================
+   SECTION
+========================================================= */
+
+.register-form-section {
+	padding: 42px 44px;
+	border-bottom: 1px solid #ECEEF1;
+}
+
+
+.register-last-section {
+	border-bottom: 0;
+}
+
+
+.register-section-heading {
+	display: flex;
+	align-items: flex-start;
+	gap: 15px;
+	margin-bottom: 34px;
+}
+
+
+.register-section-icon {
+	width: 46px;
+	height: 46px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+	border-radius: 13px;
+	font-size: 17px;
+}
+
+
+	.register-section-icon.red {
+		color: var(--vera-red);
+		background: var(--vera-blush);
+	}
+
+
+	.register-section-icon.navy {
+		color: var(--vera-navy);
+		background: var(--vera-navy-soft);
+	}
+
+
+	.register-section-icon.gold {
+		color: #94641B;
+		background: var(--vera-gold-soft);
+	}
+
+
+	.register-section-icon.purple {
+		color: var(--vera-purple);
+		background: var(--vera-purple-soft);
+	}
+
+
+.register-section-heading > div:last-child > span {
+	display: block;
+	margin-bottom: 4px;
+	color: #A1A7B0;
+	font-size: 8px;
+	font-weight: 800;
+	letter-spacing: .11em;
+}
+
+
+.register-section-heading h2 {
+	margin: 0;
+	color: #252932;
+	font-size: 23px;
+	font-weight: 700;
+	letter-spacing: -.025em;
+}
+
+
+.register-section-heading p {
+	margin: 6px 0 0;
+	color: #818894;
+	font-size: 10px;
+	line-height: 1.6;
+}
+
+
+/* =========================================================
+   FIELDS
+========================================================= */
+
+.register-fields {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 22px 20px;
+}
+
+
+.register-field {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+
+.register-field-full {
+	grid-column: 1 / -1;
+}
+
+
+.register-field label {
+	color: #444B56;
+	font-size: 10px;
+	font-weight: 700;
+}
+
+
+.register-field input,
+.register-field select {
+	width: 100%;
+	height: 50px;
+	padding: 0 15px;
+	color: #292D35;
+	background: #FAFBFC;
+	border: 1px solid #DCE1E6;
+	border-radius: 10px;
+	outline: none;
+	font-family: inherit;
+	font-size: 11px;
+	transition: .18s ease;
+}
+
+
+	.register-field input:hover,
+	.register-field select:hover {
+		border-color: #C9CED5;
+		background: #FFFFFF;
+	}
+
+
+	.register-field input:focus,
+	.register-field select:focus {
+		background: #FFFFFF;
+		border-color: var(--vera-red);
+		box-shadow: 0 0 0 4px rgba(200,16,46,.07);
+	}
+
+
+	.register-field input::placeholder {
+		color: #ACB2BB;
+	}
+
+
+.register-field > span {
+	color: #B42318;
+	font-size: 8px;
+}
+
+
+.register-field > small {
+	color: #939AA5;
+	font-size: 8px;
+	line-height: 1.5;
+}
+
+
+/* =========================================================
+   ABSA CUSTOMER CHECKBOX
+========================================================= */
+
+.register-checkbox-card {
+	display: flex;
+	align-items: center;
+	gap: 13px;
+	padding: 17px;
+	background: #FFF8F9;
+	border: 1px solid #F0DADD;
+	border-radius: 12px;
+	cursor: pointer;
+	transition: .18s ease;
+}
+
+
+	.register-checkbox-card:hover {
+		border-color: #E4BBC3;
+		background: #FFF4F6;
+	}
+
+
+	.register-checkbox-card > input {
+		position: absolute;
+		opacity: 0;
+	}
+
+
+.register-checkbox-box {
+	width: 23px;
+	height: 23px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+	color: transparent;
+	background: #FFFFFF;
+	border: 1px solid #CCD2D8;
+	border-radius: 6px;
+}
+
+
+.register-checkbox-card input:checked + .register-checkbox-box {
+	color: white;
+	background: var(--vera-red);
+	border-color: var(--vera-red);
+}
+
+
+.register-checkbox-card > span:last-child {
+	display: flex;
+	flex-direction: column;
+	gap: 3px;
+}
+
+
+.register-checkbox-card strong {
+	color: #414751;
+	font-size: 10px;
+}
+
+
+.register-checkbox-card small {
+	color: #858C96;
+	font-size: 8px;
+}
+
+
+/* =========================================================
+   PASSWORD FIELD
+========================================================= */
+
+.register-password {
+	position: relative;
+}
+
+
+	.register-password input {
+		padding-right: 50px;
+	}
+
+
+	.register-password button {
+		position: absolute;
+		top: 50%;
+		right: 11px;
+		transform: translateY(-50%);
+		width: 34px;
+		height: 34px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: #7F8792;
+		background: transparent;
+		border: 0;
+		border-radius: 8px;
+		cursor: pointer;
+	}
+
+
+		.register-password button:hover {
+			color: var(--vera-red);
+			background: var(--vera-blush);
+		}
+
+
+/* =========================================================
+   CONFIRMATION
+========================================================= */
+
+.register-confirm {
+	display: flex;
+	align-items: flex-start;
+	gap: 11px;
+	padding: 15px;
+	background: #FAFAFB;
+	border: 1px solid #E5E8EC;
+	border-radius: 10px;
+	color: #646C78;
+	font-size: 9px;
+	line-height: 1.65;
+}
+
+
+	.register-confirm input {
+		width: 17px;
+		height: 17px;
+		flex-shrink: 0;
+		margin-top: 1px;
+		accent-color: var(--vera-red);
+	}
+
+
+/* =========================================================
+   SUBMIT AREA
+========================================================= */
+
+.register-submit {
+	min-height: 95px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 25px;
+	padding: 23px 44px;
+	background: linear-gradient( 180deg, #FAFAFB, #F7F8F9 );
+	border-top: 1px solid #E9EBEE;
+}
+
+
+	.register-submit > div {
+		display: flex;
+		align-items: center;
+		gap: 6px;
+		color: #89909B;
+		font-size: 9px;
+	}
+
+
+		.register-submit > div a {
+			color: var(--vera-red);
+			font-weight: 750;
+		}
+
+
+.register-submit-btn {
+	min-height: 50px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 14px;
+	padding: 0 24px;
+	color: #FFFFFF;
+	background: linear-gradient( 135deg, #B80E2D, #DC173C );
+	border: 0;
+	border-radius: 10px;
+	font-size: 11px;
+	font-weight: 750;
+	box-shadow: 0 12px 26px rgba(200,16,46,.18);
+	cursor: pointer;
+	transition: .18s ease;
+}
+
+
+	.register-submit-btn:hover {
+		transform: translateY(-1px);
+		box-shadow: 0 15px 30px rgba(200,16,46,.23);
+	}
+
+
+/* =========================================================
+   VALIDATION
+========================================================= */
+
+.register-validation-summary {
+	margin: 0 44px;
+	color: #B42318;
+	font-size: 9px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1000px) {
+
+	.register-layout {
+		grid-template-columns: 1fr;
+	}
+
+	.register-intro {
+		position: relative;
+		top: auto;
+		max-width: 650px;
+	}
+
+	.register-progress-list {
+		display: none;
+	}
+}
+
+
+@media (max-width: 650px) {
+
+	.register-layout {
+		padding: 0 20px;
+	}
+
+	.register-intro h1 {
+		font-size: 40px;
+	}
+
+	.register-fields {
+		grid-template-columns: 1fr;
+	}
+
+	.register-field-full {
+		grid-column: auto;
+	}
+
+	.register-form-section {
+		padding: 30px 23px;
+	}
+
+	.register-submit {
+		flex-direction: column;
+		align-items: stretch;
+		padding: 22px 23px;
+	}
+
+	.register-submit-btn {
+		width: 100%;
+	}
+}
+/* =========================================================
+   VERA SIGN IN PAGE
+========================================================= */
+
+.login-page {
+	position: relative;
+	min-height: 100vh;
+	padding: 85px 0 110px;
+	overflow: hidden;
+	background: radial-gradient( circle at 85% 12%, rgba(200, 16, 46, .09), transparent 30% ), radial-gradient( circle at 35% 90%, rgba(100, 21, 42, .04), transparent 25% ), linear-gradient( 135deg, #FAFAFB 0%, #FFF7F8 100% );
+}
+
+
+/* =========================================================
+   MAIN LAYOUT
+========================================================= */
+
+.login-layout {
+	width: 100%;
+	max-width: 1080px;
+	margin: 0 auto;
+	padding: 0 35px;
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) 460px;
+	align-items: center;
+	gap: 85px;
+}
+
+
+/* =========================================================
+   LEFT SIDE
+========================================================= */
+
+.login-intro {
+	max-width: 500px;
+}
+
+.login-kicker {
+	display: inline-flex;
+	align-items: center;
+	margin-bottom: 18px;
+	color: var(--vera-red);
+	font-size: 10px;
+	font-weight: 800;
+	letter-spacing: .14em;
+	text-transform: uppercase;
+}
+
+.login-intro h1 {
+	margin: 0;
+	color: #20242C;
+	font-size: clamp(46px, 5vw, 62px);
+	font-weight: 700;
+	line-height: .98;
+	letter-spacing: -.05em;
+}
+
+	.login-intro h1 span {
+		display: block;
+		margin-top: 5px;
+		color: var(--vera-red);
+	}
+
+.login-intro > p {
+	max-width: 460px;
+	margin: 25px 0 35px;
+	color: #737B88;
+	font-size: 13px;
+	line-height: 1.8;
+}
+
+
+/* =========================================================
+   LEFT FEATURE LIST
+========================================================= */
+
+.login-feature-list {
+	display: flex;
+	flex-direction: column;
+	gap: 13px;
+	margin-top: 10px;
+}
+
+.login-feature {
+	display: flex;
+	align-items: center;
+	gap: 13px;
+	color: #4E5662;
+	font-size: 10px;
+	font-weight: 650;
+}
+
+	.login-feature > div {
+		width: 38px;
+		height: 38px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-shrink: 0;
+		color: var(--vera-red);
+		background: #FBECEF;
+		border: 1px solid #F4D9DF;
+		border-radius: 10px;
+		font-size: 14px;
+	}
+
+	.login-feature span {
+		line-height: 1.5;
+	}
+
+
+/* =========================================================
+   LOGIN CARD
+========================================================= */
+
+.login-card {
+	position: relative;
+	width: 100%;
+	padding: 40px;
+	background: rgba(255, 255, 255, .96);
+	border: 1px solid #E4E7EB;
+	border-radius: 22px;
+	box-shadow: 0 30px 75px rgba(35, 39, 47, .10);
+	overflow: hidden;
+}
+
+
+	/* small red detail at top */
+
+	.login-card::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 4px;
+		background: linear-gradient( 90deg, #A90D29, #D41136, #E63A58 );
+	}
+
+
+/* =========================================================
+   CARD HEADER
+========================================================= */
+
+.login-card-header {
+	display: flex;
+	align-items: flex-start;
+	gap: 14px;
+	margin-bottom: 34px;
+}
+
+.login-card-icon {
+	width: 48px;
+	height: 48px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+	color: var(--vera-red);
+	background: #FBECEF;
+	border: 1px solid #F3D9DE;
+	border-radius: 13px;
+	font-size: 18px;
+}
+
+.login-card-header > div:last-child > span {
+	display: block;
+	margin-bottom: 4px;
+	color: #A0A6B0;
+	font-size: 8px;
+	font-weight: 800;
+	letter-spacing: .11em;
+}
+
+.login-card-header h2 {
+	margin: 0;
+	color: #252932;
+	font-size: 27px;
+	font-weight: 700;
+	letter-spacing: -.03em;
+}
+
+.login-card-header p {
+	margin: 6px 0 0;
+	color: #858C97;
+	font-size: 9px;
+	line-height: 1.5;
+}
+
+
+/* =========================================================
+   FORM FIELDS
+========================================================= */
+
+.login-field {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	margin-bottom: 21px;
+}
+
+	.login-field label {
+		color: #444B56;
+		font-size: 10px;
+		font-weight: 700;
+	}
+
+.login-input-wrap {
+	position: relative;
+	width: 100%;
+}
+
+
+	/* icon on left */
+
+	.login-input-wrap > i {
+		position: absolute;
+		top: 50%;
+		left: 16px;
+		transform: translateY(-50%);
+		color: #949BA6;
+		font-size: 14px;
+		pointer-events: none;
+	}
+
+
+	/* input */
+
+	.login-input-wrap input {
+		width: 100%;
+		height: 53px;
+		padding: 0 46px;
+		color: #292D35;
+		background: #FAFBFC;
+		border: 1px solid #DCE1E6;
+		border-radius: 10px;
+		outline: none;
+		font-family: inherit;
+		font-size: 11px;
+		transition: border-color .18s ease, background .18s ease, box-shadow .18s ease;
+	}
+
+		.login-input-wrap input::placeholder {
+			color: #ADB3BC;
+		}
+
+		.login-input-wrap input:hover {
+			background: #FFFFFF;
+			border-color: #C9CFD6;
+		}
+
+		.login-input-wrap input:focus {
+			background: #FFFFFF;
+			border-color: var(--vera-red);
+			box-shadow: 0 0 0 4px rgba(200, 16, 46, .07);
+		}
+
+
+/* VALIDATION MESSAGE */
+
+.login-field > span {
+	min-height: 12px;
+	color: #B42318;
+	font-size: 8px;
+}
+
+
+/* =========================================================
+   PASSWORD
+========================================================= */
+
+.login-password-wrap input {
+	padding-right: 52px;
+}
+
+.login-password-wrap button {
+	position: absolute;
+	top: 50%;
+	right: 10px;
+	transform: translateY(-50%);
+	width: 34px;
+	height: 34px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0;
+	color: #7E8792;
+	background: transparent;
+	border: 0;
+	border-radius: 8px;
+	cursor: pointer;
+	transition: .15s ease;
+}
+
+	.login-password-wrap button:hover {
+		color: var(--vera-red);
+		background: #FBECEF;
+	}
+
+
+/* =========================================================
+   REMEMBER ME + FORGOT PASSWORD
+========================================================= */
+
+.login-options {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 20px;
+	margin: 2px 0 27px;
+}
+
+.login-remember {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	color: #666E79;
+	font-size: 9px;
+	cursor: pointer;
+}
+
+	.login-remember input {
+		width: 16px;
+		height: 16px;
+		margin: 0;
+		accent-color: var(--vera-red);
+		cursor: pointer;
+	}
+
+.login-forgot {
+	color: var(--vera-red);
+	font-size: 9px;
+	font-weight: 700;
+	text-decoration: none;
+}
+
+	.login-forgot:hover {
+		color: #9E0D27;
+		text-decoration: underline;
+	}
+
+
+/* =========================================================
+   SIGN IN BUTTON
+========================================================= */
+
+.login-submit-btn {
+	width: 100%;
+	min-height: 53px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 14px;
+	padding: 0 22px;
+	color: #FFFFFF;
+	background: linear-gradient( 135deg, #B70E2D 0%, #D91237 100% );
+	border: 0;
+	border-radius: 10px;
+	font-family: inherit;
+	font-size: 11px;
+	font-weight: 750;
+	box-shadow: 0 12px 27px rgba(200, 16, 46, .20);
+	cursor: pointer;
+	transition: transform .18s ease, box-shadow .18s ease;
+}
+
+	.login-submit-btn i {
+		font-size: 13px;
+		transition: transform .18s ease;
+	}
+
+	.login-submit-btn:hover {
+		transform: translateY(-1px);
+		box-shadow: 0 16px 32px rgba(200, 16, 46, .25);
+	}
+
+		.login-submit-btn:hover i {
+			transform: translateX(3px);
+		}
+
+	.login-submit-btn:active {
+		transform: translateY(0);
+	}
+
+
+/* =========================================================
+   CREATE ACCOUNT AREA
+========================================================= */
+
+.login-register {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: 5px;
+	margin-top: 24px;
+	padding-top: 22px;
+	border-top: 1px solid #ECEEF1;
+	color: #89909B;
+	font-size: 9px;
+}
+
+	.login-register a {
+		color: var(--vera-red);
+		font-weight: 750;
+		text-decoration: none;
+	}
+
+		.login-register a:hover {
+			color: #9E0D27;
+			text-decoration: underline;
+		}
+
+
+/* =========================================================
+   VALIDATION SUMMARY
+========================================================= */
+
+.login-validation-summary {
+	margin-bottom: 18px;
+	color: #B42318;
+	font-size: 9px;
+}
+
+	.login-validation-summary ul {
+		margin: 0;
+		padding-left: 18px;
+	}
+
+
+/* =========================================================
+   RESPONSIVE - TABLET
+========================================================= */
+
+@media (max-width: 950px) {
+
+	.login-page {
+		padding: 65px 0 90px;
+	}
+
+	.login-layout {
+		max-width: 650px;
+		grid-template-columns: 1fr;
+		gap: 50px;
+	}
+
+	.login-intro {
+		max-width: 600px;
+	}
+
+		.login-intro > p {
+			max-width: 540px;
+		}
+
+	.login-feature-list {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 12px;
+	}
+
+	.login-feature {
+		align-items: flex-start;
+		padding: 13px;
+		background: rgba(255,255,255,.65);
+		border: 1px solid #E8EAED;
+		border-radius: 11px;
+	}
+}
+
+
+/* =========================================================
+   RESPONSIVE - MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+	.login-page {
+		padding: 50px 0 70px;
+	}
+
+	.login-layout {
+		padding: 0 20px;
+		gap: 35px;
+	}
+
+	.login-intro h1 {
+		font-size: 43px;
+	}
+
+	.login-intro > p {
+		margin-bottom: 27px;
+	}
+
+	.login-feature-list {
+		grid-template-columns: 1fr;
+	}
+
+	.login-card {
+		padding: 30px 23px;
+		border-radius: 18px;
+	}
+
+	.login-card-header {
+		margin-bottom: 28px;
+	}
+
+	.login-options {
+		align-items: flex-start;
+		flex-direction: column;
+		gap: 12px;
+	}
+}
+
+
+/* =========================================================
+   VERY SMALL SCREENS
+========================================================= */
+
+@media (max-width: 400px) {
+
+	.login-intro h1 {
+		font-size: 38px;
+	}
+
+	.login-card {
+		padding: 27px 19px;
+	}
+
+	.login-card-header h2 {
+		font-size: 24px;
+	}
+}
