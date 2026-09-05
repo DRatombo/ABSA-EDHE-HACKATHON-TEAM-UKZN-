@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Text;
 using VERA.Data.Context;
 using VERA.Models.Entities;
 using VERA.Registry.Data;
@@ -14,17 +15,20 @@ namespace VERA.Web.Controllers
         private readonly VeraDbContext _context;
         private readonly RegistryDbContext _registryDbContext;
         private readonly PdfDocumentAnalysisService _pdfDocumentAnalysisService;
+        private readonly ILogger<SMEController> _logger;
 
 
         // Get the services used by the SME flow
         public SMEController(
             VeraDbContext context,
             RegistryDbContext registryDbContext,
-            PdfDocumentAnalysisService pdfDocumentAnalysisService)
+            PdfDocumentAnalysisService pdfDocumentAnalysisService,
+            ILogger<SMEController> logger)
         {
             _context = context;
             _registryDbContext = registryDbContext;
             _pdfDocumentAnalysisService = pdfDocumentAnalysisService;
+            _logger = logger;
         }
 
 
@@ -65,6 +69,50 @@ namespace VERA.Web.Controllers
             }
 
 
+            // Make sure financial values are valid
+            if (model.PurchaseOrderValue <= 0)
+            {
+                ModelState.AddModelError(
+                    nameof(model.PurchaseOrderValue),
+                    "The purchase order value must be greater than zero.");
+
+                return View(model);
+            }
+
+
+            // Fulfilment cost cannot be negative
+            if (model.FulfilmentCost < 0)
+            {
+                ModelState.AddModelError(
+                    nameof(model.FulfilmentCost),
+                    "Fulfilment cost cannot be negative.");
+
+                return View(model);
+            }
+
+
+            // SME contribution cannot be negative
+            if (model.SMEContribution < 0)
+            {
+                ModelState.AddModelError(
+                    nameof(model.SMEContribution),
+                    "SME contribution cannot be negative.");
+
+                return View(model);
+            }
+
+
+            // Delivery must happen after the PO was issued
+            if (model.DeliveryDate <= model.IssueDate)
+            {
+                ModelState.AddModelError(
+                    nameof(model.DeliveryDate),
+                    "The delivery date must be after the issue date.");
+
+                return View(model);
+            }
+
+
             // Make sure a purchase order was uploaded
             if (model.PurchaseOrderFile == null ||
                 model.PurchaseOrderFile.Length == 0)
@@ -92,8 +140,7 @@ namespace VERA.Web.Controllers
 
 
             // Limit the PO file size to 10 MB
-            const long maxFileSize =
-                10 * 1024 * 1024;
+            const long maxFileSize = 10 * 1024 * 1024;
 
             if (model.PurchaseOrderFile.Length > maxFileSize)
             {
@@ -105,11 +152,34 @@ namespace VERA.Web.Controllers
             }
 
 
-            // Create a temporary path for the uploaded PDF
+            // A valid PDF needs enough bytes for its file signature
+            if (model.PurchaseOrderFile.Length < 5)
+            {
+                ModelState.AddModelError(
+                    nameof(model.PurchaseOrderFile),
+                    "The uploaded purchase order is not a valid PDF.");
+
+                return View(model);
+            }
+
+
+            // Check the actual file contents, not only the .pdf extension
+            if (!await HasValidPdfSignatureAsync(
+                    model.PurchaseOrderFile))
+            {
+                ModelState.AddModelError(
+                    nameof(model.PurchaseOrderFile),
+                    "The uploaded file is not a valid PDF.");
+
+                return View(model);
+            }
+
+
+            // Create a random temporary file name
             string tempFilePath =
                 Path.Combine(
                     Path.GetTempPath(),
-                    $"{Guid.NewGuid()}.pdf");
+                    $"{Guid.NewGuid():N}.pdf");
 
 
             try
@@ -117,7 +187,11 @@ namespace VERA.Web.Controllers
                 // Save the PDF temporarily
                 await using (var stream = new FileStream(
                     tempFilePath,
-                    FileMode.Create))
+                    FileMode.CreateNew,
+                    FileAccess.Write,
+                    FileShare.None,
+                    81920,
+                    useAsync: true))
                 {
                     await model.PurchaseOrderFile
                         .CopyToAsync(stream);
@@ -202,13 +276,14 @@ namespace VERA.Web.Controllers
                 }
 
 
-                // Use the demo SME until user accounts are linked to businesses
+                // Use the demo SME until accounts are linked to businesses
                 const int businessId = 1;
 
 
                 // Find the SME business profile
                 VERA.Models.Entities.Business? business =
                     await _context.Businesses
+                        .AsNoTracking()
                         .FirstOrDefaultAsync(b =>
                             b.BusinessId == businessId);
 
@@ -216,9 +291,19 @@ namespace VERA.Web.Controllers
                 // Stop if the business profile does not exist
                 if (business == null)
                 {
+                    _logger.LogWarning(
+                        "Opportunity submission failed because business {BusinessId} was not found.",
+                        businessId);
+
                     return BadRequest(
                         "The SME business profile could not be found.");
                 }
+
+
+                // Store only the filename and remove any supplied path
+                string safeFileName =
+                    Path.GetFileName(
+                        model.PurchaseOrderFile.FileName);
 
 
                 // Create the new opportunity
@@ -228,13 +313,14 @@ namespace VERA.Web.Controllers
                         business.BusinessId,
 
                     BuyerName =
-                        model.BuyerName,
+                        model.BuyerName.Trim(),
 
                     BuyerReference =
-                        model.BuyerReference ?? string.Empty,
+                        model.BuyerReference?.Trim() ??
+                        string.Empty,
 
                     PONumber =
-                        model.PurchaseOrderNumber,
+                        model.PurchaseOrderNumber.Trim(),
 
                     POValue =
                         model.PurchaseOrderValue,
@@ -252,7 +338,7 @@ namespace VERA.Web.Controllers
                         model.DeliveryDate,
 
                     UploadedPOFileName =
-                        model.PurchaseOrderFile.FileName,
+                        safeFileName,
 
                     CreatedAt =
                         DateTime.UtcNow
@@ -271,7 +357,8 @@ namespace VERA.Web.Controllers
                         .RegisteredPurchaseOrders
                         .AsNoTracking()
                         .FirstOrDefaultAsync(p =>
-                            p.PONumber == model.PurchaseOrderNumber);
+                            p.PONumber ==
+                            model.PurchaseOrderNumber.Trim());
 
 
                 // Send Registry details into the assessment when a match exists
@@ -304,14 +391,68 @@ namespace VERA.Web.Controllers
                             opportunity.OpportunityId
                     });
             }
+            catch (Exception ex)
+            {
+                // Keep technical error details out of the browser
+                _logger.LogError(
+                    ex,
+                    "An error occurred while submitting a new SME opportunity.");
+
+                ModelState.AddModelError(
+                    string.Empty,
+                    "VERA could not process the opportunity. Please try again.");
+
+                return View(model);
+            }
             finally
             {
                 // Delete the temporary PDF
-                if (System.IO.File.Exists(tempFilePath))
+                try
                 {
-                    System.IO.File.Delete(tempFilePath);
+                    if (System.IO.File.Exists(tempFilePath))
+                    {
+                        System.IO.File.Delete(tempFilePath);
+                    }
+                }
+                catch (IOException ex)
+                {
+                    // Log cleanup problems without exposing them to the user
+                    _logger.LogWarning(
+                        ex,
+                        "VERA could not delete temporary file {TempFilePath}.",
+                        tempFilePath);
                 }
             }
+        }
+
+
+        // Check whether the uploaded file starts with the PDF signature
+        private static async Task<bool> HasValidPdfSignatureAsync(
+            IFormFile file)
+        {
+            // PDF files normally start with %PDF-
+            byte[] expectedHeader =
+                Encoding.ASCII.GetBytes("%PDF-");
+
+            byte[] actualHeader =
+                new byte[expectedHeader.Length];
+
+            await using Stream stream =
+                file.OpenReadStream();
+
+            int bytesRead =
+                await stream.ReadAsync(
+                    actualHeader.AsMemory(
+                        0,
+                        actualHeader.Length));
+
+            if (bytesRead != expectedHeader.Length)
+            {
+                return false;
+            }
+
+            return actualHeader.SequenceEqual(
+                expectedHeader);
         }
     }
 }
