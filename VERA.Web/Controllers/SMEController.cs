@@ -8,5 +8,15 @@ namespace VERA.Web.Controllers
 		{
 			return View();
 		}
+
+		public IActionResult Opportunities()
+		{
+			return View();
+		}
+
+		public IActionResult NewOpportunity()
+		{
+			return View();
+		}
 	}
 }

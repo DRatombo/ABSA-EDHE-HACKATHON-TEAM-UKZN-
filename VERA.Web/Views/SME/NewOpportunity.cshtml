@@ -1,0 +1,798 @@
+@{
+    ViewData["Title"] = "New Opportunity";
+    Layout = "_SMELayout";
+}
+
+<section class="new-opportunity-header">
+
+    <div>
+        <span class="sme-page-kicker">
+            NEW OPPORTUNITY
+        </span>
+
+        <h1>
+            Submit a new opportunity
+        </h1>
+
+        <p>
+            Tell VERA about the purchase order, buyer and fulfilment
+            requirements, then upload the evidence needed to begin verification.
+        </p>
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     PROGRESS
+===================================================== -->
+
+<section class="new-opportunity-progress">
+
+    <div class="new-progress-step active">
+        <span>1</span>
+
+        <div>
+            <strong>Opportunity</strong>
+            <small>PO and buyer details</small>
+        </div>
+    </div>
+
+    <div class="new-progress-line"></div>
+
+    <div class="new-progress-step">
+        <span>2</span>
+
+        <div>
+            <strong>Evidence</strong>
+            <small>Supporting documents</small>
+        </div>
+    </div>
+
+    <div class="new-progress-line"></div>
+
+    <div class="new-progress-step">
+        <span>3</span>
+
+        <div>
+            <strong>Fulfilment</strong>
+            <small>Costs and suppliers</small>
+        </div>
+    </div>
+
+    <div class="new-progress-line"></div>
+
+    <div class="new-progress-step">
+        <span>4</span>
+
+        <div>
+            <strong>Review</strong>
+            <small>Confirm submission</small>
+        </div>
+    </div>
+
+</section>
+
+
+<form method="post"
+      enctype="multipart/form-data"
+      class="new-opportunity-form">
+
+    <!-- =====================================================
+         01 - OPPORTUNITY DETAILS
+    ====================================================== -->
+
+    <section class="new-opportunity-card">
+
+        <div class="new-card-heading">
+
+            <div class="new-card-number">
+                01
+            </div>
+
+            <div>
+                <span class="new-card-label">
+                    OPPORTUNITY DETAILS
+                </span>
+
+                <h2>
+                    Tell us about the purchase order
+                </h2>
+
+                <p>
+                    Enter the commercial details exactly as they appear
+                    on the purchase order.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="new-form-grid">
+
+            <div class="new-form-field">
+
+                <label>
+                    Purchase order number
+                    <span>*</span>
+                </label>
+
+                <input type="text"
+                       name="PurchaseOrderNumber"
+                       placeholder="e.g. EC-45821"
+                       required />
+
+            </div>
+
+
+            <div class="new-form-field">
+
+                <label>
+                    PO value
+                    <span>*</span>
+                </label>
+
+                <div class="currency-input">
+
+                    <span>R</span>
+
+                    <input type="number"
+                           name="PurchaseOrderValue"
+                           placeholder="300000"
+                           min="0"
+                           step="0.01"
+                           required />
+
+                </div>
+
+            </div>
+
+
+            <div class="new-form-field">
+
+                <label>
+                    Issue date
+                    <span>*</span>
+                </label>
+
+                <input type="date"
+                       name="IssueDate"
+                       required />
+
+            </div>
+
+
+            <div class="new-form-field">
+
+                <label>
+                    Required delivery date
+                    <span>*</span>
+                </label>
+
+                <input type="date"
+                       name="DeliveryDate"
+                       required />
+
+            </div>
+
+
+            <div class="new-form-field full-width">
+
+                <label>
+                    Opportunity description
+                    <span>*</span>
+                </label>
+
+                <textarea name="OpportunityDescription"
+                          rows="4"
+                          placeholder="Briefly describe the goods or services you have been contracted to deliver..."
+                          required></textarea>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         02 - BUYER DETAILS
+    ====================================================== -->
+
+    <section class="new-opportunity-card">
+
+        <div class="new-card-heading">
+
+            <div class="new-card-number">
+                02
+            </div>
+
+            <div>
+                <span class="new-card-label">
+                    BUYER DETAILS
+                </span>
+
+                <h2>
+                    Who issued the opportunity?
+                </h2>
+
+                <p>
+                    VERA uses these details to support independent
+                    buyer verification.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="new-form-grid">
+
+            <div class="new-form-field full-width">
+
+                <label>
+                    Buyer / organisation name
+                    <span>*</span>
+                </label>
+
+                <input type="text"
+                       name="BuyerName"
+                       placeholder="e.g. Durban Metro Municipality"
+                       required />
+
+            </div>
+
+
+            <div class="new-form-field">
+
+                <label>
+                    Buyer contact person
+                </label>
+
+                <input type="text"
+                       name="BuyerContactPerson"
+                       placeholder="Full name" />
+
+            </div>
+
+
+            <div class="new-form-field">
+
+                <label>
+                    Buyer email address
+                </label>
+
+                <input type="email"
+                       name="BuyerEmail"
+                       placeholder="name@organisation.co.za" />
+
+            </div>
+
+
+            <div class="new-form-field">
+
+                <label>
+                    Buyer phone number
+                </label>
+
+                <input type="tel"
+                       name="BuyerPhone"
+                       placeholder="e.g. 031 000 0000" />
+
+            </div>
+
+
+            <div class="new-form-field">
+
+                <label>
+                    Buyer reference / tender number
+                </label>
+
+                <input type="text"
+                       name="BuyerReference"
+                       placeholder="If applicable" />
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         03 - DOCUMENT UPLOAD
+    ====================================================== -->
+
+    <section class="new-opportunity-card">
+
+        <div class="new-card-heading">
+
+            <div class="new-card-number">
+                03
+            </div>
+
+            <div>
+                <span class="new-card-label">
+                    OPPORTUNITY EVIDENCE
+                </span>
+
+                <h2>
+                    Upload your supporting documents
+                </h2>
+
+                <p>
+                    These documents allow VERA to assess the
+                    opportunity and build an explainable verification profile.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="document-upload-grid">
+
+            <!-- PURCHASE ORDER -->
+
+            <label class="document-upload-box">
+
+                <input type="file"
+                       name="PurchaseOrderFile"
+                       accept=".pdf,.jpg,.jpeg,.png"
+                       required />
+
+                <div class="upload-icon">
+                    <i class="bi bi-file-earmark-text"></i>
+                </div>
+
+                <div class="upload-copy">
+
+                    <span class="upload-required">
+                        REQUIRED
+                    </span>
+
+                    <strong>
+                        Purchase order
+                    </strong>
+
+                    <p>
+                        Upload the official PO issued by the buyer.
+                    </p>
+
+                    <div class="upload-call-to-action">
+                        <i class="bi bi-cloud-arrow-up"></i>
+                        Choose file
+                    </div>
+
+                    <small>
+                        PDF, JPG or PNG
+                    </small>
+
+                </div>
+
+            </label>
+
+
+            <!-- SUPPLIER QUOTE -->
+
+            <label class="document-upload-box">
+
+                <input type="file"
+                       name="SupplierQuoteFile"
+                       accept=".pdf,.jpg,.jpeg,.png"
+                       required />
+
+                <div class="upload-icon">
+                    <i class="bi bi-receipt"></i>
+                </div>
+
+                <div class="upload-copy">
+
+                    <span class="upload-required">
+                        REQUIRED
+                    </span>
+
+                    <strong>
+                        Supplier quote
+                    </strong>
+
+                    <p>
+                        Evidence of the cost required to fulfil the opportunity.
+                    </p>
+
+                    <div class="upload-call-to-action">
+                        <i class="bi bi-cloud-arrow-up"></i>
+                        Choose file
+                    </div>
+
+                    <small>
+                        PDF, JPG or PNG
+                    </small>
+
+                </div>
+
+            </label>
+
+
+            <!-- TAX EVIDENCE -->
+
+            <label class="document-upload-box">
+
+                <input type="file"
+                       name="TaxComplianceFile"
+                       accept=".pdf,.jpg,.jpeg,.png" />
+
+                <div class="upload-icon">
+                    <i class="bi bi-file-earmark-check"></i>
+                </div>
+
+                <div class="upload-copy">
+
+                    <span class="upload-optional">
+                        SUPPORTING
+                    </span>
+
+                    <strong>
+                        Tax compliance evidence
+                    </strong>
+
+                    <p>
+                        Upload applicable SARS tax compliance evidence.
+                    </p>
+
+                    <div class="upload-call-to-action">
+                        <i class="bi bi-cloud-arrow-up"></i>
+                        Choose file
+                    </div>
+
+                    <small>
+                        PDF, JPG or PNG
+                    </small>
+
+                </div>
+
+            </label>
+
+
+            <!-- REPRESENTATIVE AUTHORITY -->
+
+            <label class="document-upload-box">
+
+                <input type="file"
+                       name="AuthorityFile"
+                       accept=".pdf,.jpg,.jpeg,.png" />
+
+                <div class="upload-icon">
+                    <i class="bi bi-person-check"></i>
+                </div>
+
+                <div class="upload-copy">
+
+                    <span class="upload-optional">
+                        SUPPORTING
+                    </span>
+
+                    <strong>
+                        Representative authority
+                    </strong>
+
+                    <p>
+                        Evidence that you are authorised to act for the business.
+                    </p>
+
+                    <div class="upload-call-to-action">
+                        <i class="bi bi-cloud-arrow-up"></i>
+                        Choose file
+                    </div>
+
+                    <small>
+                        PDF, JPG or PNG
+                    </small>
+
+                </div>
+
+            </label>
+
+
+            <!-- CAPACITY EVIDENCE -->
+
+            <label class="document-upload-box">
+
+                <input type="file"
+                       name="CapacityEvidenceFiles"
+                       accept=".pdf,.jpg,.jpeg,.png"
+                       multiple />
+
+                <div class="upload-icon">
+                    <i class="bi bi-box-seam"></i>
+                </div>
+
+                <div class="upload-copy">
+
+                    <span class="upload-recommended">
+                        RECOMMENDED
+                    </span>
+
+                    <strong>
+                        Fulfilment capacity evidence
+                    </strong>
+
+                    <p>
+                        Previous POs, delivery notes, invoices or proof
+                        of similar completed work.
+                    </p>
+
+                    <div class="upload-call-to-action">
+                        <i class="bi bi-cloud-arrow-up"></i>
+                        Choose files
+                    </div>
+
+                    <small>
+                        Multiple files allowed
+                    </small>
+
+                </div>
+
+            </label>
+
+
+            <!-- ADDITIONAL -->
+
+            <label class="document-upload-box">
+
+                <input type="file"
+                       name="AdditionalDocuments"
+                       accept=".pdf,.jpg,.jpeg,.png"
+                       multiple />
+
+                <div class="upload-icon">
+                    <i class="bi bi-paperclip"></i>
+                </div>
+
+                <div class="upload-copy">
+
+                    <span class="upload-optional">
+                        OPTIONAL
+                    </span>
+
+                    <strong>
+                        Additional supporting evidence
+                    </strong>
+
+                    <p>
+                        Add any other document that strengthens this opportunity.
+                    </p>
+
+                    <div class="upload-call-to-action">
+                        <i class="bi bi-cloud-arrow-up"></i>
+                        Choose files
+                    </div>
+
+                    <small>
+                        Multiple files allowed
+                    </small>
+
+                </div>
+
+            </label>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         04 - FULFILMENT
+    ====================================================== -->
+
+    <section class="new-opportunity-card">
+
+        <div class="new-card-heading">
+
+            <div class="new-card-number">
+                04
+            </div>
+
+            <div>
+                <span class="new-card-label">
+                    FULFILMENT REQUIREMENT
+                </span>
+
+                <h2>
+                    What will it cost you to deliver?
+                </h2>
+
+                <p>
+                    VERA uses this information to determine the
+                    funding gap for this specific opportunity.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="new-form-grid">
+
+            <div class="new-form-field">
+
+                <label>
+                    Estimated fulfilment cost
+                    <span>*</span>
+                </label>
+
+                <div class="currency-input">
+
+                    <span>R</span>
+
+                    <input type="number"
+                           name="FulfilmentCost"
+                           placeholder="220000"
+                           min="0"
+                           step="0.01"
+                           required />
+
+                </div>
+
+            </div>
+
+
+            <div class="new-form-field">
+
+                <label>
+                    Your contribution
+                </label>
+
+                <div class="currency-input">
+
+                    <span>R</span>
+
+                    <input type="number"
+                           name="SMEContribution"
+                           placeholder="35500"
+                           min="0"
+                           step="0.01" />
+
+                </div>
+
+            </div>
+
+
+            <div class="new-form-field full-width">
+
+                <label>
+                    Primary supplier
+                </label>
+
+                <input type="text"
+                       name="PrimarySupplier"
+                       placeholder="Supplier business name" />
+
+            </div>
+
+        </div>
+
+
+        <div class="funding-preview">
+
+            <div class="funding-preview-icon">
+                <i class="bi bi-calculator"></i>
+            </div>
+
+            <div>
+                <span>
+                    FUNDING GAP
+                </span>
+
+                <strong>
+                    Calculated after submission
+                </strong>
+
+                <p>
+                    VERA will compare your documented fulfilment costs
+                    against your available contribution.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         05 - DECLARATION
+    ====================================================== -->
+
+    <section class="new-opportunity-card">
+
+        <div class="new-card-heading">
+
+            <div class="new-card-number">
+                05
+            </div>
+
+            <div>
+                <span class="new-card-label">
+                    DECLARATION
+                </span>
+
+                <h2>
+                    Confirm before submission
+                </h2>
+
+                <p>
+                    You remain responsible for the accuracy of
+                    information and evidence provided to VERA.
+                </p>
+            </div>
+
+        </div>
+
+
+        <label class="opportunity-declaration">
+
+            <input type="checkbox"
+                   name="DeclarationAccepted"
+                   required />
+
+            <span>
+                I confirm that the information and documents submitted
+                relate to a legitimate commercial opportunity and are
+                accurate to the best of my knowledge.
+            </span>
+
+        </label>
+
+
+        <div class="vera-transparency-note">
+
+            <i class="bi bi-shield-check"></i>
+
+            <div>
+
+                <strong>
+                    What happens next?
+                </strong>
+
+                <p>
+                    VERA will extract and compare the submitted information,
+                    perform available verification checks and highlight any
+                    items that require further review. A submission is not
+                    automatically an approval for funding.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         SUBMIT
+    ====================================================== -->
+
+    <section class="new-opportunity-submit">
+
+        <div>
+
+            <strong>
+                Ready to submit?
+            </strong>
+
+            <span>
+                You can review all information before VERA begins verification.
+            </span>
+
+        </div>
+
+
+        <button type="submit"
+                class="new-opportunity-submit-button">
+
+            Submit for verification
+
+            <i class="bi bi-arrow-right"></i>
+
+        </button>
+
+    </section>
+
+</form>

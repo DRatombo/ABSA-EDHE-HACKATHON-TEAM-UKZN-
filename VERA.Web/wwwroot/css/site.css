@@ -5939,120 +5939,1515 @@ textarea {
 			border-bottom: 1px solid #EAECF0;
 		}
 }
+/* =========================================================
+   SME - MY OPPORTUNITIES
+========================================================= */
+
+.sme-page-header {
+	display: flex;
+	align-items: flex-end;
+	justify-content: space-between;
+	gap: 30px;
+	margin-bottom: 28px;
+}
+
+	.sme-page-header h1 {
+		margin: 0;
+		color: #242831;
+		font-size: 34px;
+		letter-spacing: -.035em;
+	}
+
+	.sme-page-header p {
+		max-width: 600px;
+		margin: 7px 0 0;
+		color: #858D99;
+		font-size: 10px;
+		line-height: 1.6;
+	}
 
 
 /* =========================================================
-   REGISTER - ACCOUNT TYPE SELECTOR
-   ========================================================= */
+   SUMMARY
+========================================================= */
 
-.register-type-grid {
+.opportunity-summary-grid {
 	display: grid;
-	grid-template-columns: repeat(2, minmax(0, 1fr));
-	gap: 16px;
-}
-
-.register-type-card {
-	position: relative;
-	display: flex;
-	align-items: flex-start;
+	grid-template-columns: repeat(4,1fr);
 	gap: 14px;
-	padding: 20px;
-	background: #FAFBFC;
-	border: 2px solid #DCE1E6;
-	border-radius: 14px;
-	cursor: pointer;
-	transition: .18s ease;
+	margin-bottom: 18px;
 }
 
-	.register-type-card:hover {
-		border-color: #C9CED5;
-		background: #FFFFFF;
+.opportunity-summary-card {
+	padding: 18px 19px;
+	background: #FFFFFF;
+	border: 1px solid #E4E7EB;
+	border-radius: 12px;
+}
+
+	.opportunity-summary-card > span {
+		display: block;
+		margin-bottom: 6px;
+		color: #969DA8;
+		font-size: 7px;
+		font-weight: 800;
+		letter-spacing: .09em;
 	}
 
-	.register-type-card > input {
-		position: absolute;
-		opacity: 0;
-		pointer-events: none;
+	.opportunity-summary-card strong {
+		display: block;
+		margin-bottom: 4px;
+		color: #292D35;
+		font-size: 24px;
+		letter-spacing: -.025em;
 	}
 
-.register-type-icon {
-	width: 42px;
-	height: 42px;
+	.opportunity-summary-card small {
+		color: #9198A3;
+		font-size: 8px;
+	}
+
+
+/* =========================================================
+   TOOLBAR
+========================================================= */
+
+.opportunities-toolbar {
 	display: flex;
 	align-items: center;
-	justify-content: center;
-	flex-shrink: 0;
-	color: #858C97;
+	justify-content: space-between;
+	gap: 20px;
+	margin-bottom: 18px;
+	padding: 14px;
 	background: #FFFFFF;
-	border: 1px solid #DCE1E6;
-	border-radius: 11px;
-	font-size: 17px;
-	transition: .18s ease;
+	border: 1px solid #E4E7EB;
+	border-radius: 12px;
 }
 
-.register-type-card > div {
+.opportunities-search {
+	position: relative;
+	flex: 1;
+	max-width: 420px;
+}
+
+	.opportunities-search i {
+		position: absolute;
+		top: 50%;
+		left: 13px;
+		transform: translateY(-50%);
+		color: #949CA7;
+		font-size: 12px;
+	}
+
+	.opportunities-search input {
+		width: 100%;
+		height: 40px;
+		padding: 0 14px 0 36px;
+		background: #F9FAFB;
+		border: 1px solid #E1E4E8;
+		border-radius: 9px;
+		outline: none;
+		font-size: 9px;
+	}
+
+		.opportunities-search input:focus {
+			background: #FFFFFF;
+			border-color: var(--vera-red);
+			box-shadow: 0 0 0 3px rgba(200,16,46,.06);
+		}
+
+
+.opportunities-filters {
+	display: flex;
+	align-items: center;
+	gap: 9px;
+}
+
+	.opportunities-filters select {
+		height: 40px;
+		padding: 0 30px 0 12px;
+		color: #626A75;
+		background: #F9FAFB;
+		border: 1px solid #E1E4E8;
+		border-radius: 9px;
+		font-size: 8px;
+		outline: none;
+	}
+
+
+/* =========================================================
+   LIST
+========================================================= */
+
+.opportunity-list {
 	display: flex;
 	flex-direction: column;
-	gap: 3px;
+	gap: 14px;
 }
 
-.register-type-card strong {
-	color: #292D35;
-	font-size: 12.5px;
-}
 
-.register-type-card span {
-	color: #858C97;
-	font-size: 10px;
-	line-height: 1.6;
-}
+/* =========================================================
+   OPPORTUNITY CARD
+========================================================= */
 
-.register-type-check {
-	position: absolute;
-	top: 16px;
-	right: 16px;
-	width: 18px;
-	height: 18px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	color: transparent;
+.opportunity-card {
+	padding: 22px;
 	background: #FFFFFF;
-	border: 1px solid #CCD2D8;
-	border-radius: 50%;
-	font-size: 10px;
-	transition: .18s ease;
+	border: 1px solid #E3E6EA;
+	border-radius: 14px;
+	transition: .17s ease;
 }
 
-.register-type-card input:checked ~ .register-type-check {
-	color: white;
-	background: var(--vera-red);
-	border-color: var(--vera-red);
-}
-
-.register-type-card:has(input:checked),
-.register-type-card.is-selected {
-	border-color: var(--vera-red);
-	background: var(--vera-blush);
-	box-shadow: 0 7px 18px rgba(200,16,46,.1);
-}
-
-	.register-type-card:has(input:checked) .register-type-icon,
-	.register-type-card.is-selected .register-type-icon {
-		color: var(--vera-red);
-		background: #FFFFFF;
-		border-color: rgba(200,16,46,.3);
+	.opportunity-card:hover {
+		transform: translateY(-1px);
+		border-color: #D8DCE1;
+		box-shadow: 0 12px 30px rgba(35,40,48,.05);
 	}
 
-	.register-type-card.is-selected .register-type-check {
-		color: white;
+
+.opportunity-card-top {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: 20px;
+	margin-bottom: 20px;
+}
+
+.opportunity-po-label {
+	display: block;
+	margin-bottom: 3px;
+	color: #9AA1AC;
+	font-size: 7px;
+	font-weight: 800;
+	letter-spacing: .1em;
+}
+
+.opportunity-card h2 {
+	margin: 0 0 7px;
+	color: #292D35;
+	font-size: 18px;
+	letter-spacing: -.02em;
+}
+
+.opportunity-buyer {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	color: #7D8591;
+	font-size: 8px;
+}
+
+	.opportunity-buyer i {
+		color: #6F7885;
+	}
+
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.opportunity-status {
+	display: inline-flex;
+	align-items: center;
+	gap: 5px;
+	padding: 6px 9px;
+	border-radius: 999px;
+	font-size: 7px;
+	font-weight: 800;
+	text-transform: uppercase;
+}
+
+	.opportunity-status.review {
+		color: #916319;
+		background: var(--vera-gold-soft);
+	}
+
+	.opportunity-status.funding {
+		color: var(--vera-purple);
+		background: var(--vera-purple-soft);
+	}
+
+	.opportunity-status.settled {
+		color: var(--vera-sage);
+		background: var(--vera-sage-soft);
+	}
+
+
+/* =========================================================
+   VALUES
+========================================================= */
+
+.opportunity-card-values {
+	display: grid;
+	grid-template-columns: repeat(4,1fr);
+	margin-bottom: 20px;
+	padding: 15px 0;
+	background: #FAFAFB;
+	border-radius: 10px;
+}
+
+	.opportunity-card-values div {
+		padding: 0 15px;
+		border-right: 1px solid #E7E9EC;
+	}
+
+		.opportunity-card-values div:last-child {
+			border-right: 0;
+		}
+
+	.opportunity-card-values span {
+		display: block;
+		margin-bottom: 4px;
+		color: #969DA8;
+		font-size: 7px;
+	}
+
+	.opportunity-card-values strong {
+		color: #31353D;
+		font-size: 11px;
+	}
+
+
+/* =========================================================
+   STAGE
+========================================================= */
+
+.opportunity-stage-block {
+	margin-bottom: 18px;
+}
+
+.opportunity-stage-heading {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 10px;
+}
+
+	.opportunity-stage-heading span {
+		color: #989FA9;
+		font-size: 7px;
+		font-weight: 800;
+		letter-spacing: .08em;
+	}
+
+	.opportunity-stage-heading strong {
+		color: #505762;
+		font-size: 8px;
+	}
+
+
+.opportunity-stage-track {
+	display: grid;
+	grid-template-columns: repeat(6,1fr);
+	gap: 5px;
+}
+
+	.opportunity-stage-track span {
+		height: 5px;
+		background: #E5E8EC;
+		border-radius: 999px;
+	}
+
+		.opportunity-stage-track span.done {
+			background: var(--vera-sage);
+		}
+
+		.opportunity-stage-track span.active {
+			background: var(--vera-red);
+		}
+
+
+.opportunity-stage-labels {
+	display: grid;
+	grid-template-columns: repeat(6,1fr);
+	gap: 5px;
+	margin-top: 7px;
+}
+
+	.opportunity-stage-labels span {
+		color: #9AA1AB;
+		font-size: 6px;
+		text-align: center;
+	}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+.opportunity-card-footer {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 20px;
+	padding-top: 16px;
+	border-top: 1px solid #ECEEF1;
+}
+
+.opportunity-note {
+	display: flex;
+	align-items: center;
+	gap: 7px;
+	color: #95691E;
+	font-size: 8px;
+	font-weight: 650;
+}
+
+	.opportunity-note.success {
+		color: var(--vera-sage);
+	}
+
+
+.opportunity-open {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	color: var(--vera-red);
+	font-size: 8px;
+	font-weight: 750;
+	text-decoration: none;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media (max-width: 1000px) {
+
+	.opportunity-summary-grid {
+		grid-template-columns: repeat(2,1fr);
+	}
+
+	.opportunity-card-values {
+		grid-template-columns: repeat(2,1fr);
+		gap: 15px 0;
+	}
+
+		.opportunity-card-values div:nth-child(2) {
+			border-right: 0;
+		}
+}
+
+@media (max-width: 700px) {
+
+	.sme-page-header,
+	.opportunities-toolbar {
+		align-items: stretch;
+		flex-direction: column;
+	}
+
+	.opportunities-search {
+		max-width: none;
+	}
+
+	.opportunities-filters {
+		flex-direction: column;
+		align-items: stretch;
+	}
+
+	.opportunity-summary-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.opportunity-card-values {
+		grid-template-columns: 1fr;
+	}
+
+		.opportunity-card-values div {
+			padding: 8px 15px;
+			border-right: 0;
+			border-bottom: 1px solid #E7E9EC;
+		}
+
+			.opportunity-card-values div:last-child {
+				border-bottom: 0;
+			}
+
+	.opportunity-card-footer {
+		align-items: flex-start;
+		flex-direction: column;
+	}
+}
+/* =========================================================
+   NEW OPPORTUNITY
+========================================================= */
+
+.new-opportunity-header {
+	margin-bottom: 25px;
+}
+
+	.new-opportunity-header h1 {
+		margin: 0;
+		color: #242831;
+		font-size: 34px;
+		letter-spacing: -.035em;
+	}
+
+	.new-opportunity-header p {
+		max-width: 690px;
+		margin: 8px 0 0;
+		color: #858D99;
+		font-size: 10px;
+		line-height: 1.6;
+	}
+
+
+/* PROGRESS */
+
+.new-opportunity-progress {
+	display: flex;
+	align-items: center;
+	margin-bottom: 20px;
+	padding: 18px 22px;
+	background: #fff;
+	border: 1px solid #E4E7EB;
+	border-radius: 13px;
+}
+
+.new-progress-step {
+	display: flex;
+	align-items: center;
+	gap: 9px;
+}
+
+	.new-progress-step > span {
+		width: 28px;
+		height: 28px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-shrink: 0;
+		color: #969DA8;
+		background: #F4F5F6;
+		border: 1px solid #E0E3E7;
+		border-radius: 50%;
+		font-size: 8px;
+		font-weight: 800;
+	}
+
+	.new-progress-step.active > span {
+		color: #fff;
 		background: var(--vera-red);
 		border-color: var(--vera-red);
 	}
 
-@media (max-width: 720px) {
+	.new-progress-step > div {
+		display: flex;
+		flex-direction: column;
+		white-space: nowrap;
+	}
 
-	.register-type-grid {
+	.new-progress-step strong {
+		color: #4C535E;
+		font-size: 8px;
+	}
+
+	.new-progress-step small {
+		color: #9AA1AB;
+		font-size: 6px;
+	}
+
+	.new-progress-step.active strong {
+		color: var(--vera-red);
+	}
+
+.new-progress-line {
+	flex: 1;
+	height: 1px;
+	margin: 0 15px;
+	background: #E0E3E7;
+}
+
+
+/* CARDS */
+
+.new-opportunity-form {
+	display: flex;
+	flex-direction: column;
+	gap: 17px;
+}
+
+.new-opportunity-card {
+	padding: 25px;
+	background: #fff;
+	border: 1px solid #E3E6EA;
+	border-radius: 14px;
+}
+
+.new-card-heading {
+	display: flex;
+	gap: 14px;
+	margin-bottom: 23px;
+}
+
+.new-card-number {
+	width: 37px;
+	height: 37px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+	color: var(--vera-red);
+	background: var(--vera-blush);
+	border-radius: 9px;
+	font-size: 8px;
+	font-weight: 850;
+}
+
+.new-card-label {
+	display: block;
+	margin-bottom: 4px;
+	color: #9A A1AC;
+	font-size: 7px;
+	font-weight: 800;
+	letter-spacing: .1em;
+}
+
+.new-card-heading h2 {
+	margin: 0;
+	color: #292D35;
+	font-size: 18px;
+}
+
+.new-card-heading p {
+	margin: 6px 0 0;
+	color: #9299A4;
+	font-size: 8px;
+	line-height: 1.55;
+}
+
+
+/* FORM */
+
+.new-form-grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 17px;
+}
+
+.new-form-field {
+	display: flex;
+	flex-direction: column;
+	gap: 7px;
+}
+
+	.new-form-field.full-width {
+		grid-column: 1 / -1;
+	}
+
+	.new-form-field label {
+		color: #565E69;
+		font-size: 8px;
+		font-weight: 700;
+	}
+
+		.new-form-field label span {
+			color: var(--vera-red);
+		}
+
+	.new-form-field input,
+	.new-form-field textarea {
+		width: 100%;
+		padding: 11px 12px;
+		color: #343942;
+		background: #FAFBFC;
+		border: 1px solid #DDE1E5;
+		border-radius: 9px;
+		font-size: 9px;
+		outline: none;
+	}
+
+	.new-form-field input {
+		height: 43px;
+	}
+
+	.new-form-field textarea {
+		resize: vertical;
+	}
+
+		.new-form-field input:focus,
+		.new-form-field textarea:focus {
+			background: #fff;
+			border-color: var(--vera-red);
+			box-shadow: 0 0 0 3px rgba(200, 16, 46, .06);
+		}
+
+
+/* CURRENCY */
+
+.currency-input {
+	position: relative;
+}
+
+	.currency-input > span {
+		position: absolute;
+		top: 50%;
+		left: 12px;
+		transform: translateY(-50%);
+		color: #727A85;
+		font-size: 9px;
+		font-weight: 700;
+	}
+
+	.currency-input input {
+		padding-left: 28px;
+	}
+
+
+/* =========================================================
+   DOCUMENT UPLOAD
+========================================================= */
+
+.document-upload-grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 13px;
+}
+
+.document-upload-box {
+	position: relative;
+	min-height: 180px;
+	display: flex;
+	align-items: flex-start;
+	gap: 14px;
+	padding: 18px;
+	background: #FBFBFC;
+	border: 1px dashed #CDD2D8;
+	border-radius: 12px;
+	cursor: pointer;
+	transition: .17s ease;
+}
+
+	.document-upload-box:hover {
+		background: #FFF8F9;
+		border-color: var(--vera-red);
+		box-shadow: 0 8px 20px rgba(200, 16, 46, .05);
+	}
+
+	.document-upload-box > input[type="file"] {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		opacity: 0;
+		pointer-events: none;
+	}
+
+.upload-icon {
+	width: 40px;
+	height: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+	color: var(--vera-red);
+	background: var(--vera-blush);
+	border-radius: 10px;
+	font-size: 17px;
+}
+
+.upload-copy {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+.upload-required,
+.upload-recommended,
+.upload-optional {
+	display: inline-flex;
+	margin-bottom: 5px;
+	padding: 3px 6px;
+	border-radius: 999px;
+	font-size: 6px;
+	font-weight: 850;
+	letter-spacing: .07em;
+}
+
+.upload-required {
+	color: var(--vera-red);
+	background: var(--vera-blush);
+}
+
+.upload-recommended {
+	color: #906219;
+	background: var(--vera-gold-soft);
+}
+
+.upload-optional {
+	color: #727A86;
+	background: #EEF0F2;
+}
+
+.upload-copy strong {
+	margin-bottom: 4px;
+	color: #343942;
+	font-size: 9px;
+}
+
+.upload-copy p {
+	min-height: 31px;
+	margin: 0 0 10px;
+	color: #8E959F;
+	font-size: 7px;
+	line-height: 1.5;
+}
+
+.upload-call-to-action {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	margin-bottom: 5px;
+	color: var(--vera-red);
+	font-size: 8px;
+	font-weight: 750;
+}
+
+.upload-copy small {
+	color: #A0A6AF;
+	font-size: 6px;
+}
+
+
+/* FUNDING */
+
+.funding-preview {
+	display: flex;
+	align-items: center;
+	gap: 13px;
+	margin-top: 20px;
+	padding: 15px;
+	background: var(--vera-navy-soft);
+	border-radius: 10px;
+}
+
+.funding-preview-icon {
+	width: 38px;
+	height: 38px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--vera-navy);
+	background: #fff;
+	border-radius: 9px;
+}
+
+.funding-preview > div:last-child {
+	display: flex;
+	flex-direction: column;
+}
+
+.funding-preview span {
+	color: #7A8593;
+	font-size: 6px;
+	font-weight: 800;
+	letter-spacing: .08em;
+}
+
+.funding-preview strong {
+	margin: 2px 0;
+	color: #374150;
+	font-size: 9px;
+}
+
+.funding-preview p {
+	margin: 0;
+	color: #788491;
+	font-size: 7px;
+}
+
+
+/* DECLARATION */
+
+.opportunity-declaration {
+	display: flex;
+	align-items: flex-start;
+	gap: 10px;
+	padding: 15px;
+	background: #FAFAFB;
+	border: 1px solid #E7E9EC;
+	border-radius: 9px;
+	cursor: pointer;
+}
+
+	.opportunity-declaration input {
+		margin-top: 2px;
+		accent-color: var(--vera-red);
+	}
+
+	.opportunity-declaration span {
+		color: #676F7A;
+		font-size: 8px;
+		line-height: 1.6;
+	}
+
+.vera-transparency-note {
+	display: flex;
+	gap: 12px;
+	margin-top: 15px;
+	padding: 15px;
+	background: var(--vera-sage-soft);
+	border-radius: 10px;
+}
+
+	.vera-transparency-note > i {
+		color: var(--vera-sage);
+		font-size: 16px;
+	}
+
+	.vera-transparency-note strong {
+		display: block;
+		margin-bottom: 3px;
+		color: #3D6256;
+		font-size: 8px;
+	}
+
+	.vera-transparency-note p {
+		margin: 0;
+		color: #658178;
+		font-size: 7px;
+		line-height: 1.55;
+	}
+
+
+/* SUBMIT */
+
+.new-opportunity-submit {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 25px;
+	padding: 21px 24px;
+	margin-bottom: 30px;
+	background: #fff;
+	border: 1px solid #E3E6EA;
+	border-radius: 14px;
+}
+
+	.new-opportunity-submit > div {
+		display: flex;
+		flex-direction: column;
+		gap: 3px;
+	}
+
+	.new-opportunity-submit strong {
+		color: #343942;
+		font-size: 10px;
+	}
+
+	.new-opportunity-submit span {
+		color: #939AA4;
+		font-size: 7px;
+	}
+
+.new-opportunity-submit-button {
+	min-height: 43px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	padding: 0 17px;
+	color: #fff;
+	background: var(--vera-red);
+	border: 0;
+	border-radius: 9px;
+	font-size: 8px;
+	font-weight: 750;
+}
+
+	.new-opportunity-submit-button:hover {
+		background: var(--vera-red-dark);
+	}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 850px) {
+
+	.document-upload-grid,
+	.new-form-grid {
 		grid-template-columns: 1fr;
 	}
+
+	.new-form-field.full-width {
+		grid-column: auto;
+	}
+
+	.new-opportunity-progress {
+		align-items: flex-start;
+		flex-direction: column;
+		gap: 13px;
+	}
+
+	.new-progress-line {
+		display: none;
+	}
+
+	.new-opportunity-submit {
+		align-items: stretch;
+		flex-direction: column;
+	}
 }
+/* =========================================================
+   SME DASHBOARD - FONT SIZE OVERRIDES
+   Typography only - layout remains unchanged
+========================================================= */
+
+/* PAGE HEADER */
+
+.sme-page-kicker {
+	font-size: 10px;
+}
+
+.sme-dashboard-header h1 {
+	font-size: 38px;
+}
+
+.sme-dashboard-header p {
+	font-size: 14px;
+}
+
+
+/* =========================================================
+   SUMMARY CARDS
+========================================================= */
+
+.sme-summary-label {
+	font-size: 9px;
+}
+
+.sme-summary-value {
+	font-size: 26px;
+}
+
+.sme-summary-card small {
+	font-size: 10px;
+}
+
+.sme-summary-change {
+	font-size: 9px;
+}
+
+
+/* =========================================================
+   PANEL HEADINGS
+========================================================= */
+
+.sme-panel-eyebrow {
+	font-size: 9px;
+}
+
+.sme-panel h2 {
+	font-size: 20px;
+}
+
+.sme-status-review {
+	font-size: 9px;
+}
+
+
+/* =========================================================
+   CURRENT OPPORTUNITY
+========================================================= */
+
+.sme-opportunity-business span {
+	font-size: 9px;
+}
+
+.sme-opportunity-business strong {
+	font-size: 13px;
+}
+
+.sme-opportunity-values span {
+	font-size: 10px;
+}
+
+.sme-opportunity-values strong {
+	font-size: 17px;
+}
+
+
+/* =========================================================
+   OPPORTUNITY JOURNEY
+========================================================= */
+
+.sme-journey-heading span {
+	font-size: 9px;
+}
+
+.sme-journey-heading strong {
+	font-size: 10px;
+}
+
+.sme-stage > span {
+	font-size: 9px;
+}
+
+.sme-stage small {
+	font-size: 9px;
+}
+
+
+/* =========================================================
+   CAPACITY WARNING
+========================================================= */
+
+.sme-capacity-warning strong {
+	font-size: 11px;
+}
+
+.sme-capacity-warning span {
+	font-size: 10px;
+	line-height: 1.5;
+}
+
+
+/* =========================================================
+   LINKS / ACTIONS
+========================================================= */
+
+.sme-panel-action {
+	font-size: 11px;
+}
+
+
+/* =========================================================
+   VERIFICATION PROFILE
+========================================================= */
+
+.sme-coverage strong {
+	font-size: 22px;
+}
+
+.sme-coverage span {
+	font-size: 9px;
+}
+
+.sme-verification-caption {
+	font-size: 9px;
+}
+
+.sme-check strong {
+	font-size: 11px;
+}
+
+.sme-check small {
+	font-size: 9px;
+}
+
+
+/* =========================================================
+   FULFILMENT PASSPORT
+========================================================= */
+
+.sme-passport-stats strong {
+	font-size: 22px;
+}
+
+.sme-passport-stats span {
+	font-size: 9px;
+	line-height: 1.4;
+}
+
+
+/* =========================================================
+   RECENT ACTIVITY
+========================================================= */
+
+.sme-activity strong {
+	font-size: 11px;
+}
+
+.sme-activity span {
+	font-size: 9px;
+}
+
+
+/* =========================================================
+   SME SIDEBAR
+========================================================= */
+
+.sme-sidebar-brand span {
+	font-size: 8px;
+}
+
+.sme-nav-label {
+	font-size: 9px;
+}
+
+.sme-nav-link {
+	font-size: 12px;
+}
+
+.sme-profile-mini strong,
+.sme-topbar-profile strong {
+	font-size: 11px;
+}
+
+.sme-profile-mini span,
+.sme-topbar-profile span {
+	font-size: 9px;
+}
+
+.sme-signout {
+	font-size: 11px;
+}
+
+
+/* =========================================================
+   TOP BAR
+========================================================= */
+
+.sme-topbar-context {
+	font-size: 9px;
+}
+/* =========================================================
+   GLOBAL SME WORKSPACE TYPOGRAPHY OVERRIDE
+   Applies to Dashboard, My Opportunities, New Opportunity
+========================================================= */
+
+/* General SME content */
+.sme-main {
+	font-size: 14px;
+}
+
+/* Small labels / kickers */
+.sme-page-kicker,
+.new-card-label,
+.vera-section-label,
+.upload-required,
+.upload-recommended,
+.upload-optional,
+.sme-panel-eyebrow,
+.sme-summary-label,
+.vera-document-label,
+.opportunity-po-label {
+	font-size: 10px !important;
+}
+
+/* Main page headings */
+.sme-dashboard-header h1,
+.sme-page-header h1,
+.new-opportunity-header h1,
+.opportunities-page-header h1 {
+	font-size: 38px !important;
+}
+
+/* Page descriptions */
+.sme-dashboard-header p,
+.sme-page-header p,
+.new-opportunity-header p,
+.opportunities-page-header p {
+	font-size: 14px !important;
+	line-height: 1.6;
+}
+
+
+/* =========================================================
+   NEW OPPORTUNITY
+========================================================= */
+
+/* Section headings */
+.new-card-heading h2 {
+	font-size: 22px !important;
+}
+
+.new-card-heading p {
+	font-size: 13px !important;
+	line-height: 1.6;
+}
+
+.new-card-number {
+	font-size: 12px !important;
+}
+
+/* Progress bar */
+.new-progress-step strong {
+	font-size: 13px !important;
+}
+
+.new-progress-step small {
+	font-size: 11px !important;
+}
+
+.new-progress-step > span {
+	font-size: 11px !important;
+}
+
+/* Input labels */
+.new-form-field label {
+	font-size: 13px !important;
+}
+
+/* Inputs */
+.new-form-field input,
+.new-form-field textarea,
+.new-form-field select {
+	font-size: 13px !important;
+}
+
+	/* Input placeholder */
+	.new-form-field input::placeholder,
+	.new-form-field textarea::placeholder {
+		font-size: 12px !important;
+	}
+
+/* Currency R */
+.currency-input > span {
+	font-size: 13px !important;
+}
+
+
+/* =========================================================
+   DOCUMENT UPLOAD CARDS
+========================================================= */
+
+.upload-copy strong {
+	font-size: 14px !important;
+}
+
+.upload-copy p {
+	font-size: 12px !important;
+	line-height: 1.55;
+}
+
+.upload-call-to-action {
+	font-size: 12px !important;
+}
+
+.upload-copy small {
+	font-size: 10px !important;
+}
+
+.upload-required,
+.upload-recommended,
+.upload-optional {
+	font-size: 9px !important;
+}
+
+
+/* =========================================================
+   FUNDING PREVIEW
+========================================================= */
+
+.funding-preview span {
+	font-size: 9px !important;
+}
+
+.funding-preview strong {
+	font-size: 14px !important;
+}
+
+.funding-preview p {
+	font-size: 11px !important;
+	line-height: 1.5;
+}
+
+
+/* =========================================================
+   DECLARATION SECTION
+========================================================= */
+
+.opportunity-declaration span {
+	font-size: 12px !important;
+	line-height: 1.6;
+}
+
+.vera-transparency-note strong {
+	font-size: 13px !important;
+}
+
+.vera-transparency-note p {
+	font-size: 11px !important;
+	line-height: 1.6;
+}
+
+
+/* =========================================================
+   SUBMIT AREA
+========================================================= */
+
+.new-opportunity-submit strong {
+	font-size: 14px !important;
+}
+
+.new-opportunity-submit span {
+	font-size: 11px !important;
+}
+
+.new-opportunity-submit-button {
+	font-size: 12px !important;
+}
+
+
+/* =========================================================
+   MY OPPORTUNITIES
+========================================================= */
+
+.opportunity-summary-card > span {
+	font-size: 10px !important;
+}
+
+.opportunity-summary-card strong {
+	font-size: 27px !important;
+}
+
+.opportunity-summary-card small {
+	font-size: 11px !important;
+}
+
+
+/* Search and filters */
+.opportunities-search input {
+	font-size: 12px !important;
+}
+
+.opportunities-filters select {
+	font-size: 11px !important;
+}
+
+
+/* Opportunity cards */
+.opportunity-card h2 {
+	font-size: 21px !important;
+}
+
+.opportunity-buyer {
+	font-size: 11px !important;
+}
+
+.opportunity-status {
+	font-size: 9px !important;
+}
+
+
+/* Opportunity values */
+.opportunity-card-values span {
+	font-size: 10px !important;
+}
+
+.opportunity-card-values strong {
+	font-size: 14px !important;
+}
+
+
+/* Journey */
+.opportunity-stage-heading span {
+	font-size: 9px !important;
+}
+
+.opportunity-stage-heading strong {
+	font-size: 11px !important;
+}
+
+.opportunity-stage-labels span {
+	font-size: 9px !important;
+}
+
+
+/* Opportunity bottom section */
+.opportunity-note {
+	font-size: 11px !important;
+}
+
+.opportunity-open {
+	font-size: 11px !important;
+}
+
+
+/* =========================================================
+   DOCUMENT / VERIFICATION WORKSPACE
+   If My Opportunities uses these cards
+========================================================= */
+
+.vera-card-heading h2 {
+	font-size: 20px !important;
+}
+
+.vera-card-heading p {
+	font-size: 12px !important;
+}
+
+.vera-evidence-count {
+	font-size: 10px !important;
+}
+
+.vera-document-info strong {
+	font-size: 12px !important;
+}
+
+.vera-document-info small {
+	font-size: 10px !important;
+}
+
+.vera-document-status {
+	font-size: 10px !important;
+}
+
+.vera-verification-item strong {
+	font-size: 12px !important;
+}
+
+.vera-verification-item small {
+	font-size: 10px !important;
+}
+
+.vera-result {
+	font-size: 9px !important;
+}
+
+.vera-review-card h3,
+.vera-next-step-card h3 {
+	font-size: 17px !important;
+}
+
+.vera-review-card p,
+.vera-next-step-card p {
+	font-size: 11px !important;
+}
+
+.vera-review-upload {
+	font-size: 11px !important;
+}
+
+.vera-next-step-button {
+	font-size: 11px !important;
+}
+
+.vera-next-step-card > small {
+	font-size: 10px !important;
+}
+
+
+/* =========================================================
+   SIDEBAR
+========================================================= */
+
+.sme-nav-label {
+	font-size: 9px !important;
+}
+
+.sme-nav-link {
+	font-size: 12px !important;
+}
+
+.sme-sidebar-brand span {
+	font-size: 9px !important;
+}
+
+.sme-profile-mini strong,
+.sme-topbar-profile strong {
+	font-size: 11px !important;
+}
+
+.sme-profile-mini span,
+.sme-topbar-profile span {
+	font-size: 9px !important;
+}
+
+.sme-topbar-context {
+	font-size: 9px !important;
+}
+
+
+
