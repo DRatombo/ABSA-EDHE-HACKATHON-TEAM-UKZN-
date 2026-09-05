@@ -13,39 +13,58 @@ namespace VERA.Web.Controllers
             _logger = logger;
         }
 
+        // Opens the home page
         public IActionResult Index()
         {
             return View();
         }
 
+        // Opens the privacy page
         public IActionResult Privacy()
         {
             return View();
         }
-		public IActionResult HowItWorks()
-		{
-			return View("~/Views/HowItWorks/HowItWorks.cshtml");
-		}
+
+        // Opens the How It Works page
+        public IActionResult HowItWorks()
+        {
+            return View("~/Views/HowItWorks/HowItWorks.cshtml");
+        }
+
+        // Opens the For SMEs page
+        [HttpGet]
         public IActionResult ForSMEs()
         {
             return View();
         }
 
+        // Opens the For Funders page
+        [HttpGet]
         public IActionResult ForFunders()
         {
             return View();
         }
 
+        // Opens the About page
+        [HttpGet]
         public IActionResult About()
         {
             return View();
         }
 
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        // Opens the error page
+        [ResponseCache(
+            Duration = 0,
+            Location = ResponseCacheLocation.None,
+            NoStore = true)]
         public IActionResult Error()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View(new ErrorViewModel
+            {
+                RequestId =
+                    Activity.Current?.Id ??
+                    HttpContext.TraceIdentifier
+            });
         }
     }
 }
