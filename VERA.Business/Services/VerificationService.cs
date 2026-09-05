@@ -1,50 +1,24 @@
 ﻿using VERA.Models.Entities;
 using VERA.Models.Enums;
 using VERA.Models.Enums.VERA.Models.Enums;
+using VERA.Registry.Models.ViewModels;
 
 namespace VERA.Business.Services
 {
-    /// <summary>
-    /// Creates the verification profile for a commercial opportunity.
-    ///
-    /// In the hackathon MVP, some external checks are simulated because
-    /// VERA does not have live production access to KYC, CIPC, buyer,
-    /// supplier, banking or funder APIs.
-    ///
-    /// The purpose of this service is to keep those checks transparent
-    /// and explainable rather than pretending they are live integrations.
-    /// </summary>
+    // Builds the verification profile for an opportunity
     public class VerificationService
     {
-        /// <summary>
-        /// Runs the MVP verification process for an opportunity.
-        /// </summary>
-        /// <param name="opportunity">
-        /// The opportunity currently being verified.
-        /// </param>
-        /// <param name="isDuplicate">
-        /// Indicates whether VERA's internal duplicate detection found
-        /// a matching opportunity fingerprint.
-        /// </param>
-        /// <returns>
-        /// A list of verification results that can be displayed to
-        /// both the SME and the funder.
-        /// </returns>
+        // Run the verification checks
         public List<VerificationResult> Verify(
             Opportunity opportunity,
-            bool isDuplicate)
+            bool isDuplicate,
+            VerifyPOResult? registryResult = null)
         {
-            // Create a new collection to store every verification result.
+            // Store all verification results here
             List<VerificationResult> results = new();
 
-            // ---------------------------------------------------------
-            // 1. IDENTITY VERIFICATION
-            // ---------------------------------------------------------
-            //
-            // This represents a future integration with an authorised
-            // KYC and liveness provider.
-            //
-            // It is simulated in the MVP and clearly labelled as such.
+
+            // Identity check
             results.Add(new VerificationResult
             {
                 OpportunityId = opportunity.OpportunityId,
@@ -65,12 +39,8 @@ namespace VERA.Business.Services
                 CheckedAt = DateTime.UtcNow
             });
 
-            // ---------------------------------------------------------
-            // 2. BUSINESS LEGITIMACY
-            // ---------------------------------------------------------
-            //
-            // In production this could use authorised company
-            // registration and business-information sources.
+
+            // Business registration check
             results.Add(new VerificationResult
             {
                 OpportunityId = opportunity.OpportunityId,
@@ -91,12 +61,8 @@ namespace VERA.Business.Services
                 CheckedAt = DateTime.UtcNow
             });
 
-            // ---------------------------------------------------------
-            // 3. BUYER VERIFICATION
-            // ---------------------------------------------------------
-            //
-            // VERA should independently verify that the buyer exists
-            // and that the buyer information aligns with the PO.
+
+            // Buyer check
             results.Add(new VerificationResult
             {
                 OpportunityId = opportunity.OpportunityId,
@@ -117,20 +83,15 @@ namespace VERA.Business.Services
                 CheckedAt = DateTime.UtcNow
             });
 
-            // ---------------------------------------------------------
-            // 4. PURCHASE ORDER VERIFICATION
-            // ---------------------------------------------------------
-            //
-            // This confirms that the opportunity contains the basic
-            // commercial information required by VERA.
-            //
-            // This is partly real internal logic because VERA can
-            // validate whether the extracted PO information is complete.
+
+            // Check that the PO has the required fields
             VerificationStatus poStatus =
                 IsPODataComplete(opportunity)
                     ? VerificationStatus.Verified
                     : VerificationStatus.Flagged;
 
+
+            // Add the PO check result
             results.Add(new VerificationResult
             {
                 OpportunityId = opportunity.OpportunityId,
@@ -152,15 +113,59 @@ namespace VERA.Business.Services
                 CheckedAt = DateTime.UtcNow
             });
 
-            // ---------------------------------------------------------
-            // 5. DUPLICATE FINANCING CHECK
-            // ---------------------------------------------------------
-            //
-            // This is a real MVP check against opportunities already
-            // stored inside VERA.
-            //
-            // Important:
-            // This does NOT claim cross-bank or cross-lender coverage.
+
+            // Add the Registry result when a Registry check was run
+            if (registryResult != null)
+            {
+                // Convert the Registry result to a verification status
+                VerificationStatus registryStatus =
+                    registryResult.Result == "PASS"
+                        ? VerificationStatus.Verified
+                        : VerificationStatus.Flagged;
+
+
+                // Build a simple message for the verification profile
+                string registryEvidence;
+
+                if (registryResult.Result == "PASS")
+                {
+                    registryEvidence =
+                        "The purchase order matched the Registry record and no blocking issue was found.";
+                }
+                else if (registryResult.ReasonCodes.Any())
+                {
+                    registryEvidence =
+                        $"Registry result: {registryResult.Result}. " +
+                        string.Join(", ", registryResult.ReasonCodes);
+                }
+                else
+                {
+                    registryEvidence =
+                        $"Registry result: {registryResult.Result}.";
+                }
+
+
+                // Add the Registry check
+                results.Add(new VerificationResult
+                {
+                    OpportunityId = opportunity.OpportunityId,
+
+                    VerificationType = "VERA Registry Check",
+
+                    Status = registryStatus,
+
+                    Evidence = registryEvidence,
+
+                    Source = "VERA Registry",
+
+                    IsSimulated = false,
+
+                    CheckedAt = DateTime.UtcNow
+                });
+            }
+
+
+            // Check for a duplicate opportunity inside VERA
             results.Add(new VerificationResult
             {
                 OpportunityId = opportunity.OpportunityId,
@@ -187,11 +192,8 @@ namespace VERA.Business.Services
                 CheckedAt = DateTime.UtcNow
             });
 
-            // ---------------------------------------------------------
-            // 6. SUPPLIER READINESS
-            // ---------------------------------------------------------
-            //
-            // Supplier confirmation is simulated for the hackathon MVP.
+
+            // Supplier readiness check
             results.Add(new VerificationResult
             {
                 OpportunityId = opportunity.OpportunityId,
@@ -212,48 +214,51 @@ namespace VERA.Business.Services
                 CheckedAt = DateTime.UtcNow
             });
 
-            // Return the complete explainable verification profile.
+
+            // Return all checks
             return results;
         }
 
-        /// <summary>
-        /// Checks whether the opportunity contains the minimum PO data
-        /// required for VERA's internal verification workflow.
-        /// </summary>
+
+        // Check that the PO has the minimum required information
         private bool IsPODataComplete(Opportunity opportunity)
         {
-            // Buyer name must be provided.
+            // Buyer is required
             if (string.IsNullOrWhiteSpace(opportunity.BuyerName))
             {
                 return false;
             }
 
-            // Purchase order number must be provided.
+
+            // PO number is required
             if (string.IsNullOrWhiteSpace(opportunity.PONumber))
             {
                 return false;
             }
 
-            // The PO must have a positive commercial value.
+
+            // PO value must be greater than zero
             if (opportunity.POValue <= 0)
             {
                 return false;
             }
 
-            // Issue date must exist.
+
+            // Issue date is required
             if (opportunity.IssueDate == default)
             {
                 return false;
             }
 
-            // Delivery date must exist.
+
+            // Delivery date is required
             if (opportunity.DeliveryDate == default)
             {
                 return false;
             }
 
-            // If all required information is present,
-            // the internal structural check passes.
+
+            // All required fields are present
             return true;
         }
     }

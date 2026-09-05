@@ -1,146 +1,94 @@
 using Microsoft.EntityFrameworkCore;
 using VERA.Business.Services;
 using VERA.Data.Context;
+using VERA.Registry.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// ---------------------------------------------------------
-// ADD MVC SUPPORT
-// ---------------------------------------------------------
-//
-// Enables Controllers and Razor Views for the VERA web app.
+// Add MVC so we can use controllers and views
 builder.Services.AddControllersWithViews();
 
 
-// ---------------------------------------------------------
-// DATABASE CONNECTION
-// ---------------------------------------------------------
-//
-// Connect VERA to the Microsoft SQL Server database using
-// the connection string stored in appsettings.json.
+// MAIN VERA DATABASE
+
+// Connect to the main VERA database
 builder.Services.AddDbContext<VeraDbContext>(options =>
     options.UseSqlServer(
         builder.Configuration.GetConnectionString("DefaultConnection")));
 
 
-// ---------------------------------------------------------
-// REGISTER VERA BUSINESS SERVICES
-// ---------------------------------------------------------
-//
-// These services contain VERA's core opportunity assessment
-// and fulfilment logic.
-//
-// AddScoped means ASP.NET Core creates one instance of each
-// service for each incoming web request.
+// REGISTRY DATABASE
 
+// Connect to the separate Registry database
+builder.Services.AddDbContext<RegistryDbContext>(options =>
+    options.UseSqlServer(
+        builder.Configuration.GetConnectionString("RegistryConnection")));
+
+
+// VERA BUSINESS SERVICES
+
+// Register the services used to assess an SME opportunity
 builder.Services.AddScoped<FundingCalculatorService>();
-
 builder.Services.AddScoped<FingerprintService>();
-
 builder.Services.AddScoped<DuplicateDetectionService>();
-
 builder.Services.AddScoped<VerificationService>();
-
 builder.Services.AddScoped<FulfilmentAssessmentService>();
-
 builder.Services.AddScoped<OpportunityDecisionService>();
-
 builder.Services.AddScoped<FulfilmentPassportService>();
 
-// This is the main orchestration service.
-//
-// Controllers can call this one service to run:
-// funding calculations
-// -> fingerprint generation
-// -> duplicate detection
-// -> verification
-// -> fulfilment assessment
-// -> final readiness decision.
+// Runs the full opportunity assessment process
 builder.Services.AddScoped<OpportunityAssessmentService>();
 
 
-// ---------------------------------------------------------
-// BUILD THE APPLICATION
-// ---------------------------------------------------------
+// REGISTRY SERVICES
+
+// These services are used to check and verify purchase orders
+builder.Services.AddScoped<VERA.Registry.Services.DocumentHashService>();
+builder.Services.AddScoped<VERA.Registry.Services.FinancingClaimService>();
+
+// Full name is used because VERA.Business also has a FingerprintService
+builder.Services.AddScoped<VERA.Registry.Services.FingerprintService>();
+
+builder.Services.AddScoped<VERA.Registry.Services.PdfDocumentAnalysisService>();
+builder.Services.AddScoped<VERA.Registry.Services.RegistryVerificationService>();
+builder.Services.AddScoped<VERA.Registry.Services.VeraIdService>();
+
+
+// BUILD APP
 
 var app = builder.Build();
 
 
-// ---------------------------------------------------------
 // ERROR HANDLING
-// ---------------------------------------------------------
-//
-// In production, users should not see detailed developer
-// exception information.
+
+// Show a normal error page instead of developer errors when deployed
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-
-    // Adds HTTP Strict Transport Security in production.
     app.UseHsts();
 }
 
 
-// ---------------------------------------------------------
-// HTTPS
-// ---------------------------------------------------------
-//
-// Redirect HTTP traffic to HTTPS.
+// Redirect HTTP requests to HTTPS
 app.UseHttpsRedirection();
 
-
-// ---------------------------------------------------------
-// STATIC FILES
-// ---------------------------------------------------------
-//
-// Allows VERA to serve files from wwwroot such as:
-// CSS
-// JavaScript
-// images
-// logos
+// Allow the website to use CSS, JavaScript and images from wwwroot
 app.UseStaticFiles();
 
-
-// ---------------------------------------------------------
-// ROUTING
-// ---------------------------------------------------------
-
+// Enable routing between pages and controllers
 app.UseRouting();
 
-
-// ---------------------------------------------------------
-// AUTHORISATION
-// ---------------------------------------------------------
-//
-// This prepares the application for controller/page
-// authorisation rules.
-//
-// Authentication can be added separately if the team
-// implements login during the MVP.
+// Enable authorisation
 app.UseAuthorization();
 
 
-// ---------------------------------------------------------
-// DEFAULT MVC ROUTE
-// ---------------------------------------------------------
-//
-// Example:
-//
-// /Opportunity/Details/5
-//
-// Controller = Opportunity
-// Action     = Details
-// id         = 5
-//
-// If no controller/action is supplied, the application
-// opens Home/Index.
+// DEFAULT ROUTE
+
+// If no page is given, open the Home page
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 
-// ---------------------------------------------------------
-// START VERA
-// ---------------------------------------------------------
-
+// Start the website
 app.Run();

@@ -23,6 +23,7 @@
     <ProjectReference Include="..\VERA.Business\VERA.Business.csproj" />
     <ProjectReference Include="..\VERA.Data\VERA.Data.csproj" />
     <ProjectReference Include="..\VERA.Models\VERA.Models.csproj" />
+    <ProjectReference Include="..\VERA.Registry\VERA.Registry.csproj" />
   </ItemGroup>
 
   <ItemGroup>

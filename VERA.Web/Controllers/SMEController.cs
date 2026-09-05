@@ -2,11 +2,13 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace VERA.Web.Controllers
 {
-	public class SMEController : Controller
-	{
-		public IActionResult Dashboard()
-		{
-			return View();
-		}
-	}
+    // Handles SME pages
+    public class SMEController : Controller
+    {
+        // Opens the SME dashboard
+        public IActionResult Dashboard()
+        {
+            return View();
+        }
+    }
 }
