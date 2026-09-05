@@ -28,6 +28,7 @@
   <ItemGroup>
     <Folder Include="Views\HowItWorks\" />
     <Folder Include="Views\Account\" />
+    <Folder Include="Views\SME\" />
     <Folder Include="wwwroot\Videos\" />
   </ItemGroup>
 

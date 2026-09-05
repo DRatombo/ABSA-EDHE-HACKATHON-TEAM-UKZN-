@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0" />
+
+    <title>@ViewData["Title"] - VERA</title>
+
+    <link rel="stylesheet"
+          href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+    <link rel="stylesheet"
+          href="~/css/site.css"
+          asp-append-version="true" />
+
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+
+<body class="sme-body">
+
+    @{
+        var currentAction =
+            ViewContext.RouteData.Values["action"]?.ToString();
+    }
+
+    <!-- =====================================================
+         SME SIDEBAR
+    ====================================================== -->
+
+    <aside class="sme-sidebar">
+
+        <div class="sme-sidebar-brand">
+
+            <a asp-controller="SME"
+               asp-action="Dashboard"
+               class="sme-logo">
+                VERA
+            </a>
+
+            <span>
+                SME WORKSPACE
+            </span>
+
+        </div>
+
+
+        <nav class="sme-nav">
+
+            <span class="sme-nav-label">
+                WORKSPACE
+            </span>
+
+
+            <a asp-controller="SME"
+               asp-action="Dashboard"
+               class="sme-nav-link @(currentAction == "Dashboard" ? "active" : "")">
+
+                <i class="bi bi-grid"></i>
+
+                <span>Dashboard</span>
+
+            </a>
+
+
+            <a href="#"
+               class="sme-nav-link">
+
+                <i class="bi bi-briefcase"></i>
+
+                <span>My opportunities</span>
+
+            </a>
+
+
+            <a href="#"
+               class="sme-nav-link">
+
+                <i class="bi bi-plus-circle"></i>
+
+                <span>New opportunity</span>
+
+            </a>
+
+
+            <span class="sme-nav-label sme-nav-label-second">
+                FINANCE
+            </span>
+
+
+            <a href="#"
+               class="sme-nav-link">
+
+                <i class="bi bi-wallet2"></i>
+
+                <span>Funding</span>
+
+            </a>
+
+
+            <a href="#"
+               class="sme-nav-link">
+
+                <i class="bi bi-arrow-left-right"></i>
+
+                <span>Settlements</span>
+
+            </a>
+
+
+            <span class="sme-nav-label sme-nav-label-second">
+                BUSINESS
+            </span>
+
+
+            <a href="#"
+               class="sme-nav-link">
+
+                <i class="bi bi-award"></i>
+
+                <span>Fulfilment Passport</span>
+
+            </a>
+
+
+            <a href="#"
+               class="sme-nav-link">
+
+                <i class="bi bi-building"></i>
+
+                <span>Business profile</span>
+
+            </a>
+
+        </nav>
+
+
+        <div class="sme-sidebar-bottom">
+
+            <div class="sme-profile-mini">
+
+                <div class="sme-avatar">
+                    NT
+                </div>
+
+                <div>
+                    <strong>
+                        Nomvula Tech
+                    </strong>
+
+                    <span>
+                        SME Account
+                    </span>
+                </div>
+
+            </div>
+
+
+            <a asp-controller="Home"
+               asp-action="Index"
+               class="sme-signout">
+
+                <i class="bi bi-box-arrow-left"></i>
+
+                <span>Sign out</span>
+
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =====================================================
+         MAIN APP AREA
+    ====================================================== -->
+
+    <div class="sme-app">
+
+        <header class="sme-topbar">
+
+            <div>
+
+                <span class="sme-topbar-context">
+                    SME WORKSPACE
+                </span>
+
+            </div>
+
+
+            <div class="sme-topbar-actions">
+
+                <button class="sme-icon-button"
+                        type="button">
+
+                    <i class="bi bi-bell"></i>
+
+                    <span class="sme-notification-dot"></span>
+
+                </button>
+
+
+                <div class="sme-topbar-profile">
+
+                    <div class="sme-avatar small">
+                        NT
+                    </div>
+
+                    <div>
+                        <strong>
+                            Nomvula Tech Solutions
+                        </strong>
+
+                        <span>
+                            Business account
+                        </span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <main class="sme-main">
+
+            @RenderBody()
+
+        </main>
+
+    </div>
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="~/js/site.js"
+            asp-append-version="true"></script>
+
+
+    @await RenderSectionAsync(
+        "Scripts",
+        required: false
+    )
+
+</body>
+
+</html>
