@@ -13,7 +13,10 @@
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/VERA.Web.styles.css" asp-append-version="true" />
 </head>
-
+@{
+    var currentController = ViewContext.RouteData.Values["controller"]?.ToString();
+    var currentAction = ViewContext.RouteData.Values["action"]?.ToString();
+}
 <body>
 
 
@@ -43,61 +46,56 @@
     <!-- Navigation -->
     <nav class="vera-sidebar-nav">
 
-        <a asp-controller="Home"
-           asp-action="Index"
-           class="vera-sidebar-link active">
+    <a asp-controller="Home"
+       asp-action="Index"
+       class="vera-sidebar-link @(currentController == "Home" && currentAction == "Index" ? "active" : "")">
 
-            <i class="bi bi-house-door"></i>
+        <i class="bi bi-house-door"></i>
+        <span>Home</span>
 
-            <span>Home</span>
-
-        </a>
-
-
-        <a asp-controller="Home"
-           asp-action="HowItWorks"
-           class="vera-sidebar-link">
-
-            <i class="bi bi-diagram-3"></i>
-
-            <span>How it works</span>
-
-        </a>
+    </a>
 
 
-        <a asp-controller="Home"
-           asp-action="ForSMEs"
-           class="vera-sidebar-link">
+    <a asp-controller="Home"
+       asp-action="HowItWorks"
+       class="vera-sidebar-link @(currentController == "Home" && currentAction == "HowItWorks" ? "active" : "")">
 
-            <i class="bi bi-briefcase"></i>
+        <i class="bi bi-diagram-3"></i>
+        <span>How it works</span>
 
-            <span>For SMEs</span>
-
-        </a>
-
-
-        <a asp-controller="Home"
-           asp-action="ForFunders"
-           class="vera-sidebar-link">
-
-            <i class="bi bi-bank"></i>
-
-            <span>For Funders</span>
-
-        </a>
+    </a>
 
 
-        <a asp-controller="Home"
-           asp-action="About"
-           class="vera-sidebar-link">
+    <a asp-controller="Home"
+       asp-action="ForSMEs"
+       class="vera-sidebar-link @(currentController == "Home" && currentAction == "ForSMEs" ? "active" : "")">
 
-            <i class="bi bi-lightbulb"></i>
+        <i class="bi bi-briefcase"></i>
+        <span>For SMEs</span>
 
-            <span>Why VERA</span>
+    </a>
 
-        </a>
 
-    </nav>
+    <a asp-controller="Home"
+       asp-action="ForFunders"
+       class="vera-sidebar-link @(currentController == "Home" && currentAction == "ForFunders" ? "active" : "")">
+
+        <i class="bi bi-bank"></i>
+        <span>For Funders</span>
+
+    </a>
+
+
+    <a asp-controller="Home"
+       asp-action="About"
+       class="vera-sidebar-link @(currentController == "Home" && currentAction == "About" ? "active" : "")">
+
+        <i class="bi bi-lightbulb"></i>
+        <span>Why VERA</span>
+
+    </a>
+
+</nav>
 
 
     <!-- Bottom actions -->

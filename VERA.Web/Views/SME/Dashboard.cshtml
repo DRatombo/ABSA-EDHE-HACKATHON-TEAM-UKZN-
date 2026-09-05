@@ -1,0 +1,541 @@
+@{
+    ViewData["Title"] = "Dashboard";
+    Layout = "_SMELayout";
+}
+<section class="sme-dashboard-header">
+
+    <div>
+        <span class="sme-page-kicker">GOOD MORNING</span>
+
+        <h1>
+            Welcome back,
+            <span>Nomvula.</span>
+        </h1>
+
+        <p>
+            Here's where your opportunities stand today.
+        </p>
+    </div>
+
+    <a href="#"
+       class="sme-new-opportunity">
+
+        <i class="bi bi-plus-lg"></i>
+        New opportunity
+
+    </a>
+
+</section>
+
+
+<section class="sme-summary-grid">
+
+    <article class="sme-summary-card">
+
+        <div class="sme-summary-top">
+            <div class="sme-summary-icon red">
+                <i class="bi bi-briefcase"></i>
+            </div>
+
+            <span class="sme-summary-change">
+                Active
+            </span>
+        </div>
+
+        <span class="sme-summary-label">
+            ACTIVE OPPORTUNITIES
+        </span>
+
+        <strong class="sme-summary-value">
+            2
+        </strong>
+
+        <small>
+            1 currently under review
+        </small>
+
+    </article>
+
+
+    <article class="sme-summary-card">
+
+        <div class="sme-summary-top">
+            <div class="sme-summary-icon navy">
+                <i class="bi bi-file-earmark-check"></i>
+            </div>
+        </div>
+
+        <span class="sme-summary-label">
+            VERIFIED PO VALUE
+        </span>
+
+        <strong class="sme-summary-value">
+            R300,000
+        </strong>
+
+        <small>
+            Current active opportunity
+        </small>
+
+    </article>
+
+
+    <article class="sme-summary-card">
+
+        <div class="sme-summary-top">
+            <div class="sme-summary-icon gold">
+                <i class="bi bi-wallet2"></i>
+            </div>
+        </div>
+
+        <span class="sme-summary-label">
+            CURRENT FUNDING GAP
+        </span>
+
+        <strong class="sme-summary-value">
+            R184,500
+        </strong>
+
+        <small>
+            Structured fulfilment requirement
+        </small>
+
+    </article>
+
+
+    <article class="sme-summary-card">
+
+        <div class="sme-summary-top">
+            <div class="sme-summary-icon green">
+                <i class="bi bi-award"></i>
+            </div>
+        </div>
+
+        <span class="sme-summary-label">
+            OPPORTUNITIES FULFILLED
+        </span>
+
+        <strong class="sme-summary-value">
+            4
+        </strong>
+
+        <small>
+            Recorded in your Fulfilment Passport
+        </small>
+
+    </article>
+
+</section>
+
+
+<section class="sme-dashboard-grid">
+
+    <article class="sme-panel">
+
+        <div class="sme-panel-heading">
+
+            <div>
+                <span class="sme-panel-eyebrow">
+                    CURRENT OPPORTUNITY
+                </span>
+
+                <h2>
+                    PO #EC-45821
+                </h2>
+            </div>
+
+            <span class="sme-status-review">
+                <i class="bi bi-exclamation-circle-fill"></i>
+                Review
+            </span>
+
+        </div>
+
+
+        <div class="sme-opportunity-business">
+
+            <div class="sme-business-icon">
+                <i class="bi bi-buildings"></i>
+            </div>
+
+            <div>
+                <span>BUYER</span>
+
+                <strong>
+                    Durban Metro Municipality
+                </strong>
+            </div>
+
+        </div>
+
+
+        <div class="sme-opportunity-values">
+
+            <div>
+                <span>PO value</span>
+                <strong>R300,000</strong>
+            </div>
+
+            <div>
+                <span>Fulfilment cost</span>
+                <strong>R220,000</strong>
+            </div>
+
+            <div>
+                <span>Funding gap</span>
+                <strong class="red-text">R184,500</strong>
+            </div>
+
+        </div>
+
+
+        <div class="sme-journey">
+
+            <div class="sme-journey-heading">
+                <span>OPPORTUNITY JOURNEY</span>
+
+                <strong>
+                    Verification in progress
+                </strong>
+            </div>
+
+
+            <div class="sme-journey-track">
+
+                <div class="sme-stage complete">
+                    <span>
+                        <i class="bi bi-check-lg"></i>
+                    </span>
+                    <small>Upload</small>
+                </div>
+
+                <div class="sme-stage-line complete"></div>
+
+
+                <div class="sme-stage complete">
+                    <span>
+                        <i class="bi bi-check-lg"></i>
+                    </span>
+                    <small>Verify</small>
+                </div>
+
+                <div class="sme-stage-line active"></div>
+
+
+                <div class="sme-stage active">
+                    <span>3</span>
+                    <small>Assess</small>
+                </div>
+
+                <div class="sme-stage-line"></div>
+
+
+                <div class="sme-stage">
+                    <span>4</span>
+                    <small>Funding</small>
+                </div>
+
+                <div class="sme-stage-line"></div>
+
+
+                <div class="sme-stage">
+                    <span>5</span>
+                    <small>Execute</small>
+                </div>
+
+                <div class="sme-stage-line"></div>
+
+
+                <div class="sme-stage">
+                    <span>6</span>
+                    <small>Settle</small>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="sme-capacity-warning">
+
+            <i class="bi bi-exclamation-triangle-fill"></i>
+
+            <div>
+                <strong>
+                    Fulfilment capacity requires review
+                </strong>
+
+                <span>
+                    This R300,000 opportunity is 4× larger
+                    than your previous verified PO of R75,000.
+                </span>
+            </div>
+
+        </div>
+
+
+        <a href="#"
+           class="sme-panel-action">
+
+            View opportunity
+            <i class="bi bi-arrow-right"></i>
+
+        </a>
+
+    </article>
+
+
+    <article class="sme-panel">
+
+        <div class="sme-panel-heading">
+
+            <div>
+                <span class="sme-panel-eyebrow">
+                    VERIFICATION
+                </span>
+
+                <h2>
+                    Verification Profile
+                </h2>
+            </div>
+
+            <div class="sme-coverage">
+                <strong>5/6</strong>
+                <span>checks</span>
+            </div>
+
+        </div>
+
+
+        <div class="sme-verification-bar">
+            <div style="width:83%;"></div>
+        </div>
+
+        <span class="sme-verification-caption">
+            83% verification coverage
+        </span>
+
+
+        <div class="sme-check-list">
+
+            <div class="sme-check">
+                <span class="pass">
+                    <i class="bi bi-check-lg"></i>
+                </span>
+
+                <div>
+                    <strong>Business identity</strong>
+                    <small>Verified</small>
+                </div>
+            </div>
+
+
+            <div class="sme-check">
+                <span class="pass">
+                    <i class="bi bi-check-lg"></i>
+                </span>
+
+                <div>
+                    <strong>Representative authority</strong>
+                    <small>Verified</small>
+                </div>
+            </div>
+
+
+            <div class="sme-check">
+                <span class="pass">
+                    <i class="bi bi-check-lg"></i>
+                </span>
+
+                <div>
+                    <strong>PO integrity</strong>
+                    <small>Verified</small>
+                </div>
+            </div>
+
+
+            <div class="sme-check">
+                <span class="pass">
+                    <i class="bi bi-check-lg"></i>
+                </span>
+
+                <div>
+                    <strong>Buyer confirmation</strong>
+                    <small>Verified</small>
+                </div>
+            </div>
+
+
+            <div class="sme-check">
+                <span class="pass">
+                    <i class="bi bi-check-lg"></i>
+                </span>
+
+                <div>
+                    <strong>Supplier evidence</strong>
+                    <small>Verified</small>
+                </div>
+            </div>
+
+
+            <div class="sme-check">
+                <span class="review">
+                    <i class="bi bi-exclamation"></i>
+                </span>
+
+                <div>
+                    <strong>Fulfilment capacity</strong>
+                    <small>Review required</small>
+                </div>
+            </div>
+
+        </div>
+
+
+        <a href="#"
+           class="sme-panel-action">
+
+            View verification profile
+            <i class="bi bi-arrow-right"></i>
+
+        </a>
+
+    </article>
+
+</section>
+
+
+<section class="sme-lower-grid">
+
+    <article class="sme-panel">
+
+        <div class="sme-panel-heading">
+
+            <div>
+                <span class="sme-panel-eyebrow">
+                    FULFILMENT PASSPORT
+                </span>
+
+                <h2>
+                    Your delivery history
+                </h2>
+            </div>
+
+            <div class="sme-passport-icon">
+                <i class="bi bi-award"></i>
+            </div>
+
+        </div>
+
+
+        <div class="sme-passport-stats">
+
+            <div>
+                <strong>4</strong>
+                <span>Opportunities fulfilled</span>
+            </div>
+
+            <div>
+                <strong>R685k</strong>
+                <span>Verified PO value</span>
+            </div>
+
+            <div>
+                <strong>100%</strong>
+                <span>Settled</span>
+            </div>
+
+        </div>
+
+
+        <a href="#"
+           class="sme-panel-action">
+
+            View Fulfilment Passport
+            <i class="bi bi-arrow-right"></i>
+
+        </a>
+
+    </article>
+
+
+    <article class="sme-panel">
+
+        <div class="sme-panel-heading">
+
+            <div>
+                <span class="sme-panel-eyebrow">
+                    ACTIVITY
+                </span>
+
+                <h2>
+                    Recent activity
+                </h2>
+            </div>
+
+        </div>
+
+
+        <div class="sme-activity-list">
+
+            <div class="sme-activity">
+
+                <div class="sme-activity-icon green">
+                    <i class="bi bi-check-lg"></i>
+                </div>
+
+                <div>
+                    <strong>
+                        Buyer confirmation completed
+                    </strong>
+
+                    <span>
+                        PO #EC-45821 • Today
+                    </span>
+                </div>
+
+            </div>
+
+
+            <div class="sme-activity">
+
+                <div class="sme-activity-icon gold">
+                    <i class="bi bi-exclamation"></i>
+                </div>
+
+                <div>
+                    <strong>
+                        Capacity review required
+                    </strong>
+
+                    <span>
+                        PO #EC-45821 • Today
+                    </span>
+                </div>
+
+            </div>
+
+
+            <div class="sme-activity">
+
+                <div class="sme-activity-icon red">
+                    <i class="bi bi-file-earmark-arrow-up"></i>
+                </div>
+
+                <div>
+                    <strong>
+                        Purchase order submitted
+                    </strong>
+
+                    <span>
+                        PO #EC-45821 • Yesterday
+                    </span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </article>
+
+</section>

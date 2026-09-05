@@ -1,0 +1,697 @@
+@model VERA.Web.ViewModels.RegisterViewModel
+
+@{
+    ViewData["Title"] = "Register your business";
+}
+
+<section class="register-page">
+
+    <div class="register-page-bg register-bg-one"></div>
+    <div class="register-page-bg register-bg-two"></div>
+
+    <div class="vera-container register-layout">
+
+        <!-- =====================================================
+             LEFT SIDE
+        ====================================================== -->
+
+        <aside class="register-intro">
+
+            <div class="register-kicker">
+                GET STARTED WITH VERA
+            </div>
+
+            <h1>
+                Tell us about
+                <span>your business.</span>
+            </h1>
+
+            <p>
+                Create your VERA business profile once, then use it
+                to bring future commercial opportunities through
+                verification, assessment and funding.
+            </p>
+
+
+            <div class="register-progress-list">
+
+                <div class="register-progress-item active">
+                    <span>01</span>
+
+                    <div>
+                        <strong>Business details</strong>
+                        <small>Who your business is</small>
+                    </div>
+                </div>
+
+                <div class="register-progress-line"></div>
+
+
+                <div class="register-progress-item">
+                    <span>02</span>
+
+                    <div>
+                        <strong>Business location</strong>
+                        <small>Where you operate</small>
+                    </div>
+                </div>
+
+                <div class="register-progress-line"></div>
+
+
+                <div class="register-progress-item">
+                    <span>03</span>
+
+                    <div>
+                        <strong>Primary contact</strong>
+                        <small>Who represents the business</small>
+                    </div>
+                </div>
+
+                <div class="register-progress-line"></div>
+
+
+                <div class="register-progress-item">
+                    <span>04</span>
+
+                    <div>
+                        <strong>Account security</strong>
+                        <small>Protect your VERA account</small>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="register-security-note">
+
+                <i class="bi bi-shield-check"></i>
+
+                <div>
+                    <strong>Your opportunity starts with evidence.</strong>
+
+                    <span>
+                        Registration creates your business profile.
+                        Opportunity verification happens separately when
+                        you submit a purchase order.
+                    </span>
+                </div>
+
+            </div>
+
+        </aside>
+
+
+        <!-- =====================================================
+             FORM
+        ====================================================== -->
+
+        <div class="register-form-card">
+
+            <form asp-controller="Account"
+                  asp-action="Register"
+                  method="post">
+
+                @Html.AntiForgeryToken()
+
+
+                <div asp-validation-summary="ModelOnly"
+                     class="register-validation-summary">
+                </div>
+
+
+                <!-- =================================================
+                     BUSINESS DETAILS
+                ================================================== -->
+
+                <section class="register-form-section">
+
+                    <div class="register-section-heading">
+
+                        <div class="register-section-icon red">
+                            <i class="bi bi-building"></i>
+                        </div>
+
+                        <div>
+                            <span>SECTION 01</span>
+                            <h2>Business details</h2>
+
+                            <p>
+                                Tell us about the business behind the opportunity.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="register-fields">
+
+                        <div class="register-field register-field-full">
+                            <label asp-for="BusinessName"></label>
+
+                            <input asp-for="BusinessName"
+                                   placeholder="e.g. Nomvula Tech Solutions (Pty) Ltd" />
+
+                            <span asp-validation-for="BusinessName"></span>
+                        </div>
+
+
+                        <div class="register-field">
+                            <label asp-for="TradingName"></label>
+
+                            <input asp-for="TradingName"
+                                   placeholder="Optional" />
+
+                            <span asp-validation-for="TradingName"></span>
+                        </div>
+
+
+                        <div class="register-field">
+                            <label asp-for="RegistrationNumber"></label>
+
+                            <input asp-for="RegistrationNumber"
+                                   placeholder="e.g. 2022/123456/07" />
+
+                            <span asp-validation-for="RegistrationNumber"></span>
+                        </div>
+
+
+                        <div class="register-field">
+
+                            <label asp-for="BusinessType"></label>
+
+                            <select asp-for="BusinessType">
+
+                                <option value="">
+                                    Select business type
+                                </option>
+
+                                <option>Private Company (Pty) Ltd</option>
+                                <option>Sole Proprietor</option>
+                                <option>Close Corporation</option>
+                                <option>Partnership</option>
+                                <option>Non-Profit Company</option>
+                                <option>Co-operative</option>
+                                <option>Other</option>
+
+                            </select>
+
+                            <span asp-validation-for="BusinessType"></span>
+
+                        </div>
+
+
+                        <div class="register-field">
+
+                            <label asp-for="Industry"></label>
+
+                            <select asp-for="Industry">
+
+                                <option value="">
+                                    Select industry
+                                </option>
+
+                                <option>Information Technology</option>
+                                <option>Construction</option>
+                                <option>Professional Services</option>
+                                <option>Manufacturing</option>
+                                <option>Retail</option>
+                                <option>Wholesale</option>
+                                <option>Logistics & Transport</option>
+                                <option>Agriculture</option>
+                                <option>Healthcare</option>
+                                <option>Hospitality</option>
+                                <option>Education</option>
+                                <option>Security Services</option>
+                                <option>Cleaning Services</option>
+                                <option>Other</option>
+
+                            </select>
+
+                            <span asp-validation-for="Industry"></span>
+
+                        </div>
+
+
+                        <div class="register-field">
+
+                            <label asp-for="YearsOperating"></label>
+
+                            <input asp-for="YearsOperating"
+                                   type="number"
+                                   min="0"
+                                   placeholder="e.g. 4" />
+
+                            <span asp-validation-for="YearsOperating"></span>
+
+                        </div>
+
+
+                        <div class="register-field">
+
+                            <label asp-for="EmployeeCount"></label>
+
+                            <input asp-for="EmployeeCount"
+                                   type="number"
+                                   min="0"
+                                   placeholder="e.g. 12" />
+
+                            <span asp-validation-for="EmployeeCount"></span>
+
+                        </div>
+
+
+                        <div class="register-field">
+
+                            <label asp-for="TaxReferenceNumber"></label>
+
+                            <input asp-for="TaxReferenceNumber"
+                                   placeholder="Optional at registration" />
+
+                        </div>
+
+
+                        <div class="register-field">
+
+                            <label asp-for="VatNumber"></label>
+
+                            <input asp-for="VatNumber"
+                                   placeholder="If applicable" />
+
+                        </div>
+
+
+                        <div class="register-field">
+
+                            <label asp-for="CsdNumber"></label>
+
+                            <input asp-for="CsdNumber"
+                                   placeholder="If applicable" />
+
+                            <small>
+                                Useful for suppliers doing business with
+                                government entities.
+                            </small>
+
+                        </div>
+
+
+                        <div class="register-field">
+
+                            <label asp-for="Website"></label>
+
+                            <input asp-for="Website"
+                                   placeholder="https://www.example.co.za" />
+
+                            <span asp-validation-for="Website"></span>
+
+                        </div>
+
+
+                        <div class="register-field-full">
+
+                            <label class="register-checkbox-card">
+
+                                <input asp-for="IsAbsaCustomer"
+                                       type="checkbox" />
+
+                                <span class="register-checkbox-box">
+                                    <i class="bi bi-check"></i>
+                                </span>
+
+                                <span>
+                                    <strong>
+                                        We're already an Absa Business customer
+                                    </strong>
+
+                                    <small>
+                                        You won't need to enter your bank account
+                                        details during registration.
+                                    </small>
+                                </span>
+
+                            </label>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                     BUSINESS LOCATION
+                ================================================== -->
+
+                <section class="register-form-section">
+
+                    <div class="register-section-heading">
+
+                        <div class="register-section-icon navy">
+                            <i class="bi bi-geo-alt"></i>
+                        </div>
+
+                        <div>
+                            <span>SECTION 02</span>
+                            <h2>Business location</h2>
+
+                            <p>
+                                Where does the business primarily operate?
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="register-fields">
+
+                        <div class="register-field register-field-full">
+
+                            <label asp-for="StreetAddress"></label>
+
+                            <input asp-for="StreetAddress"
+                                   placeholder="Street and building address" />
+
+                            <span asp-validation-for="StreetAddress"></span>
+
+                        </div>
+
+
+                        <div class="register-field">
+
+                            <label asp-for="City"></label>
+
+                            <input asp-for="City"
+                                   placeholder="e.g. Durban" />
+
+                            <span asp-validation-for="City"></span>
+
+                        </div>
+
+
+                        <div class="register-field">
+
+                            <label asp-for="Province"></label>
+
+                            <select asp-for="Province">
+
+                                <option value="">
+                                    Select province
+                                </option>
+
+                                <option>Eastern Cape</option>
+                                <option>Free State</option>
+                                <option>Gauteng</option>
+                                <option>KwaZulu-Natal</option>
+                                <option>Limpopo</option>
+                                <option>Mpumalanga</option>
+                                <option>North West</option>
+                                <option>Northern Cape</option>
+                                <option>Western Cape</option>
+
+                            </select>
+
+                            <span asp-validation-for="Province"></span>
+
+                        </div>
+
+
+                        <div class="register-field">
+
+                            <label asp-for="PostalCode"></label>
+
+                            <input asp-for="PostalCode"
+                                   placeholder="e.g. 4001" />
+
+                            <span asp-validation-for="PostalCode"></span>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                     PRIMARY CONTACT
+                ================================================== -->
+
+                <section class="register-form-section">
+
+                    <div class="register-section-heading">
+
+                        <div class="register-section-icon gold">
+                            <i class="bi bi-person"></i>
+                        </div>
+
+                        <div>
+                            <span>SECTION 03</span>
+                            <h2>Primary contact</h2>
+
+                            <p>
+                                Who will manage this VERA business account?
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="register-fields">
+
+                        <div class="register-field">
+
+                            <label asp-for="FirstName"></label>
+
+                            <input asp-for="FirstName"
+                                   placeholder="First name" />
+
+                            <span asp-validation-for="FirstName"></span>
+
+                        </div>
+
+
+                        <div class="register-field">
+
+                            <label asp-for="Surname"></label>
+
+                            <input asp-for="Surname"
+                                   placeholder="Surname" />
+
+                            <span asp-validation-for="Surname"></span>
+
+                        </div>
+
+
+                        <div class="register-field">
+
+                            <label asp-for="ContactRole"></label>
+
+                            <input asp-for="ContactRole"
+                                   placeholder="e.g. Founder / Director" />
+
+                            <span asp-validation-for="ContactRole"></span>
+
+                        </div>
+
+
+                        <div class="register-field">
+
+                            <label asp-for="Email"></label>
+
+                            <input asp-for="Email"
+                                   placeholder="name@business.co.za" />
+
+                            <span asp-validation-for="Email"></span>
+
+                        </div>
+
+
+                        <div class="register-field">
+
+                            <label asp-for="PhoneNumber"></label>
+
+                            <input asp-for="PhoneNumber"
+                                   placeholder="e.g. 082 123 4567" />
+
+                            <span asp-validation-for="PhoneNumber"></span>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                     SECURITY
+                ================================================== -->
+
+                <section class="register-form-section register-last-section">
+
+                    <div class="register-section-heading">
+
+                        <div class="register-section-icon purple">
+                            <i class="bi bi-lock"></i>
+                        </div>
+
+                        <div>
+                            <span>SECTION 04</span>
+                            <h2>Account security</h2>
+
+                            <p>
+                                Create the credentials you'll use to access VERA.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="register-fields">
+
+                        <div class="register-field">
+
+                            <label asp-for="Password"></label>
+
+                            <div class="register-password">
+
+                                <input asp-for="Password"
+                                       placeholder="At least 8 characters"
+                                       id="registerPassword" />
+
+                                <button type="button"
+                                        onclick="toggleRegisterPassword('registerPassword', this)">
+
+                                    <i class="bi bi-eye"></i>
+
+                                </button>
+
+                            </div>
+
+                            <span asp-validation-for="Password"></span>
+
+                        </div>
+
+
+                        <div class="register-field">
+
+                            <label asp-for="ConfirmPassword"></label>
+
+                            <div class="register-password">
+
+                                <input asp-for="ConfirmPassword"
+                                       placeholder="Repeat password"
+                                       id="registerConfirmPassword" />
+
+                                <button type="button"
+                                        onclick="toggleRegisterPassword('registerConfirmPassword', this)">
+
+                                    <i class="bi bi-eye"></i>
+
+                                </button>
+
+                            </div>
+
+                            <span asp-validation-for="ConfirmPassword"></span>
+
+                        </div>
+
+
+                        <div class="register-field-full">
+
+                            <label class="register-confirm">
+
+                                <input asp-for="ConfirmInformation"
+                                       type="checkbox" />
+
+                                <span>
+                                    I confirm that the information provided
+                                    is accurate and that I am authorised to
+                                    create this VERA profile on behalf of
+                                    the business.
+                                </span>
+
+                            </label>
+
+                            <span asp-validation-for="ConfirmInformation"
+                                  class="register-confirm-error">
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                     SUBMIT
+                ================================================== -->
+
+                <div class="register-submit">
+
+                    <div>
+                        <span>Already have a VERA account?</span>
+
+                        <a asp-controller="Account"
+                           asp-action="Login">
+                            Sign in
+                        </a>
+                    </div>
+
+
+                    <button type="submit"
+                            class="register-submit-btn">
+
+                        Create business profile
+
+                        <i class="bi bi-arrow-right"></i>
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+@section Scripts {
+
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+
+        function toggleRegisterPassword(inputId, button) {
+
+            const input =
+                document.getElementById(inputId);
+
+            const icon =
+                button.querySelector("i");
+
+            if (input.type === "password") {
+
+                input.type = "text";
+
+                icon.classList.remove("bi-eye");
+                icon.classList.add("bi-eye-slash");
+
+            }
+            else {
+
+                input.type = "password";
+
+                icon.classList.remove("bi-eye-slash");
+                icon.classList.add("bi-eye");
+
+            }
+
+        }
+
+    </script>
+
+}
