@@ -4,28 +4,16 @@ using VERA.Models.Entities;
 
 namespace VERA.Business.Services
 {
-    /// <summary>
-    /// Generates a deterministic fingerprint for an opportunity.
-    ///
-    /// The fingerprint allows VERA to identify potentially duplicated
-    /// purchase-order funding requests without storing or comparing the
-    /// original values as one long plain-text identifier.
-    /// </summary>
+    // Generates a deterministic fingerprint for an opportunity.
+    // The fingerprint allows VERA to identify potentially duplicated purchase-order funding requests without storing or comparing the original values as one long plain-text identifier.
     public class FingerprintService
-    {
-        /// <summary>
-        /// Generates a SHA-256 fingerprint from important opportunity fields.
-        /// </summary>
-        /// <param name="opportunity">
-        /// The opportunity for which the fingerprint must be generated.
-        /// </param>
-        /// <returns>
-        /// A hexadecimal SHA-256 fingerprint representing the opportunity.
-        /// </returns>
+    {       
+        // Generates a SHA-256 fingerprint from important opportunity fields.
+        // The opportunity for which the fingerprint must be generated.
+        // A hexadecimal SHA-256 fingerprint representing the opportunity.
         public string Generate(Opportunity opportunity)
         {
-            // Normalise the buyer name so differences in capitalisation
-            // or accidental spaces do not produce different fingerprints.
+            // Normalise the buyer name so differences in capitalisation or accidental spaces do not produce different fingerprints.
             string buyerName =
                 opportunity.BuyerName.Trim().ToUpperInvariant();
 
@@ -34,7 +22,7 @@ namespace VERA.Business.Services
                 opportunity.PONumber.Trim().ToUpperInvariant();
 
             // Combine selected identifying attributes of the opportunity.
-            //
+           
             // BusinessId identifies the SME submitting the opportunity.
             // BuyerName identifies the organisation that issued the PO.
             // PONumber identifies the buyer's purchase order.
@@ -45,8 +33,7 @@ namespace VERA.Business.Services
                 $"{poNumber}|" +
                 $"{opportunity.POValue:F2}";
 
-            // Convert the combined string into bytes because the SHA-256
-            // algorithm operates on byte data.
+            // Convert the combined string into bytes because the SHA-256 algorithm operates on byte data.
             byte[] inputBytes =
                 Encoding.UTF8.GetBytes(rawValue);
 
@@ -57,8 +44,7 @@ namespace VERA.Business.Services
             byte[] hashBytes =
                 sha256.ComputeHash(inputBytes);
 
-            // Convert the hash into a hexadecimal string that can easily
-            // be stored and compared in the database.
+            // Convert the hash into a hexadecimal string that can easily be stored and compared in the database.
             return Convert.ToHexString(hashBytes);
         }
     }
