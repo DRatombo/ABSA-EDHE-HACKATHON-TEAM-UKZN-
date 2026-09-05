@@ -1,248 +1,375 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
+
+    <!-- Basic page settings -->
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- Page title -->
     <title>@ViewData["Title"] | VERA</title>
 
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <!-- VERA Styles -->
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/VERA.Web.styles.css" asp-append-version="true" />
+
+    <!-- Bootstrap styles -->
+    <link rel="stylesheet"
+          href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+
+
+    <!-- Bootstrap icons -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+
+
+    <!-- Main VERA styles -->
+    <link rel="stylesheet"
+          href="~/css/site.css"
+          asp-append-version="true" />
+
+
+    <!-- Styles created by Razor views -->
+    <link rel="stylesheet"
+          href="~/VERA.Web.styles.css"
+          asp-append-version="true" />
+
 </head>
+
+
 @{
-    var currentController = ViewContext.RouteData.Values["controller"]?.ToString();
-    var currentAction = ViewContext.RouteData.Values["action"]?.ToString();
+        // Get the current controller and page
+        // This is used to highlight the active sidebar link
+        var currentController =
+                ViewContext.RouteData.Values["controller"]?.ToString();
+
+        var currentAction =
+                ViewContext.RouteData.Values["action"]?.ToString();
 }
+
+
 <body>
 
 
-      <!-- =========================
-     VERA PUBLIC SIDEBAR
-========================== -->
-
-<aside class="vera-public-sidebar">
-
-    <!-- Brand -->
-    <div class="vera-sidebar-brand">
-
-        <a asp-controller="Home"
-           asp-action="Index"
-           class="vera-sidebar-logo">
-            VERA
-        </a>
-
-        <span class="vera-sidebar-tagline">
-            Opportunity<br />
-            trusts growth
-        </span>
-
-    </div>
-
-
-    <!-- Navigation -->
-    <nav class="vera-sidebar-nav">
-
-    <a asp-controller="Home"
-       asp-action="Index"
-       class="vera-sidebar-link @(currentController == "Home" && currentAction == "Index" ? "active" : "")">
-
-        <i class="bi bi-house-door"></i>
-        <span>Home</span>
-
-    </a>
-
-
-    <a asp-controller="Home"
-       asp-action="HowItWorks"
-       class="vera-sidebar-link @(currentController == "Home" && currentAction == "HowItWorks" ? "active" : "")">
-
-        <i class="bi bi-diagram-3"></i>
-        <span>How it works</span>
-
-    </a>
-
-
-    <a asp-controller="Home"
-       asp-action="ForSMEs"
-       class="vera-sidebar-link @(currentController == "Home" && currentAction == "ForSMEs" ? "active" : "")">
-
-        <i class="bi bi-briefcase"></i>
-        <span>For SMEs</span>
-
-    </a>
-
-
-    <a asp-controller="Home"
-       asp-action="ForFunders"
-       class="vera-sidebar-link @(currentController == "Home" && currentAction == "ForFunders" ? "active" : "")">
-
-        <i class="bi bi-bank"></i>
-        <span>For Funders</span>
-
-    </a>
-
-
-    <a asp-controller="Home"
-       asp-action="About"
-       class="vera-sidebar-link @(currentController == "Home" && currentAction == "About" ? "active" : "")">
-
-        <i class="bi bi-lightbulb"></i>
-        <span>Why VERA</span>
-
-    </a>
-
-</nav>
-
-
-    <!-- Bottom actions -->
-    <div class="vera-sidebar-bottom">
-
-        <a asp-controller="Account"
-           asp-action="Login"
-           class="vera-sidebar-signin">
-
-            <i class="bi bi-box-arrow-in-right"></i>
-
-            <span>Sign in</span>
-
-        </a>
-
-
-        <a asp-controller="Account"
-           asp-action="Register"
-           class="vera-sidebar-cta">
-
-            <span>Get started</span>
-
-            <i class="bi bi-arrow-right"></i>
-
-        </a>
-
-    </div>
-
-</aside>
-<div class="vera-public-content">
-
-    <main role="main">
-        @RenderBody()
-    </main>
-
-    <footer class="vera-footer">
-        ...
-    </footer>
-
-</div>
-
-
-    <!-- =========================
-         PAGE CONTENT
-    ========================== -->
-    <main role="main">
-        @RenderBody()
-    </main>
-
-
     <!-- =====================================================
-     VERA BOTTOM NAVIGATION
-===================================================== -->
+         VERA PUBLIC SIDEBAR
+    ====================================================== -->
 
-<footer class="vera-bottom-nav">
+    <aside class="vera-public-sidebar">
 
-    <div class="vera-bottom-nav-main">
 
-        <!-- BRAND -->
-        <div class="vera-bottom-brand">
+        <!-- VERA brand -->
+        <div class="vera-sidebar-brand">
 
             <a asp-controller="Home"
                asp-action="Index"
-               class="vera-bottom-logo">
+               class="vera-sidebar-logo">
+
                 VERA
+
             </a>
 
-           
+
+            <!-- Small VERA tagline -->
+            <span class="vera-sidebar-tagline">
+
+                Opportunity<br />
+                trusts growth
+
+            </span>
 
         </div>
 
 
-        <!-- NAVIGATION -->
-        <nav class="vera-bottom-links">
 
+        <!-- =================================================
+             PUBLIC NAVIGATION
+        ================================================== -->
+
+        <nav class="vera-sidebar-nav">
+
+
+            <!-- Home -->
             <a asp-controller="Home"
-               asp-action="Index">
-                Home
+               asp-action="Index"
+               class="vera-sidebar-link @(currentController == "Home" && currentAction == "Index" ? "active" : "")">
+
+                <i class="bi bi-house-door"></i>
+
+                <span>
+                    Home
+                </span>
+
             </a>
 
+
+
+            <!-- How VERA works -->
             <a asp-controller="Home"
-               asp-action="HowItWorks">
-                How it works
+               asp-action="HowItWorks"
+               class="vera-sidebar-link @(currentController == "Home" && currentAction == "HowItWorks" ? "active" : "")">
+
+                <i class="bi bi-diagram-3"></i>
+
+                <span>
+                    How it works
+                </span>
+
             </a>
 
+
+
+            <!-- SME information -->
             <a asp-controller="Home"
-               asp-action="ForSMEs">
-                For SMEs
+               asp-action="ForSMEs"
+               class="vera-sidebar-link @(currentController == "Home" && currentAction == "ForSMEs" ? "active" : "")">
+
+                <i class="bi bi-briefcase"></i>
+
+                <span>
+                    For SMEs
+                </span>
+
             </a>
 
+
+
+            <!-- Funder information -->
             <a asp-controller="Home"
-               asp-action="ForFunders">
-                For Funders
+               asp-action="ForFunders"
+               class="vera-sidebar-link @(currentController == "Home" && currentAction == "ForFunders" ? "active" : "")">
+
+                <i class="bi bi-bank"></i>
+
+                <span>
+                    For Funders
+                </span>
+
             </a>
 
+
+
+            <!-- Why VERA -->
             <a asp-controller="Home"
-               asp-action="About">
-                Why VERA
+               asp-action="About"
+               class="vera-sidebar-link @(currentController == "Home" && currentAction == "About" ? "active" : "")">
+
+                <i class="bi bi-lightbulb"></i>
+
+                <span>
+                    Why VERA
+                </span>
+
             </a>
 
         </nav>
 
+
+
+        <!-- =================================================
+             SIDEBAR BOTTOM BUTTONS
+        ================================================== -->
+
+        <div class="vera-sidebar-bottom">
+
+
+            <!-- Sign in button -->
+            <a asp-controller="Account"
+               asp-action="Login"
+               class="vera-sidebar-signin">
+
+                <i class="bi bi-box-arrow-in-right"></i>
+
+                <span>
+                    Sign in
+                </span>
+
+            </a>
+
+
+
+            <!-- Get started button -->
+            <a asp-controller="Account"
+               asp-action="Register"
+               class="vera-sidebar-cta">
+
+                <span>
+                    Get started
+                </span>
+
+                <i class="bi bi-arrow-right"></i>
+
+            </a>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- =====================================================
+         PAGE CONTENT
+    ====================================================== -->
+
+    <div class="vera-public-content">
+
+        <!-- Each public page is shown here -->
+        <main role="main">
+
+            @RenderBody()
+
+        </main>
+
     </div>
 
 
-    <!-- LOWER STRIP -->
-    <div class="vera-bottom-legal">
 
-        <div class="vera-bottom-legal-left">
+    <!-- =====================================================
+         VERA BOTTOM NAVIGATION
+    ====================================================== -->
 
-            <span>
-                © 2026 VERA • Team UKZN
-            </span>
+    <footer class="vera-bottom-nav">
 
-            <span class="vera-legal-dot"></span>
 
-            
+        <!-- Top section of the footer -->
+        <div class="vera-bottom-nav-main">
+
+
+            <!-- VERA logo -->
+            <div class="vera-bottom-brand">
+
+                <a asp-controller="Home"
+                   asp-action="Index"
+                   class="vera-bottom-logo">
+
+                    VERA
+
+                </a>
+
+            </div>
+
+
+
+            <!-- Footer navigation links -->
+            <nav class="vera-bottom-links">
+
+
+                <!-- Home -->
+                <a asp-controller="Home"
+                   asp-action="Index">
+
+                    Home
+
+                </a>
+
+
+                <!-- How it works -->
+                <a asp-controller="Home"
+                   asp-action="HowItWorks">
+
+                    How it works
+
+                </a>
+
+
+                <!-- SME page -->
+                <a asp-controller="Home"
+                   asp-action="ForSMEs">
+
+                    For SMEs
+
+                </a>
+
+
+                <!-- Funder page -->
+                <a asp-controller="Home"
+                   asp-action="ForFunders">
+
+                    For Funders
+
+                </a>
+
+
+                <!-- Why VERA -->
+                <a asp-controller="Home"
+                   asp-action="About">
+
+                    Why VERA
+
+                </a>
+
+            </nav>
 
         </div>
 
 
-        <div class="vera-bottom-legal-links">
 
-            <a asp-controller="Home"
-               asp-action="Privacy">
-                Privacy
-            </a>
+        <!-- =================================================
+             FOOTER LEGAL SECTION
+        ================================================== -->
 
-            <a href="#">
-                Terms
-            </a>
+        <div class="vera-bottom-legal">
+
+
+            <!-- Copyright -->
+            <div class="vera-bottom-legal-left">
+
+                <span>
+                    © 2026 VERA • Team UKZN
+                </span>
+
+                <span class="vera-legal-dot"></span>
+
+            </div>
+
+
+
+            <!-- Legal links -->
+            <div class="vera-bottom-legal-links">
+
+
+                <!-- Privacy page -->
+                <a asp-controller="Home"
+                   asp-action="Privacy">
+
+                    Privacy
+
+                </a>
+
+
+                <!-- Terms page can be added later -->
+                <a href="#">
+
+                    Terms
+
+                </a>
+
+            </div>
 
         </div>
 
-    </div>
-
-</footer>
+    </footer>
 
 
-    <!-- Scripts -->
+
+    <!-- =====================================================
+         SCRIPTS
+    ====================================================== -->
+    <!-- jQuery -->
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
 
+
+    <!-- Bootstrap JavaScript -->
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
-    <script src="~/js/site.js" asp-append-version="true"></script>
 
+    <!-- Main VERA JavaScript -->
+    <script src="~/js/site.js"
+            asp-append-version="true"></script>
+
+
+    <!-- Allows individual pages to add their own scripts -->
     @await RenderSectionAsync("Scripts", required: false)
 
+
 </body>
+
 </html>

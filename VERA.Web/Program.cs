@@ -1,146 +1,184 @@
+using Microsoft.AspNetCore.RateLimiting;
 using Microsoft.EntityFrameworkCore;
+using System.Threading.RateLimiting;
 using VERA.Business.Services;
 using VERA.Data.Context;
+using VERA.Registry.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// ---------------------------------------------------------
-// ADD MVC SUPPORT
-// ---------------------------------------------------------
-//
-// Enables Controllers and Razor Views for the VERA web app.
+
+// Add MVC so we can use controllers and views
 builder.Services.AddControllersWithViews();
 
 
-// ---------------------------------------------------------
-// DATABASE CONNECTION
-// ---------------------------------------------------------
-//
-// Connect VERA to the Microsoft SQL Server database using
-// the connection string stored in appsettings.json.
+// MAIN VERA DATABASE
+
+// Connect to the main VERA database
 builder.Services.AddDbContext<VeraDbContext>(options =>
     options.UseSqlServer(
         builder.Configuration.GetConnectionString("DefaultConnection")));
 
 
-// ---------------------------------------------------------
-// REGISTER VERA BUSINESS SERVICES
-// ---------------------------------------------------------
-//
-// These services contain VERA's core opportunity assessment
-// and fulfilment logic.
-//
-// AddScoped means ASP.NET Core creates one instance of each
-// service for each incoming web request.
+// REGISTRY DATABASE
 
+// Connect to the separate Registry database
+builder.Services.AddDbContext<RegistryDbContext>(options =>
+    options.UseSqlServer(
+        builder.Configuration.GetConnectionString("RegistryConnection")));
+
+
+// VERA BUSINESS SERVICES
+
+// Register the services used to assess an SME opportunity
 builder.Services.AddScoped<FundingCalculatorService>();
-
 builder.Services.AddScoped<FingerprintService>();
-
 builder.Services.AddScoped<DuplicateDetectionService>();
-
 builder.Services.AddScoped<VerificationService>();
-
 builder.Services.AddScoped<FulfilmentAssessmentService>();
-
 builder.Services.AddScoped<OpportunityDecisionService>();
-
 builder.Services.AddScoped<FulfilmentPassportService>();
 
-// This is the main orchestration service.
-//
-// Controllers can call this one service to run:
-// funding calculations
-// -> fingerprint generation
-// -> duplicate detection
-// -> verification
-// -> fulfilment assessment
-// -> final readiness decision.
+// Runs the full opportunity assessment process
 builder.Services.AddScoped<OpportunityAssessmentService>();
 
 
-// ---------------------------------------------------------
-// BUILD THE APPLICATION
-// ---------------------------------------------------------
+// REGISTRY SERVICES
+
+// These services are used to check and verify purchase orders
+builder.Services.AddScoped<VERA.Registry.Services.DocumentHashService>();
+builder.Services.AddScoped<VERA.Registry.Services.FinancingClaimService>();
+
+// Full name is used because VERA.Business also has a FingerprintService
+builder.Services.AddScoped<VERA.Registry.Services.FingerprintService>();
+
+builder.Services.AddScoped<VERA.Registry.Services.PdfDocumentAnalysisService>();
+builder.Services.AddScoped<VERA.Registry.Services.RegistryVerificationService>();
+builder.Services.AddScoped<VERA.Registry.Services.VeraIdService>();
+
+
+// RATE LIMITING
+
+// Limits repeated requests from the same IP address
+builder.Services.AddRateLimiter(options =>
+{
+    options.RejectionStatusCode = StatusCodes.Status429TooManyRequests;
+
+    options.GlobalLimiter =
+        PartitionedRateLimiter.Create<HttpContext, string>(context =>
+        {
+            // Use the user's IP address to create a request limit
+            var clientIp =
+                context.Connection.RemoteIpAddress?.ToString()
+                ?? "unknown";
+
+            return RateLimitPartition.GetFixedWindowLimiter(
+                clientIp,
+                _ => new FixedWindowRateLimiterOptions
+                {
+                    // Allow a reasonable number of requests per minute
+                    PermitLimit = 100,
+
+                    // Start a fresh limit every minute
+                    Window = TimeSpan.FromMinutes(1),
+
+                    // Do not queue large numbers of extra requests
+                    QueueLimit = 0,
+
+                    AutoReplenishment = true
+                });
+        });
+});
+
+
+// BUILD APP
 
 var app = builder.Build();
 
 
-// ---------------------------------------------------------
 // ERROR HANDLING
-// ---------------------------------------------------------
-//
-// In production, users should not see detailed developer
-// exception information.
+
+// Show a normal error page instead of developer errors when deployed
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
 
-    // Adds HTTP Strict Transport Security in production.
+    // Tell browsers to only use HTTPS for the site
     app.UseHsts();
 }
 
 
-// ---------------------------------------------------------
 // HTTPS
-// ---------------------------------------------------------
-//
-// Redirect HTTP traffic to HTTPS.
+
+// Redirect HTTP requests to HTTPS
 app.UseHttpsRedirection();
 
 
-// ---------------------------------------------------------
+// SECURITY HEADERS
+
+// Add browser security headers to every response
+app.Use(async (context, next) =>
+{
+    // Stops browsers from guessing a different content type
+    context.Response.Headers["X-Content-Type-Options"] = "nosniff";
+
+    // Stops VERA from being loaded inside another website's frame
+    context.Response.Headers["X-Frame-Options"] = "DENY";
+
+    // Reduces the amount of referrer information shared with other sites
+    context.Response.Headers["Referrer-Policy"] =
+        "strict-origin-when-cross-origin";
+
+    // VERA does not need access to these browser/device features
+    context.Response.Headers["Permissions-Policy"] =
+        "camera=(), microphone=(), geolocation=()";
+
+    // Prevent older browsers from caching sensitive authenticated pages
+    if (context.Request.Path.StartsWithSegments("/SME") ||
+        context.Request.Path.StartsWithSegments("/Registry") ||
+        context.Request.Path.StartsWithSegments("/Assessment"))
+    {
+        context.Response.Headers["Cache-Control"] =
+            "no-store, no-cache, must-revalidate";
+
+        context.Response.Headers["Pragma"] = "no-cache";
+    }
+
+    await next();
+});
+
+
 // STATIC FILES
-// ---------------------------------------------------------
-//
-// Allows VERA to serve files from wwwroot such as:
-// CSS
-// JavaScript
-// images
-// logos
+
+// Allow the website to use CSS, JavaScript and images from wwwroot
 app.UseStaticFiles();
 
 
-// ---------------------------------------------------------
 // ROUTING
-// ---------------------------------------------------------
 
+// Enable routing between pages and controllers
 app.UseRouting();
 
 
-// ---------------------------------------------------------
+// RATE LIMITING
+
+// Apply request limits after static files have been handled
+app.UseRateLimiter();
+
+
 // AUTHORISATION
-// ---------------------------------------------------------
-//
-// This prepares the application for controller/page
-// authorisation rules.
-//
-// Authentication can be added separately if the team
-// implements login during the MVP.
+
+// Enable authorisation rules used by the application
 app.UseAuthorization();
 
 
-// ---------------------------------------------------------
-// DEFAULT MVC ROUTE
-// ---------------------------------------------------------
-//
-// Example:
-//
-// /Opportunity/Details/5
-//
-// Controller = Opportunity
-// Action     = Details
-// id         = 5
-//
-// If no controller/action is supplied, the application
-// opens Home/Index.
+// DEFAULT ROUTE
+
+// If no page is given, open the Home page
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 
-// ---------------------------------------------------------
-// START VERA
-// ---------------------------------------------------------
-
+// Start the website
 app.Run();

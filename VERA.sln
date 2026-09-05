@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 18
-VisualStudioVersion = 18.7.11925.98 stable
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36511.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VERA.Web", "VERA.Web\VERA.Web.csproj", "{03B98928-5F06-417A-AD5A-D14C5064456F}"
 EndProject
@@ -12,6 +12,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VERA.Business", "VERA.Business\VERA.Business.csproj", "{67A6A8C1-F5EB-427C-8FFC-A7D96870F865}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VERA.Tests", "VERA.Tests\VERA.Tests.csproj", "{A0E7D4CB-6285-496E-B916-9BBFB690DCC8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VERA.Registry", "VERA.Registry\VERA.Registry.csproj", "{21CB7B6B-1456-450F-B2C7-2E968BB3E0E1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{A0E7D4CB-6285-496E-B916-9BBFB690DCC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A0E7D4CB-6285-496E-B916-9BBFB690DCC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A0E7D4CB-6285-496E-B916-9BBFB690DCC8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21CB7B6B-1456-450F-B2C7-2E968BB3E0E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21CB7B6B-1456-450F-B2C7-2E968BB3E0E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21CB7B6B-1456-450F-B2C7-2E968BB3E0E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21CB7B6B-1456-450F-B2C7-2E968BB3E0E1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

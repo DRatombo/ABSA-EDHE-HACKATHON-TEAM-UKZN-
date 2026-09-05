@@ -1,0 +1,1189 @@
+﻿@model VERA.Web.Models.RegistryVerifyViewModel
+
+@{
+    // Set the browser page title
+    ViewData["Title"] = "Registry Verification";
+}
+
+
+<!-- =====================================================
+     REGISTRY PAGE
+====================================================== -->
+
+<section class="vera-registry-page">
+
+    <div class="vera-registry-container">
+
+
+        <!-- =============================================
+             LEFT SIDE - PAGE INTRODUCTION
+        ============================================== -->
+
+        <div class="vera-registry-intro">
+
+
+            <!-- Small section label -->
+            <div class="vera-registry-label">
+
+                <span class="vera-registry-label-number">
+                    01
+                </span>
+
+                <span>
+                    VERA REGISTRY
+                </span>
+
+            </div>
+
+
+            <!-- Main heading -->
+            <h1 class="vera-registry-title">
+
+                Verify the opportunity.
+
+                <span>
+                    Before capital moves.
+                </span>
+
+            </h1>
+
+
+            <!-- Short explanation -->
+            <p class="vera-registry-description">
+
+                Upload a purchase order and let VERA read the key details,
+                then confirm them before running the Registry check.
+
+            </p>
+
+
+            <!-- What the Registry checks -->
+            <div class="vera-registry-checks">
+
+
+                <!-- PO check -->
+                <div class="vera-registry-check">
+
+                    <div class="vera-registry-check-icon">
+                        <i class="bi bi-file-earmark-check"></i>
+                    </div>
+
+                    <div>
+                        <strong>Purchase order</strong>
+                        <span>Confirm the PO exists in the Registry.</span>
+                    </div>
+
+                </div>
+
+
+                <!-- Supplier check -->
+                <div class="vera-registry-check">
+
+                    <div class="vera-registry-check-icon">
+                        <i class="bi bi-building-check"></i>
+                    </div>
+
+                    <div>
+                        <strong>Supplier details</strong>
+                        <span>Check that the supplier matches the registered PO.</span>
+                    </div>
+
+                </div>
+
+
+                <!-- Financing check -->
+                <div class="vera-registry-check">
+
+                    <div class="vera-registry-check-icon">
+                        <i class="bi bi-shield-check"></i>
+                    </div>
+
+                    <div>
+                        <strong>Financing status</strong>
+                        <span>Check for an existing active financing claim.</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =============================================
+             RIGHT SIDE - REGISTRY FORM
+        ============================================== -->
+
+        <div class="vera-registry-form-card">
+
+
+            <!-- Form heading -->
+            <div class="vera-registry-form-header">
+
+                <div class="vera-registry-form-icon">
+                    <i class="bi bi-shield-check"></i>
+                </div>
+
+                <div>
+
+                    <span>
+                        REGISTRY CHECK
+                    </span>
+
+                    <h2>
+                        Verify purchase order
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+            <!-- Short instruction -->
+            <p class="vera-registry-form-text">
+
+                Upload the PO first, then confirm the extracted details before verification.
+
+            </p>
+
+
+
+            <!-- =================================================
+                 STEP 1 - UPLOAD PURCHASE ORDER
+            ================================================== -->
+
+            <div class="vera-registry-upload-section">
+
+
+                <!-- Step heading -->
+                <div class="vera-registry-upload-heading">
+
+                    <span class="vera-registry-step">
+                        1
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Upload purchase order
+                        </strong>
+
+                        <span>
+                            VERA can read the PO number and amount from your PDF.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Form used only to analyse the PDF -->
+                <form asp-controller="Registry"
+                      asp-action="AnalyseDocument"
+                      method="post"
+                      enctype="multipart/form-data">
+
+
+                    <!-- Protect the form -->
+                    @Html.AntiForgeryToken()
+
+
+                    <!-- Clickable upload area -->
+                    <label class="vera-registry-upload-box">
+
+                        <div class="vera-registry-upload-icon">
+
+                            <i class="bi bi-file-earmark-pdf"></i>
+
+                        </div>
+
+
+                        <div class="vera-registry-upload-copy">
+
+                            <strong id="registryFileName">
+                                Choose purchase order PDF
+                            </strong>
+
+                            <span>
+                                PDF only • Maximum 10 MB
+                            </span>
+
+                        </div>
+
+
+                        <div class="vera-registry-upload-action">
+
+                            Browse
+
+                        </div>
+
+
+                        <!-- Actual file input is hidden -->
+                        <input asp-for="Document"
+                               type="file"
+                               accept=".pdf,application/pdf"
+                               id="registryDocument"
+                               hidden />
+
+                    </label>
+
+
+                    <!-- Show the PDF analysis result -->
+                    @if (!string.IsNullOrWhiteSpace(Model.PdfMessage))
+                    {
+                        <div class="@(Model.PdfAnalysed
+                                                         ? "vera-pdf-message-success"
+                                                         : "vera-pdf-message-error")">
+
+                        <i class="bi @(Model.PdfAnalysed
+                                                           ? "bi-check-circle-fill"
+                                                           : "bi-exclamation-circle-fill")">
+                        </i>
+
+                            <span>
+                                @Model.PdfMessage
+                            </span>
+
+                        </div>
+                                        }
+
+
+                    <!-- Keep any details already entered -->
+                    <input type="hidden"
+                           asp-for="VeraPOId" />
+
+                    <input type="hidden"
+                           asp-for="PONumber" />
+
+                    <input type="hidden"
+                           asp-for="SupplierName" />
+
+                    <input type="hidden"
+                           asp-for="Amount" />
+
+
+                    <!-- Read the uploaded PDF -->
+                    <button type="submit"
+                            class="vera-registry-analyse-button">
+
+                        <i class="bi bi-stars"></i>
+
+                        <span>
+                            Read purchase order
+                        </span>
+
+                    </button>
+
+                </form>
+
+            </div>
+
+
+
+            <!-- Divider between the two steps -->
+            <div class="vera-registry-divider">
+
+                <span>
+                    THEN CONFIRM THE DETAILS
+                </span>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 STEP 2 - CONFIRM DETAILS
+            ================================================== -->
+
+            <div class="vera-registry-confirm-section">
+
+
+                <!-- Step heading -->
+                <div class="vera-registry-upload-heading">
+
+                    <span class="vera-registry-step">
+                        2
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Confirm opportunity details
+                        </strong>
+
+                        <span>
+                            Check the extracted information before verification.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Final Registry verification form -->
+                <form asp-controller="Registry"
+                      asp-action="Verify"
+                      method="post">
+
+
+                    <!-- Protect the form -->
+                    @Html.AntiForgeryToken()
+
+
+                    <!-- Keep proof that a valid PO was analysed -->
+                    <input type="hidden"
+                           asp-for="PdfAnalysed" />
+
+
+                    <!-- Show form errors -->
+                    <div asp-validation-summary="ModelOnly"
+                         class="vera-registry-validation">
+                    </div>
+
+
+
+                    <!-- VERA PO ID -->
+                    <div class="vera-registry-field">
+
+                        <label asp-for="VeraPOId">
+                            VERA PO ID
+                        </label>
+
+                        <input asp-for="VeraPOId"
+                               placeholder="e.g. VERA-PO-2026-001" />
+
+                        <span asp-validation-for="VeraPOId"
+                              class="vera-registry-validation">
+                        </span>
+
+                    </div>
+
+
+
+                    <!-- PO Number -->
+                    <div class="vera-registry-field">
+
+                        <label asp-for="PONumber">
+                            PO Number
+                        </label>
+
+                        <div class="vera-registry-extracted-field">
+
+                            <input asp-for="PONumber"
+                                   placeholder="Enter purchase order number" />
+
+                            @if (Model.PdfAnalysed &&
+                                                        !string.IsNullOrWhiteSpace(Model.PONumber))
+                            {
+                                <!-- Shows that this value came from the PDF -->
+                                <span class="vera-extracted-badge">
+
+                                    <i class="bi bi-stars"></i>
+
+                                    PDF
+
+                                </span>
+                            }
+
+                        </div>
+
+                        <span asp-validation-for="PONumber"
+                              class="vera-registry-validation">
+                        </span>
+
+                    </div>
+
+
+
+                    <!-- Supplier Name -->
+                    <div class="vera-registry-field">
+
+                        <label asp-for="SupplierName">
+                            Supplier Name
+                        </label>
+
+                        <input asp-for="SupplierName"
+                               placeholder="Enter supplier business name" />
+
+                        <span asp-validation-for="SupplierName"
+                              class="vera-registry-validation">
+                        </span>
+
+                    </div>
+
+
+
+                    <!-- PO Amount -->
+                    <div class="vera-registry-field">
+
+                        <label asp-for="Amount">
+                            PO Amount
+                        </label>
+
+
+                        <!-- Rand amount input -->
+                        <div class="vera-registry-money">
+
+                            <span>
+                                R
+                            </span>
+
+
+                            <div class="vera-registry-extracted-field vera-registry-amount-field">
+
+                                <input asp-for="Amount"
+                                       type="number"
+                                       step="0.01"
+                                       min="0"
+                                       placeholder="0.00" />
+
+                                @if (Model.PdfAnalysed &&
+                                                                Model.Amount > 0)
+                                {
+                                    <!-- Shows that this value came from the PDF -->
+                                    <span class="vera-extracted-badge">
+
+                                        <i class="bi bi-stars"></i>
+
+                                        PDF
+
+                                    </span>
+                                }
+
+                            </div>
+
+                        </div>
+
+                        <span asp-validation-for="Amount"
+                              class="vera-registry-validation">
+                        </span>
+
+                    </div>
+
+
+
+                    <!-- Only allow verification after a valid PO was read -->
+                    <button type="submit"
+                            class="vera-registry-button"
+                            disabled="@(!Model.PdfAnalysed)">
+
+                        <span>
+
+                            @(Model.PdfAnalysed
+                                                        ? "Verify opportunity"
+                                                        : "Upload a valid PO first")
+
+                        </span>
+
+                        <i class="bi bi-arrow-right"></i>
+
+                    </button>
+
+                </form>
+
+            </div>
+
+
+
+            <!-- Privacy message -->
+            <div class="vera-registry-privacy">
+
+                <i class="bi bi-lock"></i>
+
+                <p>
+
+                    <strong>
+                        Privacy protected.
+                    </strong>
+
+                    VERA returns verification evidence without exposing
+                    another business's full purchase order document.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     REGISTRY PAGE STYLES
+====================================================== -->
+
+<style>
+
+    /* Main Registry page */
+    .vera-registry-page {
+        min-height: 100vh;
+        padding: 70px 7%;
+        background: radial-gradient( circle at 88% 12%, rgba(200, 16, 46, 0.09), transparent 27% ), #fffdfd;
+    }
+
+
+    /* Holds the left and right sides */
+    .vera-registry-container {
+        max-width: 1180px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 480px;
+        gap: 75px;
+        align-items: start;
+    }
+
+
+    /* Small Registry label */
+    .vera-registry-label {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-top: 35px;
+        margin-bottom: 22px;
+        color: #8b2639;
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 1px;
+    }
+
+
+    /* Number circle beside the label */
+    .vera-registry-label-number {
+        width: 25px;
+        height: 25px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: #fff0f2;
+        color: #c8102e;
+        font-size: 10px;
+    }
+
+
+    /* Large Registry heading */
+    .vera-registry-title {
+        max-width: 650px;
+        margin: 0;
+        color: #17191f;
+        font-size: clamp(48px, 5vw, 72px);
+        font-weight: 800;
+        line-height: 0.98;
+        letter-spacing: -3px;
+    }
+
+
+        /* Red part of the heading */
+        .vera-registry-title span {
+            display: block;
+            color: #c8102e;
+        }
+
+
+    /* Text underneath the heading */
+    .vera-registry-description {
+        max-width: 590px;
+        margin: 28px 0 35px;
+        color: #596273;
+        font-size: 17px;
+        line-height: 1.7;
+    }
+
+
+    /* Holds the three Registry checks */
+    .vera-registry-checks {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+    }
+
+
+    /* One Registry check */
+    .vera-registry-check {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+    }
+
+
+    /* Circle around each check icon */
+    .vera-registry-check-icon {
+        width: 44px;
+        height: 44px;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #f0d7dc;
+        border-radius: 50%;
+        color: #c8102e;
+        background: white;
+        font-size: 17px;
+    }
+
+
+    /* Check heading */
+    .vera-registry-check strong {
+        display: block;
+        color: #202124;
+        font-size: 14px;
+        margin-bottom: 2px;
+    }
+
+
+    /* Check description */
+    .vera-registry-check span {
+        display: block;
+        color: #7a8190;
+        font-size: 13px;
+    }
+
+
+
+    /* =================================================
+           MAIN FORM CARD
+        ================================================== */
+
+    /* White Registry card */
+    .vera-registry-form-card {
+        padding: 30px;
+        border: 1px solid #eee4e6;
+        border-radius: 22px;
+        background: rgba(255, 255, 255, 0.96);
+        box-shadow: 0 24px 70px rgba(74, 20, 34, 0.10);
+    }
+
+
+    /* Heading inside the form */
+    .vera-registry-form-header {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #ece8e9;
+    }
+
+
+    /* Shield icon */
+    .vera-registry-form-icon {
+        width: 46px;
+        height: 46px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: #c8102e;
+        color: white;
+        font-size: 18px;
+    }
+
+
+    /* Small heading above form title */
+    .vera-registry-form-header span {
+        color: #8a6470;
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: 1.3px;
+    }
+
+
+    /* Form title */
+    .vera-registry-form-header h2 {
+        margin: 3px 0 0;
+        color: #1e2025;
+        font-size: 21px;
+        font-weight: 750;
+    }
+
+
+    /* Instructions inside form */
+    .vera-registry-form-text {
+        margin: 20px 0 24px;
+        color: #697180;
+        font-size: 14px;
+        line-height: 1.6;
+    }
+
+
+
+    /* =================================================
+           PDF UPLOAD
+        ================================================== */
+
+    /* Heading used for step 1 and step 2 */
+    .vera-registry-upload-heading {
+        display: flex;
+        align-items: center;
+        gap: 11px;
+        margin-bottom: 14px;
+    }
+
+
+    /* Small numbered circle */
+    .vera-registry-step {
+        width: 28px;
+        height: 28px;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: #fff1f3;
+        color: #c8102e;
+        font-size: 11px;
+        font-weight: 800;
+    }
+
+
+    /* Heading beside the step number */
+    .vera-registry-upload-heading strong {
+        display: block;
+        color: #202124;
+        font-size: 13px;
+    }
+
+
+    /* Small text beside the step number */
+    .vera-registry-upload-heading div > span {
+        display: block;
+        margin-top: 2px;
+        color: #7b8290;
+        font-size: 11px;
+    }
+
+
+    /* Main PDF upload area */
+    .vera-registry-upload-box {
+        min-height: 82px;
+        padding: 14px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        border: 1px dashed #e3b9c1;
+        border-radius: 11px;
+        background: #fffafb;
+        cursor: pointer;
+        transition: 0.2s ease;
+    }
+
+
+        /* Upload area hover */
+        .vera-registry-upload-box:hover {
+            border-color: #c8102e;
+            background: #fff6f7;
+        }
+
+
+    /* PDF icon */
+    .vera-registry-upload-icon {
+        width: 42px;
+        height: 42px;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 9px;
+        background: #fff1f3;
+        color: #c8102e;
+        font-size: 18px;
+    }
+
+
+    /* File name section */
+    .vera-registry-upload-copy {
+        flex: 1;
+    }
+
+
+        /* File title */
+        .vera-registry-upload-copy strong {
+            display: block;
+            color: #30343b;
+            font-size: 12px;
+        }
+
+
+        /* File type text */
+        .vera-registry-upload-copy span {
+            display: block;
+            margin-top: 3px;
+            color: #9298a2;
+            font-size: 10px;
+        }
+
+
+    /* Browse text */
+    .vera-registry-upload-action {
+        color: #c8102e;
+        font-size: 11px;
+        font-weight: 750;
+    }
+
+
+    /* Button used to read the PDF */
+    .vera-registry-analyse-button {
+        width: 100%;
+        height: 42px;
+        margin-top: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        border: 1px solid #e7c5cb;
+        border-radius: 8px;
+        background: white;
+        color: #c8102e;
+        font-size: 12px;
+        font-weight: 700;
+        cursor: pointer;
+    }
+
+
+        /* Read PDF button hover */
+        .vera-registry-analyse-button:hover {
+            background: #fff6f7;
+            border-color: #c8102e;
+        }
+
+
+    /* Successful PDF message */
+    .vera-pdf-message-success {
+        margin-top: 10px;
+        padding: 10px 12px;
+        display: flex;
+        align-items: flex-start;
+        gap: 7px;
+        border-radius: 8px;
+        background: #ecfdf3;
+        color: #16835d;
+        font-size: 11px;
+    }
+
+
+    /* Failed PDF message */
+    .vera-pdf-message-error {
+        margin-top: 10px;
+        padding: 10px 12px;
+        display: flex;
+        align-items: flex-start;
+        gap: 7px;
+        border-radius: 8px;
+        background: #fff1f3;
+        color: #c8102e;
+        font-size: 11px;
+    }
+
+
+
+    /* =================================================
+           DIVIDER
+        ================================================== */
+
+    /* Divider between upload and confirmation */
+    .vera-registry-divider {
+        position: relative;
+        margin: 23px 0;
+        text-align: center;
+        border-top: 1px solid #ece8e9;
+    }
+
+
+        /* Divider text */
+        .vera-registry-divider span {
+            position: relative;
+            top: -8px;
+            padding: 0 10px;
+            background: white;
+            color: #9a8b90;
+            font-size: 9px;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+
+
+    /* =================================================
+           FORM FIELDS
+        ================================================== */
+
+    /* Space between fields */
+    .vera-registry-field {
+        margin-bottom: 18px;
+    }
+
+
+        /* Field labels */
+        .vera-registry-field label {
+            display: block;
+            margin-bottom: 7px;
+            color: #353942;
+            font-size: 13px;
+            font-weight: 650;
+        }
+
+
+        /* Normal form input */
+        .vera-registry-field > input {
+            width: 100%;
+            height: 48px;
+            padding: 0 14px;
+            border: 1px solid #dcdfe4;
+            border-radius: 9px;
+            outline: none;
+            background: white;
+            color: #202124;
+            font-size: 14px;
+        }
+
+
+            /* Input focus */
+            .vera-registry-field > input:focus {
+                border-color: #c8102e;
+                box-shadow: 0 0 0 3px rgba(200, 16, 46, 0.07);
+            }
+
+
+    /* Holds input and PDF badge */
+    .vera-registry-extracted-field {
+        position: relative;
+        width: 100%;
+    }
+
+
+        /* Input inside extracted field */
+        .vera-registry-extracted-field input {
+            width: 100%;
+            height: 48px;
+            padding: 0 65px 0 14px;
+            border: 1px solid #dcdfe4;
+            border-radius: 9px;
+            outline: none;
+            background: white;
+            color: #202124;
+            font-size: 14px;
+        }
+
+
+            /* Extracted input focus */
+            .vera-registry-extracted-field input:focus {
+                border-color: #c8102e;
+                box-shadow: 0 0 0 3px rgba(200, 16, 46, 0.07);
+            }
+
+
+    /* Small badge showing the value came from the PDF */
+    .vera-extracted-badge {
+        position: absolute;
+        top: 50%;
+        right: 11px;
+        transform: translateY(-50%);
+        display: flex;
+        align-items: center;
+        gap: 3px;
+        padding: 4px 6px;
+        border-radius: 5px;
+        background: #ecfdf3;
+        color: #16835d;
+        font-size: 9px;
+        font-weight: 800;
+    }
+
+
+    /* Rand amount container */
+    .vera-registry-money {
+        display: flex;
+        width: 100%;
+    }
+
+
+        /* Rand symbol */
+        .vera-registry-money > span {
+            width: 48px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #dcdfe4;
+            border-right: 0;
+            border-radius: 9px 0 0 9px;
+            background: #faf7f8;
+            color: #555d69;
+            font-weight: 700;
+        }
+
+
+    /* Amount input container */
+    .vera-registry-amount-field {
+        flex: 1;
+    }
+
+
+        /* Join amount input to Rand symbol */
+        .vera-registry-amount-field input {
+            border-radius: 0 9px 9px 0;
+        }
+
+
+    /* Validation errors */
+    .vera-registry-validation {
+        display: block;
+        margin-top: 5px;
+        color: #c8102e;
+        font-size: 12px;
+    }
+
+
+
+    /* =================================================
+           VERIFY BUTTON
+        ================================================== */
+
+    /* Main red verification button */
+    .vera-registry-button {
+        width: 100%;
+        height: 51px;
+        margin-top: 6px;
+        padding: 0 18px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border: none;
+        border-radius: 9px;
+        background: #c8102e;
+        color: white;
+        font-size: 14px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: 0.2s ease;
+    }
+
+
+        /* Verify button hover */
+        .vera-registry-button:hover:not(:disabled) {
+            background: #a30d27;
+            transform: translateY(-1px);
+        }
+
+
+        /* Disabled verify button */
+        .vera-registry-button:disabled {
+            background: #d9dce1;
+            color: #8a9099;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+
+
+    /* =================================================
+           PRIVACY MESSAGE
+        ================================================== */
+
+    /* Privacy box */
+    .vera-registry-privacy {
+        display: flex;
+        gap: 10px;
+        margin-top: 22px;
+        padding: 14px;
+        border-radius: 10px;
+        background: #faf7f8;
+        color: #6e7480;
+    }
+
+
+        /* Privacy icon */
+        .vera-registry-privacy i {
+            color: #c8102e;
+            margin-top: 2px;
+        }
+
+
+        /* Privacy text */
+        .vera-registry-privacy p {
+            margin: 0;
+            font-size: 11px;
+            line-height: 1.5;
+        }
+
+
+        /* Privacy heading */
+        .vera-registry-privacy strong {
+            color: #3a3e46;
+        }
+
+
+
+    /* =================================================
+           MOBILE LAYOUT
+        ================================================== */
+
+    @@media (max-width: 950px) {
+        /* Put the form under the introduction */
+        .vera-registry-container {
+            grid-template-columns: 1fr;
+            gap: 50px;
+        }
+        /* Keep the form from becoming too wide */
+        .vera-registry-form-card {
+            max-width: 600px;
+        }
+    }
+
+
+    @@media (max-width: 600px) {
+        /* Reduce page spacing */
+        .vera-registry-page {
+            padding: 50px 22px;
+        }
+        /* Make heading smaller */
+        .vera-registry-title {
+            font-size: 45px;
+            letter-spacing: -2px;
+        }
+        /* Reduce form padding */
+        .vera-registry-form-card {
+            padding: 23px;
+        }
+    }
+
+</style>
+
+
+
+@section Scripts {
+
+    <!-- Use ASP.NET client-side form validation -->
+    <partial name="_ValidationScriptsPartial" />
+
+
+    <script>
+
+        // Show the selected PDF filename inside the upload box
+        document.getElementById("registryDocument")?.addEventListener(
+            "change",
+            function () {
+
+                // Get the selected file
+                const file = this.files[0];
+
+                // Find the filename text
+                const fileName =
+                    document.getElementById("registryFileName");
+
+
+                // Show the filename if a file was selected
+                if (file && fileName) {
+
+                    fileName.textContent = file.name;
+
+                }
+
+            });
+
+    </script>
+
+}

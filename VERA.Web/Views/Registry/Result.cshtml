@@ -1,0 +1,962 @@
+﻿@model VERA.Registry.Models.ViewModels.VerifyPOResult
+
+@{
+    // Set the browser page title
+    ViewData["Title"] = "Registry Result";
+
+    // Work out which result was returned
+    var result = Model.Result?.ToUpper() ?? "REVIEW";
+
+    // Choose the correct colour and icon for the result
+    var resultClass = result switch
+    {
+        "PASS" => "registry-result-pass",
+        "BLOCK" => "registry-result-block",
+        _ => "registry-result-review"
+    };
+
+    var resultIcon = result switch
+    {
+        "PASS" => "bi-check-lg",
+        "BLOCK" => "bi-x-lg",
+        _ => "bi-exclamation-lg"
+    };
+}
+
+
+<!-- =====================================================
+     REGISTRY RESULT PAGE
+====================================================== -->
+
+<section class="registry-result-page">
+
+    <div class="registry-result-container">
+
+
+        <!-- =================================================
+             TOP RESULT
+        ================================================== -->
+
+        <div class="registry-result-header">
+
+
+            <!-- Small page label -->
+            <div class="registry-result-label">
+
+                <span class="registry-result-label-number">
+                    02
+                </span>
+
+                <span>
+                    REGISTRY RESULT
+                </span>
+
+            </div>
+
+
+            <!-- Main result heading -->
+            <h1>
+                Opportunity
+                <span>verification complete.</span>
+            </h1>
+
+
+            <!-- Short explanation -->
+            <p>
+                VERA compared the submitted purchase order details with the
+                information stored in the Registry.
+            </p>
+
+        </div>
+
+
+
+        <!-- =================================================
+             RESULT CARD
+        ================================================== -->
+
+        <div class="registry-result-card">
+
+
+            <!-- Final PASS / REVIEW / BLOCK result -->
+            <div class="registry-result-status @resultClass">
+
+                <div class="registry-result-status-icon">
+
+                    <i class="bi @resultIcon"></i>
+
+                </div>
+
+
+                <div>
+
+                    <span>
+                        VERIFICATION RESULT
+                    </span>
+
+                    <h2>
+                        @result
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 RESULT SUMMARY
+            ================================================== -->
+
+            <div class="registry-result-summary">
+
+                @if (result == "PASS")
+                {
+                    <!-- PASS message -->
+                    <h3>
+                        Purchase order verified
+                    </h3>
+
+                    <p>
+                        The submitted details match the Registry and no blocking
+                        financing issue was found.
+                    </p>
+                }
+                else if (result == "BLOCK")
+                {
+                    <!-- BLOCK message -->
+                    <h3>
+                        Verification blocked
+                    </h3>
+
+                    <p>
+                        VERA found a material issue that prevents this purchase
+                        order from passing the Registry check.
+                    </p>
+                }
+                else
+                {
+                    <!-- REVIEW message -->
+                    <h3>
+                        Manual review required
+                    </h3>
+
+                    <p>
+                        Some details do not fully match the Registry and should
+                        be reviewed before funding continues.
+                    </p>
+                }
+
+            </div>
+
+
+
+            <!-- =================================================
+                 VERIFICATION CHECKS
+            ================================================== -->
+
+            <div class="registry-check-list">
+
+
+                <!-- Registry record check -->
+                <div class="registry-check-row">
+
+                    <div>
+
+                        <strong>
+                            Registry record
+                        </strong>
+
+                        <span>
+                            Purchase order exists in the Registry
+                        </span>
+
+                    </div>
+
+                    @if (Model.RecordFound)
+                    {
+                        <span class="registry-check-good">
+                            <i class="bi bi-check-circle-fill"></i>
+                            FOUND
+                        </span>
+                    }
+                    else
+                    {
+                        <span class="registry-check-bad">
+                            <i class="bi bi-x-circle-fill"></i>
+                            NOT FOUND
+                        </span>
+                    }
+
+                </div>
+
+
+
+                <!-- PO number check -->
+                <div class="registry-check-row">
+
+                    <div>
+
+                        <strong>
+                            PO number
+                        </strong>
+
+                        <span>
+                            Submitted PO number matches Registry
+                        </span>
+
+                    </div>
+
+                    @if (Model.PONumberMatch)
+                    {
+                        <span class="registry-check-good">
+                            <i class="bi bi-check-circle-fill"></i>
+                            MATCH
+                        </span>
+                    }
+                    else
+                    {
+                        <span class="registry-check-bad">
+                            <i class="bi bi-x-circle-fill"></i>
+                            MISMATCH
+                        </span>
+                    }
+
+                </div>
+
+
+
+                <!-- Supplier check -->
+                <div class="registry-check-row">
+
+                    <div>
+
+                        <strong>
+                            Supplier
+                        </strong>
+
+                        <span>
+                            Supplier matches the registered opportunity
+                        </span>
+
+                    </div>
+
+                    @if (Model.SupplierMatch)
+                    {
+                        <span class="registry-check-good">
+                            <i class="bi bi-check-circle-fill"></i>
+                            MATCH
+                        </span>
+                    }
+                    else
+                    {
+                        <span class="registry-check-bad">
+                            <i class="bi bi-x-circle-fill"></i>
+                            MISMATCH
+                        </span>
+                    }
+
+                </div>
+
+
+
+                <!-- Amount check -->
+                <div class="registry-check-row">
+
+                    <div>
+
+                        <strong>
+                            PO amount
+                        </strong>
+
+                        <span>
+                            Submitted amount matches Registry
+                        </span>
+
+                    </div>
+
+                    @if (Model.AmountMatch)
+                    {
+                        <span class="registry-check-good">
+                            <i class="bi bi-check-circle-fill"></i>
+                            MATCH
+                        </span>
+                    }
+                    else
+                    {
+                        <span class="registry-check-bad">
+                            <i class="bi bi-x-circle-fill"></i>
+                            MISMATCH
+                        </span>
+                    }
+
+                </div>
+
+
+
+                <!-- PO status check -->
+                <div class="registry-check-row">
+
+                    <div>
+
+                        <strong>
+                            PO status
+                        </strong>
+
+                        <span>
+                            Purchase order is currently active
+                        </span>
+
+                    </div>
+
+                    @if (Model.IsActive)
+                    {
+                        <span class="registry-check-good">
+                            <i class="bi bi-check-circle-fill"></i>
+                            ACTIVE
+                        </span>
+                    }
+                    else
+                    {
+                        <span class="registry-check-bad">
+                            <i class="bi bi-x-circle-fill"></i>
+                            INACTIVE
+                        </span>
+                    }
+
+                </div>
+
+
+
+                <!-- Financing claim check -->
+                <div class="registry-check-row">
+
+                    <div>
+
+                        <strong>
+                            Financing claim
+                        </strong>
+
+                        <span>
+                            Check whether another active financing claim exists
+                        </span>
+
+                    </div>
+
+                    @if (!Model.HasActiveFinancingClaim)
+                    {
+                        <span class="registry-check-good">
+                            <i class="bi bi-check-circle-fill"></i>
+                            CLEAR
+                        </span>
+                    }
+                    else
+                    {
+                        <span class="registry-check-bad">
+                            <i class="bi bi-x-circle-fill"></i>
+                            ACTIVE CLAIM
+                        </span>
+                    }
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =================================================
+                 REASON CODES
+            ================================================== -->
+            @if (Model.ReasonCodes != null && Model.ReasonCodes.Any())
+            {
+                <div class="registry-reasons">
+
+                    <span class="registry-reasons-heading">
+                        REASON CODES
+                    </span>
+
+
+                    <div class="registry-reason-list">
+
+                        @foreach (var reason in Model.ReasonCodes)
+                        {
+                            <!-- Show each reason returned by Registry -->
+                            <span>
+                                @reason
+                            </span>
+                        }
+
+                    </div>
+
+                </div>
+            }
+
+
+
+            <!-- =================================================
+                 LIMITED REGISTERED PO DETAILS
+            ================================================== -->
+            @if (Model.PurchaseOrder != null)
+            {
+                <div class="registry-po-details">
+
+                    <div class="registry-po-details-heading">
+
+                        <span>
+                            REGISTERED OPPORTUNITY
+                        </span>
+
+                        <h3>
+                            @Model.PurchaseOrder.VeraPOId
+                        </h3>
+
+                    </div>
+
+
+                    <div class="registry-po-details-grid">
+
+
+                        <!-- PO number -->
+                        <div>
+
+                            <span>
+                                PO Number
+                            </span>
+
+                            <strong>
+                                @Model.PurchaseOrder.PONumber
+                            </strong>
+
+                        </div>
+
+
+                        <!-- Supplier -->
+                        <div>
+
+                            <span>
+                                Supplier
+                            </span>
+
+                            <strong>
+                                @Model.PurchaseOrder.SupplierName
+                            </strong>
+
+                        </div>
+
+
+                        <!-- PO value -->
+                        <div>
+
+                            <span>
+                                PO Value
+                            </span>
+
+                            <strong>
+                                R @Model.PurchaseOrder.POValue.ToString("N2")
+                            </strong>
+
+                        </div>
+
+
+                        <!-- PO status -->
+                        <div>
+
+                            <span>
+                                Status
+                            </span>
+
+                            <strong>
+                                @Model.PurchaseOrder.Status
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            }
+
+
+
+            <!-- =================================================
+                 ACTIONS
+            ================================================== -->
+
+            <div class="registry-result-actions">
+
+
+                <!-- Run another Registry check -->
+                <a asp-controller="Registry"
+                   asp-action="Index"
+                   class="registry-result-primary">
+
+                    <span>
+                        Verify another opportunity
+                    </span>
+
+                    <i class="bi bi-arrow-right"></i>
+
+                </a>
+
+
+                <!-- Return to homepage -->
+                <a asp-controller="Home"
+                   asp-action="Index"
+                   class="registry-result-secondary">
+
+                    Back to VERA
+
+                </a>
+
+            </div>
+
+
+
+            <!-- Privacy reminder -->
+            <div class="registry-result-privacy">
+
+                <i class="bi bi-lock"></i>
+
+                <span>
+                    This result only shows the evidence needed for verification.
+                    Full purchase order documents remain protected.
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     RESULT PAGE STYLES
+====================================================== -->
+
+<style>
+
+    /* Main page background */
+    .registry-result-page {
+        min-height: 100vh;
+        padding: 80px 7%;
+        background: radial-gradient(circle at 88% 12%, rgba(200, 16, 46, 0.09), transparent 28%), #fffdfd;
+    }
+
+
+    /* Keep the result page centred */
+    .registry-result-container {
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+
+    /* Small label above heading */
+    .registry-result-label {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: #8b2639;
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 1px;
+        margin-bottom: 20px;
+    }
+
+
+    /* Circle containing page number */
+    .registry-result-label-number {
+        width: 25px;
+        height: 25px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: #fff0f2;
+        color: #c8102e;
+        font-size: 10px;
+    }
+
+
+    /* Main page title */
+    .registry-result-header h1 {
+        max-width: 650px;
+        margin: 0;
+        color: #17191f;
+        font-size: clamp(44px, 5vw, 66px);
+        font-weight: 800;
+        line-height: 1;
+        letter-spacing: -2.5px;
+    }
+
+
+        /* Red part of heading */
+        .registry-result-header h1 span {
+            display: block;
+            color: #c8102e;
+        }
+
+
+    /* Description below title */
+    .registry-result-header p {
+        max-width: 620px;
+        margin: 22px 0 38px;
+        color: #626b79;
+        font-size: 16px;
+        line-height: 1.7;
+    }
+
+
+    /* Main white result card */
+    .registry-result-card {
+        padding: 34px;
+        border: 1px solid #eee4e6;
+        border-radius: 22px;
+        background: white;
+        box-shadow: 0 24px 70px rgba(74, 20, 34, 0.09);
+    }
+
+
+    /* Final result section */
+    .registry-result-status {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding-bottom: 25px;
+        border-bottom: 1px solid #ece8e9;
+    }
+
+
+    /* Result icon */
+    .registry-result-status-icon {
+        width: 52px;
+        height: 52px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        font-size: 20px;
+    }
+
+
+    /* Small text above PASS / REVIEW / BLOCK */
+    .registry-result-status span {
+        display: block;
+        margin-bottom: 2px;
+        color: #7b6670;
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: 1.2px;
+    }
+
+
+    /* PASS / REVIEW / BLOCK text */
+    .registry-result-status h2 {
+        margin: 0;
+        font-size: 29px;
+        font-weight: 800;
+    }
+
+
+    /* PASS colours */
+    .registry-result-pass .registry-result-status-icon {
+        background: #ecfdf3;
+        color: #16835d;
+    }
+
+    .registry-result-pass h2 {
+        color: #16835d;
+    }
+
+
+    /* REVIEW colours */
+    .registry-result-review .registry-result-status-icon {
+        background: #fff7e8;
+        color: #b26a00;
+    }
+
+    .registry-result-review h2 {
+        color: #b26a00;
+    }
+
+
+    /* BLOCK colours */
+    .registry-result-block .registry-result-status-icon {
+        background: #fff1f3;
+        color: #c8102e;
+    }
+
+    .registry-result-block h2 {
+        color: #c8102e;
+    }
+
+
+    /* Summary under result */
+    .registry-result-summary {
+        padding: 24px 0 18px;
+    }
+
+
+        /* Summary heading */
+        .registry-result-summary h3 {
+            margin-bottom: 7px;
+            color: #202124;
+            font-size: 20px;
+            font-weight: 750;
+        }
+
+
+        /* Summary text */
+        .registry-result-summary p {
+            margin: 0;
+            color: #697180;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+
+    /* List of verification checks */
+    .registry-check-list {
+        margin-top: 10px;
+        border-top: 1px solid #ece8e9;
+    }
+
+
+    /* One verification check */
+    .registry-check-row {
+        min-height: 72px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 25px;
+        border-bottom: 1px solid #ece8e9;
+    }
+
+
+        /* Check name */
+        .registry-check-row strong {
+            display: block;
+            margin-bottom: 3px;
+            color: #30343b;
+            font-size: 14px;
+        }
+
+
+        /* Check explanation */
+        .registry-check-row div > span {
+            color: #838996;
+            font-size: 12px;
+        }
+
+
+    /* Successful check */
+    .registry-check-good {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        color: #16835d;
+        font-size: 11px;
+        font-weight: 800;
+        white-space: nowrap;
+    }
+
+
+    /* Failed check */
+    .registry-check-bad {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        color: #c8102e;
+        font-size: 11px;
+        font-weight: 800;
+        white-space: nowrap;
+    }
+
+
+    /* Reason code section */
+    .registry-reasons {
+        margin-top: 24px;
+        padding: 18px;
+        border-radius: 12px;
+        background: #faf7f8;
+    }
+
+
+    /* Reason code heading */
+    .registry-reasons-heading {
+        display: block;
+        margin-bottom: 10px;
+        color: #745b64;
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: 1.1px;
+    }
+
+
+    /* Holds reason code badges */
+    .registry-reason-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+
+        /* One reason code */
+        .registry-reason-list span {
+            padding: 6px 9px;
+            border-radius: 6px;
+            background: white;
+            border: 1px solid #eadde0;
+            color: #6b4d57;
+            font-size: 11px;
+            font-weight: 700;
+        }
+
+
+    /* Registered PO information */
+    .registry-po-details {
+        margin-top: 24px;
+        padding: 22px;
+        border: 1px solid #ebe5e7;
+        border-radius: 14px;
+    }
+
+
+    /* Small PO section heading */
+    .registry-po-details-heading span {
+        color: #8a6470;
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: 1.2px;
+    }
+
+
+    /* VERA PO ID */
+    .registry-po-details-heading h3 {
+        margin: 5px 0 20px;
+        color: #202124;
+        font-size: 19px;
+        font-weight: 750;
+    }
+
+
+    /* PO details grid */
+    .registry-po-details-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px;
+    }
+
+
+        /* Small labels */
+        .registry-po-details-grid span {
+            display: block;
+            margin-bottom: 4px;
+            color: #89909c;
+            font-size: 11px;
+        }
+
+
+        /* Values */
+        .registry-po-details-grid strong {
+            color: #30343b;
+            font-size: 13px;
+        }
+
+
+    /* Bottom buttons */
+    .registry-result-actions {
+        display: flex;
+        gap: 12px;
+        margin-top: 28px;
+    }
+
+
+    /* Main red button */
+    .registry-result-primary {
+        flex: 1;
+        min-height: 50px;
+        padding: 0 18px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-radius: 9px;
+        background: #c8102e;
+        color: white;
+        text-decoration: none;
+        font-size: 13px;
+        font-weight: 700;
+    }
+
+
+        /* Main button hover */
+        .registry-result-primary:hover {
+            background: #a30d27;
+            color: white;
+        }
+
+
+    /* Secondary button */
+    .registry-result-secondary {
+        min-height: 50px;
+        padding: 0 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #d9dce1;
+        border-radius: 9px;
+        background: white;
+        color: #4d545f;
+        text-decoration: none;
+        font-size: 13px;
+        font-weight: 650;
+    }
+
+
+        /* Secondary hover */
+        .registry-result-secondary:hover {
+            border-color: #c8102e;
+            color: #c8102e;
+        }
+
+
+    /* Privacy notice */
+    .registry-result-privacy {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 20px;
+        color: #848a95;
+        font-size: 11px;
+    }
+
+
+        /* Red privacy icon */
+        .registry-result-privacy i {
+            color: #c8102e;
+        }
+
+
+    /* Mobile layout */
+    @@media (max-width: 650px) {
+        /* Smaller spacing */
+        .registry-result-page {
+            padding: 55px 22px;
+        }
+        /* Smaller card */
+        .registry-result-card {
+            padding: 23px;
+        }
+        /* Put PO details into one column */
+        .registry-po-details-grid {
+            grid-template-columns: 1fr;
+        }
+        /* Stack buttons */
+        .registry-result-actions {
+            flex-direction: column;
+        }
+    }
+
+</style>
