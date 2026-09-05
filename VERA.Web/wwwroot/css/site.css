@@ -3059,7 +3059,7 @@ textarea {
 
 
 /* =========================================================
-   01 VERIFY — VERA RED
+   01 VERIFY   VERA RED
 ========================================================= */
 
 .how-step-red .how-step-marker span {
@@ -3079,7 +3079,7 @@ textarea {
 
 
 /* =========================================================
-   02 ASSESS — NAVY
+   02 ASSESS   NAVY
 ========================================================= */
 
 .how-step-navy .how-step-marker span {
@@ -3099,7 +3099,7 @@ textarea {
 
 
 /* =========================================================
-   03 STRUCTURE — GOLD
+   03 STRUCTURE   GOLD
 ========================================================= */
 
 .how-step-gold .how-step-marker span {
@@ -3119,7 +3119,7 @@ textarea {
 
 
 /* =========================================================
-   04 MATCH — PURPLE
+   04 MATCH   PURPLE
 ========================================================= */
 
 .how-step-purple .how-step-marker span {
@@ -3139,7 +3139,7 @@ textarea {
 
 
 /* =========================================================
-   05 EXECUTE — SAGE
+   05 EXECUTE   SAGE
 ========================================================= */
 
 .how-step-green .how-step-marker span {
@@ -3159,7 +3159,7 @@ textarea {
 
 
 /* =========================================================
-   06 SETTLE — DARK
+   06 SETTLE   DARK
 ========================================================= */
 
 .how-step-dark .how-step-marker span {
@@ -5938,4 +5938,121 @@ textarea {
 			border-right: 0;
 			border-bottom: 1px solid #EAECF0;
 		}
+}
+
+
+/* =========================================================
+   REGISTER - ACCOUNT TYPE SELECTOR
+   ========================================================= */
+
+.register-type-grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 16px;
+}
+
+.register-type-card {
+	position: relative;
+	display: flex;
+	align-items: flex-start;
+	gap: 14px;
+	padding: 20px;
+	background: #FAFBFC;
+	border: 2px solid #DCE1E6;
+	border-radius: 14px;
+	cursor: pointer;
+	transition: .18s ease;
+}
+
+	.register-type-card:hover {
+		border-color: #C9CED5;
+		background: #FFFFFF;
+	}
+
+	.register-type-card > input {
+		position: absolute;
+		opacity: 0;
+		pointer-events: none;
+	}
+
+.register-type-icon {
+	width: 42px;
+	height: 42px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+	color: #858C97;
+	background: #FFFFFF;
+	border: 1px solid #DCE1E6;
+	border-radius: 11px;
+	font-size: 17px;
+	transition: .18s ease;
+}
+
+.register-type-card > div {
+	display: flex;
+	flex-direction: column;
+	gap: 3px;
+}
+
+.register-type-card strong {
+	color: #292D35;
+	font-size: 12.5px;
+}
+
+.register-type-card span {
+	color: #858C97;
+	font-size: 10px;
+	line-height: 1.6;
+}
+
+.register-type-check {
+	position: absolute;
+	top: 16px;
+	right: 16px;
+	width: 18px;
+	height: 18px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: transparent;
+	background: #FFFFFF;
+	border: 1px solid #CCD2D8;
+	border-radius: 50%;
+	font-size: 10px;
+	transition: .18s ease;
+}
+
+.register-type-card input:checked ~ .register-type-check {
+	color: white;
+	background: var(--vera-red);
+	border-color: var(--vera-red);
+}
+
+.register-type-card:has(input:checked),
+.register-type-card.is-selected {
+	border-color: var(--vera-red);
+	background: var(--vera-blush);
+	box-shadow: 0 7px 18px rgba(200,16,46,.1);
+}
+
+	.register-type-card:has(input:checked) .register-type-icon,
+	.register-type-card.is-selected .register-type-icon {
+		color: var(--vera-red);
+		background: #FFFFFF;
+		border-color: rgba(200,16,46,.3);
+	}
+
+	.register-type-card.is-selected .register-type-check {
+		color: white;
+		background: var(--vera-red);
+		border-color: var(--vera-red);
+	}
+
+@media (max-width: 720px) {
+
+	.register-type-grid {
+		grid-template-columns: 1fr;
+	}
 }
