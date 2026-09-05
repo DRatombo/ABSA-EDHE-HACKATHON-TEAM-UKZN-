@@ -8,12 +8,12 @@
 
 <section class="how-hero">
 
-    <div class="how-hero-orb how-orb-one"></div>
-    <div class="how-hero-orb how-orb-two"></div>
+    <div class="how-hero-shape how-shape-one"></div>
+    <div class="how-hero-shape how-shape-two"></div>
 
-    <div class="vera-container how-hero-grid">
+    <div class="vera-container how-hero-layout">
 
-        <div class="how-hero-copy">
+        <div class="how-hero-left">
 
             <div class="home-section-kicker">
                 <span>01</span>
@@ -21,40 +21,104 @@
             </div>
 
             <h1>
-                From purchase order
-                <span>to proven performance.</span>
+                One opportunity.
+                <span>Six stages to execution.</span>
             </h1>
 
             <p>
-                VERA takes a commercial opportunity through a structured
-                journey of verification, fulfilment assessment, funding,
-                execution and settlement.
+                VERA turns a purchase order into a structured,
+                verifiable and finance-ready opportunity — without
+                hiding the decision behind a mystery score.
             </p>
+
+            <div class="how-hero-actions">
+
+                <a asp-controller="Account"
+                   asp-action="Register"
+                   class="how-primary-btn">
+
+                    Start an opportunity
+
+                    <i class="bi bi-arrow-right"></i>
+                </a>
+
+                <a href="#vera-journey"
+                   class="how-secondary-btn">
+
+                    Explore the process
+                </a>
+
+            </div>
 
         </div>
 
 
-        <div class="how-hero-summary">
+        <div class="how-hero-right">
 
-            <div class="how-summary-card">
+            <div class="how-flow-card">
 
-                <div>
-                    <span>START</span>
-                    <strong>Purchase Order</strong>
+                <div class="how-flow-row">
+
+                    <div class="how-flow-badge red">
+                        <i class="bi bi-file-earmark-text"></i>
+                    </div>
+
+                    <div>
+                        <span>START</span>
+                        <strong>Purchase Order</strong>
+                    </div>
+
                 </div>
 
-                <i class="bi bi-arrow-right"></i>
 
-                <div>
-                    <span>PROCESS</span>
-                    <strong>VERA Assessment</strong>
+                <div class="how-flow-line"></div>
+
+
+                <div class="how-flow-row">
+
+                    <div class="how-flow-badge navy">
+                        <i class="bi bi-shield-check"></i>
+                    </div>
+
+                    <div>
+                        <span>VERIFY</span>
+                        <strong>Opportunity Evidence</strong>
+                    </div>
+
                 </div>
 
-                <i class="bi bi-arrow-right"></i>
 
-                <div>
-                    <span>OUTCOME</span>
-                    <strong>Finance-ready Opportunity</strong>
+                <div class="how-flow-line"></div>
+
+
+                <div class="how-flow-row">
+
+                    <div class="how-flow-badge gold">
+                        <i class="bi bi-calculator"></i>
+                    </div>
+
+                    <div>
+                        <span>STRUCTURE</span>
+                        <strong>Funding Gap</strong>
+                    </div>
+
+                </div>
+
+
+                <div class="how-flow-line"></div>
+
+
+                <div class="how-flow-row">
+
+                    <div class="how-flow-badge green">
+                        <i class="bi bi-check2-circle"></i>
+                    </div>
+
+                    <div>
+                        <span>OUTCOME</span>
+                        <strong>Finance-ready Opportunity</strong>
+                    </div>
+
                 </div>
 
             </div>
@@ -72,315 +136,224 @@
 
 <section class="how-process">
 
-    <div class="vera-container">
+    <div class="how-step-list">
 
-        <div class="home-section-heading">
+    <!-- 01 VERIFY -->
+    <article class="how-step how-step-red">
 
-            <div>
+        <div class="how-step-marker">
+            <span>01</span>
+        </div>
 
-                <div class="home-section-kicker">
-                    <span>02</span>
-                    THE VERA JOURNEY
+        <div class="how-step-content">
+
+            <div class="how-step-title-row">
+                <div class="how-step-small-icon">
+                    <i class="bi bi-shield-check"></i>
                 </div>
 
-                <h2>
-                    Six stages.
-                    <span>One opportunity.</span>
-                </h2>
-
+                <span class="how-step-label">VERIFY</span>
             </div>
 
+            <h3>Is the opportunity real?</h3>
+
             <p>
-                Each stage adds evidence, reduces uncertainty
-                and gives both the SME and funder a clearer view
-                of what is happening.
+                VERA reviews the business, representative, purchase order,
+                buyer and supplier evidence before the opportunity can
+                move forward.
             </p>
 
         </div>
 
+        <div class="how-step-output">
+            <span>OUTPUT</span>
+            <strong>Verification Profile</strong>
+            <small>PASS • REVIEW • BLOCK</small>
+        </div>
 
-        <div class="how-step-list">
-
-
-            <!-- VERIFY -->
-            <article class="how-step how-step-red">
-
-                <div class="how-step-number">
-                    01
-                </div>
-
-                <div class="how-step-icon">
-                    <i class="bi bi-shield-check"></i>
-                </div>
-
-                <div class="how-step-copy">
-
-                    <span class="how-step-label">
-                        VERIFY
-                    </span>
-
-                    <h3>
-                        Is the opportunity real?
-                    </h3>
-
-                    <p>
-                        VERA reviews the business, representative,
-                        purchase order, buyer and supplier evidence
-                        before the opportunity can move forward.
-                    </p>
-
-                </div>
-
-                <div class="how-step-output">
-
-                    <span>OUTPUT</span>
-
-                    <strong>
-                        Verification Profile
-                    </strong>
-
-                    <small>
-                        PASS • REVIEW • BLOCK
-                    </small>
-
-                </div>
-
-            </article>
+    </article>
 
 
-            <!-- ASSESS -->
-            <article class="how-step how-step-navy">
+    <!-- 02 ASSESS -->
+    <article class="how-step how-step-navy">
 
-                <div class="how-step-number">
-                    02
-                </div>
+        <div class="how-step-marker">
+            <span>02</span>
+        </div>
 
-                <div class="how-step-icon">
+        <div class="how-step-content">
+
+            <div class="how-step-title-row">
+                <div class="how-step-small-icon">
                     <i class="bi bi-clipboard-data"></i>
                 </div>
 
-                <div class="how-step-copy">
-
-                    <span class="how-step-label">
-                        ASSESS
-                    </span>
-
-                    <h3>
-                        Can the SME deliver?
-                    </h3>
-
-                    <p>
-                        The opportunity is assessed against fulfilment
-                        requirements, supplier readiness, timelines,
-                        previous demonstrated capacity and execution risk.
-                    </p>
-
-                </div>
-
-                <div class="how-step-output">
-
-                    <span>OUTPUT</span>
-
-                    <strong>
-                        Fulfilment Assessment
-                    </strong>
-
-                    <small>
-                        READINESS + RISK FLAGS
-                    </small>
-
-                </div>
-
-            </article>
-
-
-            <!-- STRUCTURE -->
-            <article class="how-step how-step-gold">
-
-                <div class="how-step-number">
-                    03
-                </div>
-
-                <div class="how-step-icon">
-                    <i class="bi bi-calculator"></i>
-                </div>
-
-                <div class="how-step-copy">
-
-                    <span class="how-step-label">
-                        STRUCTURE
-                    </span>
-
-                    <h3>
-                        What does execution actually cost?
-                    </h3>
-
-                    <p>
-                        VERA calculates the fulfilment cost,
-                        SME contribution and the actual working-capital
-                        gap required to execute the opportunity.
-                    </p>
-
-                </div>
-
-                <div class="how-step-output">
-
-                    <span>OUTPUT</span>
-
-                    <strong>
-                        Funding Gap
-                    </strong>
-
-                    <small>
-                        COST • CONTRIBUTION • GAP
-                    </small>
-
-                </div>
-
-            </article>
-
-
-            <!-- MATCH -->
-            <article class="how-step how-step-purple">
-
-                <div class="how-step-number">
-                    04
-                </div>
-
-                <div class="how-step-icon">
-                    <i class="bi bi-arrow-left-right"></i>
-                </div>
-
-                <div class="how-step-copy">
-
-                    <span class="how-step-label">
-                        MATCH
-                    </span>
-
-                    <h3>
-                        Turn evidence into a funding decision.
-                    </h3>
-
-                    <p>
-                        The verified opportunity is packaged into
-                        an explainable Opportunity Profile that a funder
-                        can review before making a decision.
-                    </p>
-
-                </div>
-
-                <div class="how-step-output">
-
-                    <span>OUTPUT</span>
-
-                    <strong>
-                        Opportunity Profile
-                    </strong>
-
-                    <small>
-                        REVIEW + FUNDING DECISION
-                    </small>
-
-                </div>
-
-            </article>
-
-
-            <!-- EXECUTE -->
-            <article class="how-step how-step-green">
-
-                <div class="how-step-number">
-                    05
-                </div>
-
-                <div class="how-step-icon">
-                    <i class="bi bi-truck"></i>
-                </div>
-
-                <div class="how-step-copy">
-
-                    <span class="how-step-label">
-                        EXECUTE
-                    </span>
-
-                    <h3>
-                        Use funding for fulfilment.
-                    </h3>
-
-                    <p>
-                        Where finance is approved, funds can be linked
-                        to verified fulfilment costs and suppliers rather
-                        than simply being released as unrestricted cash.
-                    </p>
-
-                </div>
-
-                <div class="how-step-output">
-
-                    <span>OUTPUT</span>
-
-                    <strong>
-                        Controlled Funding
-                    </strong>
-
-                    <small>
-                        VERIFIED USE OF FUNDS
-                    </small>
-
-                </div>
-
-            </article>
-
-
-            <!-- SETTLE -->
-            <article class="how-step how-step-dark">
-
-                <div class="how-step-number">
-                    06
-                </div>
-
-                <div class="how-step-icon">
-                    <i class="bi bi-check-circle"></i>
-                </div>
-
-                <div class="how-step-copy">
-
-                    <span class="how-step-label">
-                        SETTLE
-                    </span>
-
-                    <h3>
-                        Turn delivery into history.
-                    </h3>
-
-                    <p>
-                        Once the buyer pays and the opportunity is settled,
-                        the verified outcome becomes part of the SME's
-                        Fulfilment Passport.
-                    </p>
-
-                </div>
-
-                <div class="how-step-output">
-
-                    <span>OUTPUT</span>
-
-                    <strong>
-                        Fulfilment Passport
-                    </strong>
-
-                    <small>
-                        VERIFIED PERFORMANCE HISTORY
-                    </small>
-
-                </div>
-
-            </article>
-
+                <span class="how-step-label">ASSESS</span>
+            </div>
+
+            <h3>Can the SME deliver?</h3>
+
+            <p>
+                VERA assesses fulfilment requirements, supplier readiness,
+                delivery timelines, previous demonstrated capacity and
+                execution risk.
+            </p>
 
         </div>
 
-    </div>
+        <div class="how-step-output">
+            <span>OUTPUT</span>
+            <strong>Fulfilment Assessment</strong>
+            <small>READINESS • RISK FLAGS</small>
+        </div>
+
+    </article>
+
+
+    <!-- 03 STRUCTURE -->
+    <article class="how-step how-step-gold">
+
+        <div class="how-step-marker">
+            <span>03</span>
+        </div>
+
+        <div class="how-step-content">
+
+            <div class="how-step-title-row">
+                <div class="how-step-small-icon">
+                    <i class="bi bi-calculator"></i>
+                </div>
+
+                <span class="how-step-label">STRUCTURE</span>
+            </div>
+
+            <h3>What does execution actually cost?</h3>
+
+            <p>
+                VERA structures the fulfilment cost, SME contribution
+                and actual working-capital gap required to deliver
+                the opportunity.
+            </p>
+
+        </div>
+
+        <div class="how-step-output">
+            <span>OUTPUT</span>
+            <strong>Funding Gap</strong>
+            <small>COST • CONTRIBUTION • GAP</small>
+        </div>
+
+    </article>
+
+
+    <!-- 04 MATCH -->
+    <article class="how-step how-step-purple">
+
+        <div class="how-step-marker">
+            <span>04</span>
+        </div>
+
+        <div class="how-step-content">
+
+            <div class="how-step-title-row">
+                <div class="how-step-small-icon">
+                    <i class="bi bi-arrow-left-right"></i>
+                </div>
+
+                <span class="how-step-label">MATCH</span>
+            </div>
+
+            <h3>Turn evidence into a funding decision.</h3>
+
+            <p>
+                The verified opportunity becomes an explainable
+                Opportunity Profile that a funder can review before
+                making a funding decision.
+            </p>
+
+        </div>
+
+        <div class="how-step-output">
+            <span>OUTPUT</span>
+            <strong>Opportunity Profile</strong>
+            <small>REVIEW • FUNDING DECISION</small>
+        </div>
+
+    </article>
+
+
+    <!-- 05 EXECUTE -->
+    <article class="how-step how-step-green">
+
+        <div class="how-step-marker">
+            <span>05</span>
+        </div>
+
+        <div class="how-step-content">
+
+            <div class="how-step-title-row">
+                <div class="how-step-small-icon">
+                    <i class="bi bi-truck"></i>
+                </div>
+
+                <span class="how-step-label">EXECUTE</span>
+            </div>
+
+            <h3>Put the funding to work.</h3>
+
+            <p>
+                Approved funding is linked to verified fulfilment costs
+                and suppliers, helping ensure capital is used to execute
+                the opportunity.
+            </p>
+
+        </div>
+
+        <div class="how-step-output">
+            <span>OUTPUT</span>
+            <strong>Controlled Funding</strong>
+            <small>FULFILMENT-LINKED USE</small>
+        </div>
+
+    </article>
+
+
+    <!-- 06 SETTLE -->
+    <article class="how-step how-step-dark">
+
+        <div class="how-step-marker">
+            <span>06</span>
+        </div>
+
+        <div class="how-step-content">
+
+            <div class="how-step-title-row">
+                <div class="how-step-small-icon">
+                    <i class="bi bi-check-circle"></i>
+                </div>
+
+                <span class="how-step-label">SETTLE</span>
+            </div>
+
+            <h3>Turn delivery into bankable history.</h3>
+
+            <p>
+                Once the opportunity is delivered and settled, the verified
+                outcome contributes to the SME's Fulfilment Passport and
+                future performance history.
+            </p>
+
+        </div>
+
+        <div class="how-step-output">
+            <span>OUTPUT</span>
+            <strong>Fulfilment Passport</strong>
+            <small>VERIFIED PERFORMANCE HISTORY</small>
+        </div>
+
+    </article>
+
+</div>
 
 </section>
 
@@ -391,137 +364,194 @@
 
 <section class="how-checks">
 
-    <div class="vera-container">
+    <div class="how-check-grid">
 
-        <div class="home-section-heading">
+    <article class="how-check-card">
 
-            <div>
+        <div class="how-check-top">
 
-                <div class="home-section-kicker">
-                    <span>03</span>
-                    EXPLAINABLE VERIFICATION
-                </div>
-
-                <h2>
-                    No mystery score.
-                    <span>Just visible evidence.</span>
-                </h2>
-
+            <div class="how-check-icon">
+                <i class="bi bi-building-check"></i>
             </div>
 
+            <span class="how-status how-status-pass">
+                <i class="bi bi-check-circle-fill"></i>
+                Verified
+            </span>
+
+        </div>
+
+        <div class="how-check-content">
+
+            <span class="how-check-number">01</span>
+
+            <h3>Business identity</h3>
+
             <p>
-                VERA doesn't hide the decision behind a single
-                unexplained number. Each check can be inspected
-                individually.
+                Does the business exist and do the submitted
+                details match?
             </p>
 
         </div>
 
-
-        <div class="how-check-grid">
-
-
-            <article class="how-check-card">
-                <i class="bi bi-building-check"></i>
-
-                <h3>Business identity</h3>
-
-                <p>
-                    Does the business exist and do the submitted
-                    details match?
-                </p>
-
-                <span class="how-check-pass">
-                    VERIFIED
-                </span>
-            </article>
+    </article>
 
 
-            <article class="how-check-card">
+    <article class="how-check-card">
+
+        <div class="how-check-top">
+
+            <div class="how-check-icon">
                 <i class="bi bi-person-badge"></i>
+            </div>
 
-                <h3>Representative authority</h3>
-
-                <p>
-                    Is the person submitting the opportunity
-                    authorised to act for the business?
-                </p>
-
-                <span class="how-check-pass">
-                    VERIFIED
-                </span>
-            </article>
-
-
-            <article class="how-check-card">
-                <i class="bi bi-file-earmark-check"></i>
-
-                <h3>PO integrity</h3>
-
-                <p>
-                    Does the document appear consistent with the
-                    submitted commercial opportunity?
-                </p>
-
-                <span class="how-check-pass">
-                    VERIFIED
-                </span>
-            </article>
-
-
-            <article class="how-check-card">
-                <i class="bi bi-buildings"></i>
-
-                <h3>Buyer confirmation</h3>
-
-                <p>
-                    Can the buyer and commercial relationship
-                    be independently confirmed?
-                </p>
-
-                <span class="how-check-pass">
-                    VERIFIED
-                </span>
-            </article>
-
-
-            <article class="how-check-card">
-                <i class="bi bi-box-seam"></i>
-
-                <h3>Supplier evidence</h3>
-
-                <p>
-                    Are the suppliers and fulfilment costs
-                    supported by evidence?
-                </p>
-
-                <span class="how-check-pass">
-                    VERIFIED
-                </span>
-            </article>
-
-
-            <article class="how-check-card how-check-review">
-
-                <i class="bi bi-graph-up-arrow"></i>
-
-                <h3>Fulfilment capacity</h3>
-
-                <p>
-                    Is the current opportunity materially larger
-                    than the SME's demonstrated capacity?
-                </p>
-
-                <span>
-                    REVIEW
-                </span>
-
-            </article>
-
+            <span class="how-status how-status-pass">
+                <i class="bi bi-check-circle-fill"></i>
+                Verified
+            </span>
 
         </div>
 
-    </div>
+        <div class="how-check-content">
+
+            <span class="how-check-number">02</span>
+
+            <h3>Representative authority</h3>
+
+            <p>
+                Is the person submitting the opportunity authorised
+                to act for the business?
+            </p>
+
+        </div>
+
+    </article>
+
+
+    <article class="how-check-card">
+
+        <div class="how-check-top">
+
+            <div class="how-check-icon">
+                <i class="bi bi-file-earmark-check"></i>
+            </div>
+
+            <span class="how-status how-status-pass">
+                <i class="bi bi-check-circle-fill"></i>
+                Verified
+            </span>
+
+        </div>
+
+        <div class="how-check-content">
+
+            <span class="how-check-number">03</span>
+
+            <h3>PO integrity</h3>
+
+            <p>
+                Does the purchase order appear consistent with the
+                submitted commercial opportunity?
+            </p>
+
+        </div>
+
+    </article>
+
+
+    <article class="how-check-card">
+
+        <div class="how-check-top">
+
+            <div class="how-check-icon">
+                <i class="bi bi-buildings"></i>
+            </div>
+
+            <span class="how-status how-status-pass">
+                <i class="bi bi-check-circle-fill"></i>
+                Verified
+            </span>
+
+        </div>
+
+        <div class="how-check-content">
+
+            <span class="how-check-number">04</span>
+
+            <h3>Buyer confirmation</h3>
+
+            <p>
+                Can the buyer and commercial relationship
+                be independently confirmed?
+            </p>
+
+        </div>
+
+    </article>
+
+
+    <article class="how-check-card">
+
+        <div class="how-check-top">
+
+            <div class="how-check-icon">
+                <i class="bi bi-box-seam"></i>
+            </div>
+
+            <span class="how-status how-status-pass">
+                <i class="bi bi-check-circle-fill"></i>
+                Verified
+            </span>
+
+        </div>
+
+        <div class="how-check-content">
+
+            <span class="how-check-number">05</span>
+
+            <h3>Supplier evidence</h3>
+
+            <p>
+                Are suppliers and fulfilment costs supported by
+                appropriate evidence?
+            </p>
+
+        </div>
+
+    </article>
+
+
+    <article class="how-check-card how-check-card-review">
+
+        <div class="how-check-top">
+
+            <div class="how-check-icon">
+                <i class="bi bi-graph-up-arrow"></i>
+            </div>
+
+            <span class="how-status how-status-review">
+                <i class="bi bi-exclamation-circle-fill"></i>
+                Review
+            </span>
+
+        </div>
+
+        <div class="how-check-content">
+
+            <span class="how-check-number">06</span>
+
+            <h3>Fulfilment capacity</h3>
+
+            <p>
+                Is this opportunity materially larger than the SME's
+                previously demonstrated delivery capacity?
+            </p>
+
+        </div>
+
+    </article>
+
+</div>
 
 </section>
 
@@ -530,13 +560,16 @@
      EXAMPLE OPPORTUNITY
 ===================================================== -->
 
-<section class="how-example">
+
+
+    <section class="how-example">
 
     <div class="vera-container how-example-grid">
 
+        <!-- LEFT -->
         <div class="how-example-copy">
 
-            <div class="home-section-kicker how-example-kicker">
+            <div class="home-section-kicker">
                 <span>04</span>
                 EXAMPLE
             </div>
@@ -548,27 +581,39 @@
 
             <p>
                 Nomvula Tech Solutions wins a R300,000 purchase order.
-                VERA doesn't ask only whether the SME exists.
-                It looks at what is required to execute this specific job.
+                VERA looks beyond whether the SME exists and focuses on
+                what is required to execute this specific opportunity.
             </p>
-
 
             <div class="how-example-warning">
 
-                <i class="bi bi-exclamation-triangle-fill"></i>
+                <div class="how-example-warning-icon">
+                    <i class="bi bi-exclamation-triangle-fill"></i>
+                </div>
 
-                <div>
+                <div class="how-example-warning-copy">
+
+                    <span class="how-example-warning-label">
+                        CAPACITY FLAG
+                    </span>
+
                     <strong>
-                        Capacity flag
+                        Current PO is 4× larger than previous verified capacity.
                     </strong>
 
-                    <span>
-                        Largest previous verified PO: R75,000
-                    </span>
+                    <div class="how-example-capacity-values">
 
-                    <span>
-                        Current PO: R300,000
-                    </span>
+                        <div>
+                            <span>Largest previous PO</span>
+                            <strong>R75,000</strong>
+                        </div>
+
+                        <div>
+                            <span>Current PO</span>
+                            <strong>R300,000</strong>
+                        </div>
+
+                    </div>
 
                 </div>
 
@@ -577,73 +622,71 @@
         </div>
 
 
+        <!-- RIGHT -->
         <div class="how-example-card">
 
-            <div class="how-example-top">
+            <div class="how-example-card-header">
 
                 <div>
-                    <span>OPPORTUNITY</span>
-                    <strong>PO #EC-45821</strong>
+                    <span class="how-example-card-eyebrow">
+                        OPPORTUNITY
+                    </span>
+
+                    <h3>PO #EC-45821</h3>
+
+                    <p>Nomvula Tech Solutions</p>
                 </div>
 
-                <span class="vera-status-review">
-                    REVIEW
+                <span class="how-example-review-badge">
+                    <i class="bi bi-exclamation-circle-fill"></i>
+                    Review
                 </span>
 
             </div>
 
 
-            <div class="how-example-row">
+            <div class="how-example-financials">
 
-                <span>Purchase Order</span>
+                <div class="how-example-financial-row">
+                    <span>Purchase Order</span>
+                    <strong>R300,000</strong>
+                </div>
 
-                <strong>
-                    R300,000
-                </strong>
+                <div class="how-example-financial-row">
+                    <span>Fulfilment Cost</span>
+                    <strong>R220,000</strong>
+                </div>
 
-            </div>
-
-
-            <div class="how-example-row">
-
-                <span>Fulfilment Cost</span>
-
-                <strong>
-                    R220,000
-                </strong>
+                <div class="how-example-financial-row">
+                    <span>SME Contribution</span>
+                    <strong>R35,500</strong>
+                </div>
 
             </div>
 
 
-            <div class="how-example-row">
+            <div class="how-example-gap">
 
-                <span>SME Contribution</span>
+                <div>
+                    <span>FUNDING GAP</span>
+                    <strong>R184,500</strong>
+                </div>
 
-                <strong>
-                    R35,500
-                </strong>
-
-            </div>
-
-
-            <div class="how-example-row how-example-total">
-
-                <span>Funding Gap</span>
-
-                <strong>
-                    R184,500
-                </strong>
+                <div class="how-example-gap-icon">
+                    <i class="bi bi-arrow-up-right"></i>
+                </div>
 
             </div>
 
 
             <div class="how-example-result">
 
-                <i class="bi bi-arrow-right-circle"></i>
+                <div class="how-example-result-icon">
+                    <i class="bi bi-check2-circle"></i>
+                </div>
 
                 <div>
                     <span>RESULT</span>
-
                     <strong>
                         Finance-ready Opportunity Profile
                     </strong>
@@ -656,6 +699,8 @@
     </div>
 
 </section>
+
+
 
 
 <!-- =====================================================
