@@ -19,4 +19,8 @@
     <ProjectReference Include="..\VERA.Models\VERA.Models.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\HowItWorks\" />
+  </ItemGroup>
+
 </Project>

@@ -1,8 +1,1043 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Turn opportunity into execution";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+@{
+    ViewData["Title"] = "Turn opportunity into execution";
+}
+
+<section class="vera-hero">
+
+    <div class="vera-hero-shape vera-hero-shape-one"></div>
+    <div class="vera-hero-shape vera-hero-shape-two"></div>
+
+    <div class="vera-container vera-hero-grid">
+
+        <div class="vera-hero-content">
+
+            <div class="vera-concept-label">
+                <span></span>
+                BUILT FOR SOUTH AFRICAN SMEs
+            </div>
+
+            <h1>
+                You won the opportunity.
+                <span>Now let’s help you deliver it.</span>
+            </h1>
+
+            <p class="vera-hero-description">
+                VERA turns a genuine purchase order into a verified,
+                assessed and finance-ready fulfilment opportunity,
+                helping SMEs access the working capital they need
+                to execute and grow.
+            </p>
+
+            <div class="vera-hero-actions">
+
+                <a class="vera-primary-button vera-main-cta"
+                   asp-controller="Account"
+                   asp-action="Register">
+
+                    Verify my opportunity
+
+                    <i class="bi bi-arrow-right"></i>
+                </a>
+
+                <a class="vera-video-button"
+                   asp-controller="Home"
+                   asp-action="HowItWorks">
+
+                    <span class="vera-play-icon">
+                        <i class="bi bi-play-fill"></i>
+                    </span>
+
+                    See how VERA works
+                </a>
+
+            </div>
+
+            <div class="vera-feature-row">
+
+                <div class="vera-feature-item">
+
+                    <div class="vera-feature-icon">
+                        <i class="bi bi-shield-check"></i>
+                    </div>
+
+                    <span>
+                        Opportunity<br />
+                        verification
+                    </span>
+
+                </div>
+
+                <div class="vera-feature-item">
+
+                    <div class="vera-feature-icon">
+                        <i class="bi bi-graph-up-arrow"></i>
+                    </div>
+
+                    <span>
+                        Fulfilment<br />
+                        assessment
+                    </span>
+
+                </div>
+
+                <div class="vera-feature-item">
+
+                    <div class="vera-feature-icon">
+                        <i class="bi bi-cash-stack"></i>
+                    </div>
+
+                    <span>
+                        Controlled<br />
+                        funding
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="vera-hero-visual">
+
+            <div class="vera-opportunity-card">
+
+                <div class="vera-card-top">
+
+                    <div>
+                        <span class="vera-card-eyebrow">
+                            OPPORTUNITY
+                        </span>
+
+                        <h3>PO #EC-45821</h3>
+                    </div>
+
+                    <span class="vera-status-review">
+                        REVIEW
+                    </span>
+
+                </div>
+
+                <div class="vera-card-business">
+
+                    <div class="vera-business-avatar">
+                        NT
+                    </div>
+
+                    <div>
+                        <strong>
+                            Nomvula Tech Solutions
+                        </strong>
+
+                        <span>
+                            Business technology supplier
+                        </span>
+                    </div>
+
+                </div>
+
+                <div class="vera-metric-grid">
+
+                    <div class="vera-metric-card">
+
+                        <div class="vera-metric-icon">
+                            <i class="bi bi-building"></i>
+                        </div>
+
+                        <div>
+                            <span>Buyer</span>
+                            <strong>Durban Metro Municipality</strong>
+                        </div>
+
+                    </div>
+
+                    <div class="vera-metric-card">
+
+                        <div class="vera-metric-icon vera-metric-red">
+                            <i class="bi bi-cash-coin"></i>
+                        </div>
+
+                        <div>
+                            <span>PO value</span>
+                            <strong class="vera-red-text">
+                                R300,000
+                            </strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="vera-verification-header">
+
+                    <div>
+                        <strong>
+                            Verification profile
+                        </strong>
+
+                        <span>
+                            5 of 6 checks complete
+                        </span>
+                    </div>
+
+                    <strong class="vera-red-text">
+                        83%
+                    </strong>
+
+                </div>
+
+                <div class="vera-verification-bar">
+                    <div></div>
+                </div>
+
+                <div class="vera-check-list">
+
+                    <div>
+                        <span>
+                            <i class="bi bi-check-circle-fill"></i>
+                            Business identity
+                        </span>
+
+                        <strong>VERIFIED</strong>
+                    </div>
+
+                    <div>
+                        <span>
+                            <i class="bi bi-check-circle-fill"></i>
+                            PO document integrity
+                        </span>
+
+                        <strong>VERIFIED</strong>
+                    </div>
+
+                    <div>
+                        <span>
+                            <i class="bi bi-check-circle-fill"></i>
+                            Buyer confirmation
+                        </span>
+
+                        <strong>VERIFIED</strong>
+                    </div>
+
+                    <div>
+                        <span>
+                            <i class="bi bi-check-circle-fill"></i>
+                            Supplier evidence
+                        </span>
+
+                        <strong>VERIFIED</strong>
+                    </div>
+
+                    <div>
+                        <span>
+                            <i class="bi bi-check-circle-fill"></i>
+                            Duplicate financing
+                        </span>
+
+                        <strong>CLEAR</strong>
+                    </div>
+
+                    <div class="vera-review-line">
+                        <span>
+                            <i class="bi bi-exclamation-circle-fill"></i>
+                            Fulfilment capacity
+                        </span>
+
+                        <strong>REVIEW</strong>
+                    </div>
+
+                </div>
+
+                <div class="vera-capacity-warning">
+
+                    <div class="vera-warning-icon">
+                        <i class="bi bi-exclamation-lg"></i>
+                    </div>
+
+                    <div>
+                        <strong>
+                            Capacity review required
+                        </strong>
+
+                        <span>
+                            This PO is 4× larger than the SME’s
+                            previous verified opportunity.
+                        </span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="vera-funding-float">
+
+                <div class="vera-floating-arrow">
+                    <i class="bi bi-arrow-up-right"></i>
+                </div>
+
+                <div>
+                    <span>Funding gap</span>
+
+                    <strong>R184,500</strong>
+
+                    <small>
+                        Turn opportunity into progress
+                    </small>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================================
+     THE GAP
+===================================================== -->
+
+<section class="home-gap">
+
+    <div class="vera-container">
+
+        <div class="home-gap-grid">
+
+            <!-- LEFT -->
+            <div class="home-gap-heading">
+
+                <div class="home-section-kicker home-kicker-light">
+                    <span>01</span>
+                    THE GAP
+                </div>
+
+                <h2>
+                    Winning the contract
+                    <span>shouldn't be where growth stops.</span>
+                </h2>
+
+            </div>
+
+
+            <!-- RIGHT -->
+            <div class="home-gap-content">
+
+                <p>
+                    A purchase order says a customer is ready to buy.
+                    It doesn't mean an SME has the cash available today
+                    to purchase stock, pay suppliers and execute the work.
+                </p>
+
+                <div class="home-gap-stat">
+
+                    <div class="home-gap-stat-icon">
+                        <i class="bi bi-arrow-down-right"></i>
+                    </div>
+
+                    <div>
+                        <span>THE PROBLEM</span>
+
+                        <strong>
+                            The opportunity exists.
+                            The working capital doesn't.
+                        </strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- FLOW -->
+        <div class="home-gap-flow">
+
+            <div class="home-gap-flow-item">
+
+                <div class="gap-flow-icon">
+                    <i class="bi bi-file-earmark-check"></i>
+                </div>
+
+                <div>
+                    <span>01</span>
+                    <strong>PO won</strong>
+                    <small>A real commercial opportunity</small>
+                </div>
+
+            </div>
+
+            <i class="bi bi-arrow-right gap-arrow"></i>
+
+
+            <div class="home-gap-flow-item">
+
+                <div class="gap-flow-icon">
+                    <i class="bi bi-box-seam"></i>
+                </div>
+
+                <div>
+                    <span>02</span>
+                    <strong>Fulfilment needed</strong>
+                    <small>Stock, suppliers and execution</small>
+                </div>
+
+            </div>
+
+            <i class="bi bi-arrow-right gap-arrow"></i>
+
+
+            <div class="home-gap-flow-item gap-problem">
+
+                <div class="gap-flow-icon">
+                    <i class="bi bi-wallet2"></i>
+                </div>
+
+                <div>
+                    <span>03</span>
+                    <strong>Funding gap</strong>
+                    <small>Working capital is missing</small>
+                </div>
+
+            </div>
+
+            <i class="bi bi-arrow-right gap-arrow"></i>
+
+
+            <div class="home-gap-flow-item gap-vera">
+
+                <div class="gap-flow-icon">
+                    V
+                </div>
+
+                <div>
+                    <span>04</span>
+                    <strong>VERA</strong>
+                    <small>Turns evidence into opportunity intelligence</small>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     VERA JOURNEY
+===================================================== -->
+
+<section class="home-journey">
+
+    <div class="vera-container">
+
+        <div class="home-section-heading">
+
+            <div>
+
+                <div class="home-section-kicker">
+                    <span>02</span>
+                    FROM OPPORTUNITY TO OUTCOME
+                </div>
+
+                <h2>
+                    One journey.
+                    <span>Every step visible.</span>
+                </h2>
+
+            </div>
+
+            <p>
+                VERA structures the journey around the opportunity itself —
+                from evidence and verification through funding,
+                execution and settlement.
+            </p>
+
+        </div>
+
+
+        <div class="home-journey-track">
+
+            <!-- 01 -->
+            <article class="home-journey-card journey-red">
+
+                <div class="journey-card-top">
+                    <span>01</span>
+
+                    <div class="journey-icon">
+                        <i class="bi bi-shield-check"></i>
+                    </div>
+                </div>
+
+                <h3>Verify</h3>
+
+                <p>
+                    Check the SME, purchase order, buyer,
+                    supplier evidence and document integrity.
+                </p>
+
+                <div class="journey-result">
+                    <i class="bi bi-check2-circle"></i>
+                    PASS • REVIEW • BLOCK
+                </div>
+
+            </article>
+
+
+            <!-- 02 -->
+            <article class="home-journey-card journey-navy">
+
+                <div class="journey-card-top">
+                    <span>02</span>
+
+                    <div class="journey-icon">
+                        <i class="bi bi-clipboard-data"></i>
+                    </div>
+                </div>
+
+                <h3>Assess</h3>
+
+                <p>
+                    Understand whether the SME can realistically
+                    execute this specific opportunity.
+                </p>
+
+                <div class="journey-result">
+                    <i class="bi bi-graph-up"></i>
+                    FULFILMENT READINESS
+                </div>
+
+            </article>
+
+
+            <!-- 03 -->
+            <article class="home-journey-card journey-gold">
+
+                <div class="journey-card-top">
+                    <span>03</span>
+
+                    <div class="journey-icon">
+                        <i class="bi bi-calculator"></i>
+                    </div>
+                </div>
+
+                <h3>Structure</h3>
+
+                <p>
+                    Calculate fulfilment cost, SME contribution
+                    and the actual funding gap.
+                </p>
+
+                <div class="journey-result">
+                    <i class="bi bi-cash-stack"></i>
+                    FUNDING REQUIREMENT
+                </div>
+
+            </article>
+
+
+            <!-- 04 -->
+            <article class="home-journey-card journey-purple">
+
+                <div class="journey-card-top">
+                    <span>04</span>
+
+                    <div class="journey-icon">
+                        <i class="bi bi-diagram-3"></i>
+                    </div>
+                </div>
+
+                <h3>Match</h3>
+
+                <p>
+                    Present a finance-ready Opportunity Profile
+                    for an informed funding decision.
+                </p>
+
+                <div class="journey-result">
+                    <i class="bi bi-arrow-left-right"></i>
+                    FUNDING OPTIONS
+                </div>
+
+            </article>
+
+
+            <!-- 05 -->
+            <article class="home-journey-card journey-green">
+
+                <div class="journey-card-top">
+                    <span>05</span>
+
+                    <div class="journey-icon">
+                        <i class="bi bi-truck"></i>
+                    </div>
+                </div>
+
+                <h3>Execute</h3>
+
+                <p>
+                    Link approved finance to verified
+                    fulfilment costs and suppliers.
+                </p>
+
+                <div class="journey-result">
+                    <i class="bi bi-lock"></i>
+                    CONTROLLED FUNDING
+                </div>
+
+            </article>
+
+
+            <!-- 06 -->
+            <article class="home-journey-card journey-dark">
+
+                <div class="journey-card-top">
+                    <span>06</span>
+
+                    <div class="journey-icon">
+                        <i class="bi bi-arrow-repeat"></i>
+                    </div>
+                </div>
+
+                <h3>Settle</h3>
+
+                <p>
+                    Track execution, buyer payment and
+                    settlement against the funded opportunity.
+                </p>
+
+                <div class="journey-result">
+                    <i class="bi bi-check-circle"></i>
+                    VERIFIED OUTCOME
+                </div>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FULFILMENT PASSPORT
+===================================================== -->
+
+<section class="home-passport">
+
+    <div class="vera-container home-passport-grid">
+
+
+        <!-- LEFT: MOCK PASSPORT -->
+
+        <div class="passport-visual">
+
+            <div class="passport-decoration passport-decoration-one"></div>
+            <div class="passport-decoration passport-decoration-two"></div>
+
+
+            <div class="passport-card">
+
+                <div class="passport-card-header">
+
+                    <div class="passport-logo">
+                        V
+                    </div>
+
+                    <div>
+                        <span>VERA</span>
+                        <strong>Fulfilment Passport</strong>
+                    </div>
+
+                    <span class="passport-verified">
+                        <i class="bi bi-patch-check-fill"></i>
+                        VERIFIED HISTORY
+                    </span>
+
+                </div>
+
+
+                <div class="passport-business">
+
+                    <div class="passport-avatar">
+                        NT
+                    </div>
+
+                    <div>
+                        <h4>Nomvula Tech Solutions</h4>
+                        <p>Business technology supplier</p>
+                    </div>
+
+                </div>
+
+
+                <div class="passport-stats">
+
+                    <div>
+                        <strong>4</strong>
+                        <span>Opportunities fulfilled</span>
+                    </div>
+
+                    <div>
+                        <strong>R685k</strong>
+                        <span>Verified PO value</span>
+                    </div>
+
+                    <div>
+                        <strong>100%</strong>
+                        <span>Settled</span>
+                    </div>
+
+                </div>
+
+
+                <div class="passport-history">
+
+                    <div>
+                        <span class="history-dot"></span>
+
+                        <div>
+                            <strong>PO #EC-31219</strong>
+                            <small>R75,000 • Fulfilled</small>
+                        </div>
+
+                        <i class="bi bi-check-circle-fill"></i>
+                    </div>
+
+
+                    <div>
+                        <span class="history-dot"></span>
+
+                        <div>
+                            <strong>PO #DBN-8821</strong>
+                            <small>R160,000 • Fulfilled</small>
+                        </div>
+
+                        <i class="bi bi-check-circle-fill"></i>
+                    </div>
+
+
+                    <div>
+                        <span class="history-dot"></span>
+
+                        <div>
+                            <strong>PO #EC-45821</strong>
+                            <small>R300,000 • Current opportunity</small>
+                        </div>
+
+                        <span class="history-current">
+                            ACTIVE
+                        </span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- RIGHT COPY -->
+
+        <div class="passport-copy">
+
+            <div class="home-section-kicker passport-kicker">
+                <span>03</span>
+                FULFILMENT PASSPORT
+            </div>
+
+            <h2>
+                Every successful opportunity
+                <span>makes the next one stronger.</span>
+            </h2>
+
+            <p>
+                VERA doesn't let successful execution disappear
+                after settlement. Verified outcomes build a reusable
+                Fulfilment Passport — creating evidence of what an SME
+                has actually delivered.
+            </p>
+
+
+            <div class="passport-benefits">
+
+                <div>
+                    <i class="bi bi-patch-check"></i>
+
+                    <span>
+                        <strong>Verified performance</strong>
+                        Build history from real fulfilled opportunities.
+                    </span>
+                </div>
+
+                <div>
+                    <i class="bi bi-bar-chart"></i>
+
+                    <span>
+                        <strong>Demonstrated capacity</strong>
+                        Show how the business has grown over time.
+                    </span>
+                </div>
+
+                <div>
+                    <i class="bi bi-arrow-up-right-circle"></i>
+
+                    <span>
+                        <strong>Stronger future applications</strong>
+                        Turn successful execution into reusable evidence.
+                    </span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     TWO SIDES
+===================================================== -->
+
+<section class="home-audiences">
+
+    <div class="vera-container">
+
+        <div class="home-section-heading audience-heading">
+
+            <div>
+
+                <div class="home-section-kicker">
+                    <span>04</span>
+                    ONE OPPORTUNITY • TWO PERSPECTIVES
+                </div>
+
+                <h2>
+                    Better visibility
+                    <span>on both sides.</span>
+                </h2>
+
+            </div>
+
+        </div>
+
+
+        <div class="audience-grid">
+
+
+            <!-- SME -->
+            <article class="audience-card audience-sme">
+
+                <div class="audience-top">
+
+                    <div class="audience-icon">
+                        <i class="bi bi-shop"></i>
+                    </div>
+
+                    <span>FOR SMEs</span>
+
+                </div>
+
+
+                <h3>
+                    You've done the hard part.
+                    <span>You won the work.</span>
+                </h3>
+
+                <p>
+                    VERA helps you package that opportunity into
+                    something that can be understood, assessed
+                    and financed.
+                </p>
+
+
+                <div class="audience-list">
+
+                    <div>
+                        <i class="bi bi-check2"></i>
+                        Understand exactly what's verified
+                    </div>
+
+                    <div>
+                        <i class="bi bi-check2"></i>
+                        Know your real funding gap
+                    </div>
+
+                    <div>
+                        <i class="bi bi-check2"></i>
+                        Track fulfilment and settlement
+                    </div>
+
+                    <div>
+                        <i class="bi bi-check2"></i>
+                        Build your Fulfilment Passport
+                    </div>
+
+                </div>
+
+
+                <a asp-controller="Home"
+                   asp-action="ForSMEs"
+                   class="audience-link">
+
+                    Explore VERA for SMEs
+
+                    <i class="bi bi-arrow-right"></i>
+
+                </a>
+
+            </article>
+
+
+
+            <!-- FUNDER -->
+            <article class="audience-card audience-funder">
+
+                <div class="audience-top">
+
+                    <div class="audience-icon">
+                        <i class="bi bi-bank"></i>
+                    </div>
+
+                    <span>FOR FUNDERS</span>
+
+                </div>
+
+
+                <h3>
+                    Don't just finance a document.
+                    <span>Understand the opportunity.</span>
+                </h3>
+
+                <p>
+                    Inspect the evidence, risk flags, economics
+                    and fulfilment requirements behind the funding request.
+                </p>
+
+
+                <div class="audience-list">
+
+                    <div>
+                        <i class="bi bi-check2"></i>
+                        Explainable verification evidence
+                    </div>
+
+                    <div>
+                        <i class="bi bi-check2"></i>
+                        Capacity and fulfilment risk flags
+                    </div>
+
+                    <div>
+                        <i class="bi bi-check2"></i>
+                        Structured funding requirement
+                    </div>
+
+                    <div>
+                        <i class="bi bi-check2"></i>
+                        Execution and settlement visibility
+                    </div>
+
+                </div>
+
+
+                <a asp-controller="Home"
+                   asp-action="ForFunders"
+                   class="audience-link">
+
+                    Explore the funder workspace
+
+                    <i class="bi bi-arrow-right"></i>
+
+                </a>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     FINAL CTA
+===================================================== -->
+
+<section class="home-final">
+
+    <div class="home-final-orb final-orb-one"></div>
+    <div class="home-final-orb final-orb-two"></div>
+
+    <div class="vera-container">
+
+        <div class="home-final-inner">
+
+            <div class="final-icon">
+                <i class="bi bi-arrow-up-right"></i>
+            </div>
+
+            <div class="final-copy">
+
+                <span class="final-eyebrow">
+                    YOUR OPPORTUNITY STARTS HERE
+                </span>
+
+                <h2>
+                    Turn the PO you've won
+                    <span>into the growth you've earned.</span>
+                </h2>
+
+                <p>
+                    Create your first VERA Opportunity Profile
+                    and start the journey from verification to fulfilment.
+                </p>
+
+            </div>
+
+
+            <div class="final-actions">
+
+                <a asp-controller="Account"
+                   asp-action="Register"
+                   class="final-primary">
+
+                    Start your opportunity
+
+                    <i class="bi bi-arrow-right"></i>
+
+                </a>
+
+                <a asp-controller="Home"
+                   asp-action="HowItWorks"
+                   class="final-secondary">
+
+                    How VERA works
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
